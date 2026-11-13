@@ -92,14 +92,17 @@ Run `uv run --no-project --with-requirements requirements-validation.txt python 
 
 ## 🔄 Automation & Maintenance
 
+[![Refresh contributor grid](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/readme-contributors.yml/badge.svg)](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/readme-contributors.yml)
+
 [![Triage issues](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/triage-issues.yml/badge.svg)](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/triage-issues.yml)
 
 # 👥 Contributors
 
+<!-- project-contributors:start -->
 <p align="center">
-<a href="https://github.com/NEVARLeVrai"><img src="https://avatars.githubusercontent.com/u/63956787?v=4" width="54" height="54" alt="NEVARLeVrai" /></a>
-<a href="https://github.com/aneesh1122"><img src="https://avatars.githubusercontent.com/u/45353488?v=4" width="54" height="54" alt="aneesh1122" /></a>
+<a href="https://github.com/NEVARLeVrai"><img src="https://avatars.githubusercontent.com/u/63956787?v=4" width="54" height="54" alt="NEVARLeVrai" title="NEVARLeVrai" /></a>
 </p>
+<!-- project-contributors:end -->
 
 See the [repository contributors](https://github.com/N-Zik-Group/N-Zik-Theme-Store/graphs/contributors). The built-in preset credits are listed above.
 

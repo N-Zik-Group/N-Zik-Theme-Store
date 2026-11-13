@@ -1,0 +1,31 @@
+name: Refresh contributor grid
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '43 5 * * 1'
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: readme-contributors
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: main
+      - name: Refresh contributor grid
+        env:
+          GH_TOKEN: ${{ github.token }}
+          README_PATH: README.md
+        run: |
+          python3 .github/scripts/readme-contributors.py
+          git add -- "$README_PATH"
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'docs: refresh contributor grid'
+          pending=$(gh pr list --base main --json number,headRefName --jq '[.[] | select(.headRefName | startswith("automation/contributor-grid-"))][0].number // empty')
+          if [ -n "$pending" ]; then exit 0; fi
+          branch="automation/contributor-grid-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          git push origin "HEAD:refs/heads/$branch"
+          gh pr create --head "$branch" --base main --title "Refresh contributor grid" --body "Update the Theme Store contributor grid from the GitHub API."
