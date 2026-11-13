@@ -9,7 +9,7 @@ contact_links:
   - name: 📱 N-Zik Android issue tracker
     url: https://github.com/N-Zik-Group/N-Zik/issues/new/choose
     about: Report playback and other Android app issues.
-  - name: 🔒 Report a vulnerability privately
+  - name: 🔒 Security Vulnerability
     url: https://github.com/N-Zik-Group/N-Zik-Theme-Store/security/advisories/new
     about: Contact maintainers privately about a security issue.
   - name: 🎨 Submit or update a theme
