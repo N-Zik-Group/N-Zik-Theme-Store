@@ -1,14 +1,46 @@
 <div align="center">
-  <img alt="N-Zik" src="https://raw.githubusercontent.com/N-Zik-Group/N-Zik/main/assets/design/ic_banner2.png" width="1080" />
+  <img alt="N-Zik project banner" src="https://raw.githubusercontent.com/N-Zik-Group/N-Zik/main/assets/design/ic_banner2.png" width="1080" />
 
-  <h1>N-Zik Theme Store</h1>
-  <p>Community appearance themes for <a href="https://github.com/N-Zik-Group/N-Zik">N-Zik on Android</a>.</p>
-  <p><a href="https://n-zik.vercel.app/">🌐 Official website</a> · <a href="https://discord.gg/bneHC7QRje">💬 Discord</a></p>
+  <h3>🌐 <a href="https://n-zik.vercel.app/">Official Website</a></h3>
+  <p>
+    <b>N-Zik Theme Store</b> is the community appearance catalog for <a href="https://github.com/N-Zik-Group/N-Zik">N-Zik on Android</a>.
+  </p>
+  <p>
+    Find theme configurations and preview images for the player, queue and navigation.
+  </p>
 </div>
 
-## 🎨 Catalog
+<div align="center">
 
-Browse the [catalog index](catalog/index.json) for published theme revisions. A maintainer publishes changes by merging a pull request into `main`.
+[![License: GPL v3](https://img.shields.io/github/license/N-Zik-Group/N-Zik-Theme-Store?style=flat&color=blue)](LICENSE)
+
+</div>
+
+# 🎨 Browse themes
+
+Browse the [catalog index](catalog/index.json) for the latest published revision of each theme. Check the manifest for Android compatibility before applying a theme.
+
+<div align="center">
+
+## 📚 Documentation
+
+[Theme format and repository layout](#-repository-layout) · [Contribution guide](CONTRIBUTING.md)
+
+## 🌍 Community
+
+Join the N-Zik Discord:
+
+<a href="https://discord.gg/bneHC7QRje">
+  <img src="https://discord.com/api/guilds/1345079801324634193/widget.png?style=banner2" alt="Discord Server">
+</a>
+
+</div>
+
+# 🎧 Features
+
+- Versioned theme configurations with compatibility information.
+- Separate appearance categories for colors, player and queue, navigation, and Glass.
+- Optional preview galleries and a manual review process for catalog submissions.
 
 ## 📦 Repository layout
 
@@ -44,20 +76,31 @@ Each theme uses N-Zik's Appearance reset values for fields its original preset i
 
 Appearance field mappings are defined by the source settings. `coverSize` maps to the portrait `thumbnailSizeDp` preference, which the UI exposes as a 0–100 control. `transparentPlayerBar`, `noBlur` and `showExpandPlayerButton` map to `transparentbar`, `noblur` and `expandedplayertoggle`, respectively. The app still resolves how these settings interact with its layout and rendering rules.
 
-## 🤝 Contributing
+# 🤝 Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) to submit, update or withdraw a theme and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community standards.
+See [CONTRIBUTING.md](CONTRIBUTING.md) to submit, update or withdraw a theme. See the [code of conduct](CODE_OF_CONDUCT.md) and [security policy](SECURITY.md) for community standards and private reporting.
 
-## 👀 Status
+# 👀 Status
+
+## 🛠️ Catalog checks
 
 [![Validate catalog](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/validate-catalog.yml/badge.svg)](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/validate-catalog.yml)
 
 Run `uv run --no-project --with-requirements requirements-validation.txt python scripts/validate_catalog.py` from the repository root. It checks the schemas, index, example and indexed revisions, including matching IDs, duplicate entries or preview paths, and file hashes.
 
-## 👥 Contributors
+## 🔄 Automation & Maintenance
+
+[![Triage issues](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/triage-issues.yml/badge.svg)](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/triage-issues.yml)
+
+# 👥 Contributors
+
+<p align="center">
+<a href="https://github.com/NEVARLeVrai"><img src="https://avatars.githubusercontent.com/u/63956787?v=4" width="54" height="54" alt="NEVARLeVrai" /></a>
+<a href="https://github.com/aneesh1122"><img src="https://avatars.githubusercontent.com/u/45353488?v=4" width="54" height="54" alt="aneesh1122" /></a>
+</p>
 
 See the [repository contributors](https://github.com/N-Zik-Group/N-Zik-Theme-Store/graphs/contributors). The built-in preset credits are listed above.
 
-## 📜 License
+# 🎖️ Credits
 
-The repository tooling and documentation use [GPL-3.0](LICENSE). Each theme declares its own license in its manifest.
+Made with ❤️ by the N-Zik Group community · Project license: GPLv3 - see [LICENSE](LICENSE). Each theme declares its own license in its manifest.
