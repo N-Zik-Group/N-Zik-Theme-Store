@@ -108,6 +108,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) to submit, update or withdraw a theme. Se
 
 # 👀 Status
 
+[![Add to N-Zik RoadMap](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/mobile-roadmap.yml/badge.svg)](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/mobile-roadmap.yml)
+
+[N-Zik mobile roadmap](https://github.com/orgs/N-Zik-Group/projects/1)
+
 ## 🛠️ Catalog checks
 
 [![Validate catalog](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/validate-catalog.yml/badge.svg)](https://github.com/N-Zik-Group/N-Zik-Theme-Store/actions/workflows/validate-catalog.yml)
