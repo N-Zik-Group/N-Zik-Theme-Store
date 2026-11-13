@@ -1,0 +1,24 @@
+name: Triage issues
+on:
+  issues:
+    types: [opened]
+permissions:
+  issues: write
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@373c709c69115d41ff229c7e5df9f8788daa9553 # v9
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const triageLabels = new Set(['bug', 'enhancement']);
+            const assignee = 'NEVARLeVrai';
+            if (!issue.labels.some(label => triageLabels.has(label.name))) return;
+            if (issue.assignees.some(user => user.login === assignee)) return;
+            await github.rest.issues.addAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              assignees: [assignee],
+            });

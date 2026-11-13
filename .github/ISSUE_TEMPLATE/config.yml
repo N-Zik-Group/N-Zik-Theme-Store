@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: N-Zik Android app issues
+    url: https://github.com/N-Zik-Group/N-Zik/issues
+    about: Report issues with playback, app settings or other Android features.
+  - name: N-Zik community
+    url: https://discord.gg/bneHC7QRje
+    about: Ask questions, share themes or find a moderator.
