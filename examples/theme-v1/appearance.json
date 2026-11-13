@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "categories": {
+    "colors": {"palette": "dynamic", "mode": "system"},
+    "playerAndQueue": {
+      "playerStyle": "essential",
+      "queueStyle": "modern",
+      "coverStyle": "modern",
+      "headerStyle": "modern",
+      "controlsStyle": "essential",
+      "background": "cover-color-gradient",
+      "timeline": "wavy",
+      "showQueueDuration": false
+    },
+    "navigation": {"position": "bottom-floating", "labels": "icon-and-text"},
+    "glass": {
+      "enabled": true,
+      "tintSource": "theme-accent",
+      "navigation": "glass-and-contour",
+      "miniPlayer": "glass-only",
+      "nowPlaying": "disabled"
+    }
+  }
+}

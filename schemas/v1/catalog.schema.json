@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/N-Zik-Group/N-Zik-Theme-Store/main/schemas/v1/catalog.schema.json",
+  "title": "N-Zik published theme index v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "themes"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["themeId", "revision", "manifestSha256"],
+        "properties": {
+          "themeId": {"type": "string", "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"},
+          "revision": {"type": "integer", "minimum": 1},
+          "manifestSha256": {"type": "string", "pattern": "^[0-9a-f]{64}(?![\\s\\S])"}
+        }
+      }
+    }
+  }
+}
