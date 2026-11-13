@@ -347,6 +347,22 @@
                 "icon-and-text",
                 "icon-only"
               ]
+            },
+            "font": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "useSystemFont": {
+              "type": "boolean"
+            },
+            "applyFontPadding": {
+              "type": "boolean"
+            },
+            "hideStatusBar": {
+              "type": "boolean"
+            },
+            "showFloatingSearch": {
+              "type": "boolean"
             }
           }
         },

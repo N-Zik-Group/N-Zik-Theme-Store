@@ -139,7 +139,7 @@
           }
         }
       },
-      "maxItems": 12
+      "maxItems": 24
     }
   }
 }
