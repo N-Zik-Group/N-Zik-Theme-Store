@@ -48,18 +48,19 @@ Join the N-Zik Discord:
 
 The six built-in presets shown with the same demonstration track in the N-Zik Android player. Select a preview to open its manifest.
 
-<table align="center">
-  <tr>
-    <td align="center"><a href="themes/99edc843-6a9b-5753-8e76-cc11fe9b3295/1/manifest.json"><img src="docs/previews/blurred-cover.webp" width="180" alt="Blurred Cover player preview" /></a><br /><b>Blurred Cover</b></td>
-    <td align="center"><a href="themes/8f13dfe9-5dc9-5dc3-b563-aa9f11cf67b7/1/manifest.json"><img src="docs/previews/carousel.webp" width="180" alt="Carousel player preview" /></a><br /><b>Carousel</b></td>
-    <td align="center"><a href="themes/8d06299d-a4c1-5dc7-bf21-8694af77ae36/1/manifest.json"><img src="docs/previews/coverless.webp" width="180" alt="Coverless player preview" /></a><br /><b>Coverless</b></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="themes/e9fb0ce8-3b8d-5c96-9d00-f4d5f1fdcf4a/1/manifest.json"><img src="docs/previews/audio-waves.webp" width="180" alt="Audio Waves player preview" /></a><br /><b>Audio Waves</b></td>
-    <td align="center"><a href="themes/1a59f7da-312a-52a4-93f3-8e469a987709/1/manifest.json"><img src="docs/previews/pitch-black-gradient.webp" width="180" alt="Pitch Black Gradient player preview" /></a><br /><b>Pitch Black Gradient</b></td>
-    <td align="center"><a href="themes/481186ac-8178-55b6-a20d-a01dbc5efe64/1/manifest.json"><img src="docs/previews/artwork-gradient.webp" width="180" alt="Artwork Gradient player preview" /></a><br /><b>Artwork Gradient</b></td>
-  </tr>
-</table>
+<p align="center">
+<a href="themes/99edc843-6a9b-5753-8e76-cc11fe9b3295/1/manifest.json"><img src="docs/previews/blurred-cover.webp" width="180" alt="Blurred Cover player preview" /></a>
+<a href="themes/8f13dfe9-5dc9-5dc3-b563-aa9f11cf67b7/1/manifest.json"><img src="docs/previews/carousel.webp" width="180" alt="Carousel player preview" /></a>
+<a href="themes/8d06299d-a4c1-5dc7-bf21-8694af77ae36/1/manifest.json"><img src="docs/previews/coverless.webp" width="180" alt="Coverless player preview" /></a>
+<br />Blurred Cover · Carousel · Coverless
+</p>
+
+<p align="center">
+<a href="themes/e9fb0ce8-3b8d-5c96-9d00-f4d5f1fdcf4a/1/manifest.json"><img src="docs/previews/audio-waves.webp" width="180" alt="Audio Waves player preview" /></a>
+<a href="themes/1a59f7da-312a-52a4-93f3-8e469a987709/1/manifest.json"><img src="docs/previews/pitch-black-gradient.webp" width="180" alt="Pitch Black Gradient player preview" /></a>
+<a href="themes/481186ac-8178-55b6-a20d-a01dbc5efe64/1/manifest.json"><img src="docs/previews/artwork-gradient.webp" width="180" alt="Artwork Gradient player preview" /></a>
+<br />Audio Waves · Pitch Black Gradient · Artwork Gradient
+</p>
 
 # 🤝 Contributing
 
