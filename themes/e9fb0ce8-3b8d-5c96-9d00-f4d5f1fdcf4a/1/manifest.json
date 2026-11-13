@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "themeId": "e9fb0ce8-3b8d-5c96-9d00-f4d5f1fdcf4a",
+  "revision": 1,
+  "title": "Audio Waves",
+  "description": "Pure Black palette, modern controls and an audio-wave timeline.",
+  "author": {
+    "githubId": 45353488,
+    "login": "aneesh1122"
+  },
+  "license": "GPL-3.0-only",
+  "tags": [
+    "built-in",
+    "dark",
+    "audio-waves"
+  ],
+  "compatibility": {
+    "minVersionCode": null
+  },
+  "appearance": {
+    "path": "appearance.json",
+    "sha256": "361644556e5eb73b11e6838a75f610774474de7bcfaa03c762307a568c47e14b"
+  },
+  "previews": []
+}

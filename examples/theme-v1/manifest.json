@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "themeId": "f50a8d97-dd3e-4b8e-aa78-d077fa5ea78e",
+  "revision": 1,
+  "title": "Example Theme",
+  "description": "Example configuration for validating the version 1 theme contract.",
+  "author": {
+    "githubId": 63956787,
+    "login": "NEVARLeVrai"
+  },
+  "license": "CC-BY-4.0",
+  "tags": [
+    "glass"
+  ],
+  "compatibility": {
+    "minVersionCode": null
+  },
+  "appearance": {
+    "path": "appearance.json",
+    "sha256": "75f9f8687e254be363e48ab640c5fb6943cdbc86047218bc9add428b0af51a7b"
+  },
+  "previews": []
+}

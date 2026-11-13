@@ -1,0 +1,405 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/N-Zik-Group/N-Zik-Theme-Store/main/schemas/v1/appearance.schema.json",
+  "title": "N-Zik theme appearance v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "categories"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "categories": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "colors": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "palette",
+            "mode"
+          ],
+          "properties": {
+            "palette": {
+              "enum": [
+                "default",
+                "dynamic",
+                "pure-black",
+                "modern-black",
+                "material-you"
+              ]
+            },
+            "mode": {
+              "enum": [
+                "light",
+                "dark",
+                "system",
+                "pitch-black"
+              ]
+            }
+          }
+        },
+        "playerAndQueue": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "playerStyle",
+            "queueStyle",
+            "coverStyle",
+            "headerStyle",
+            "controlsStyle",
+            "background",
+            "timeline",
+            "showQueueDuration",
+            "showCover",
+            "transparentPlayerBar",
+            "showLyricsOnCover",
+            "expandedPlayer",
+            "playButtonStyle",
+            "bottomGradient",
+            "visualizerEnabled",
+            "coverSize",
+            "timelineSize",
+            "showExpandPlayerButton",
+            "showNextSongs",
+            "showRemainingSongTime",
+            "coverRoundnessDp",
+            "showTopActionsBar",
+            "transparentActionBar",
+            "actionButtonsSpacedEvenly",
+            "noBlur",
+            "coverFadingEdge",
+            "carousel",
+            "carouselSize",
+            "topPadding",
+            "animatedGradient",
+            "blurStrength",
+            "expandedCoverFade",
+            "coverFade",
+            "coverSpacing",
+            "showHeaderIcons",
+            "actionButtons"
+          ],
+          "properties": {
+            "playerStyle": {
+              "enum": [
+                "essential",
+                "modern"
+              ]
+            },
+            "queueStyle": {
+              "enum": [
+                "essential",
+                "modern"
+              ]
+            },
+            "coverStyle": {
+              "enum": [
+                "essential",
+                "modern"
+              ]
+            },
+            "headerStyle": {
+              "enum": [
+                "essential",
+                "modern"
+              ]
+            },
+            "controlsStyle": {
+              "enum": [
+                "essential",
+                "modern"
+              ]
+            },
+            "background": {
+              "enum": [
+                "cover-color",
+                "theme-color",
+                "cover-color-gradient",
+                "theme-color-gradient",
+                "blurred-cover-color",
+                "color-palette",
+                "animated-gradient"
+              ]
+            },
+            "timeline": {
+              "enum": [
+                "default",
+                "wavy",
+                "pin-bar",
+                "bodied-bar",
+                "audio-waves",
+                "thin-bar",
+                "colored-bar",
+                "visualizer-bar"
+              ]
+            },
+            "showQueueDuration": {
+              "type": "boolean"
+            },
+            "showCover": {
+              "type": "boolean"
+            },
+            "transparentPlayerBar": {
+              "type": "boolean"
+            },
+            "showLyricsOnCover": {
+              "type": "boolean"
+            },
+            "expandedPlayer": {
+              "type": "boolean"
+            },
+            "playButtonStyle": {
+              "enum": [
+                "disabled",
+                "default",
+                "rectangular",
+                "circular-ribbed",
+                "square"
+              ]
+            },
+            "bottomGradient": {
+              "type": "boolean"
+            },
+            "visualizerEnabled": {
+              "type": "boolean"
+            },
+            "coverSize": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "timelineSize": {
+              "enum": [
+                "small",
+                "medium",
+                "big",
+                "biggest",
+                "expanded"
+              ]
+            },
+            "showExpandPlayerButton": {
+              "type": "boolean"
+            },
+            "showNextSongs": {
+              "type": "boolean"
+            },
+            "showRemainingSongTime": {
+              "type": "boolean"
+            },
+            "coverRoundnessDp": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 48
+            },
+            "showTopActionsBar": {
+              "type": "boolean"
+            },
+            "transparentActionBar": {
+              "type": "boolean"
+            },
+            "actionButtonsSpacedEvenly": {
+              "type": "boolean"
+            },
+            "noBlur": {
+              "type": "boolean"
+            },
+            "coverFadingEdge": {
+              "type": "boolean"
+            },
+            "carousel": {
+              "type": "boolean"
+            },
+            "carouselSize": {
+              "enum": [
+                "small",
+                "medium",
+                "big",
+                "biggest",
+                "expanded"
+              ]
+            },
+            "topPadding": {
+              "type": "boolean"
+            },
+            "animatedGradient": {
+              "enum": [
+                "fluid-theme-color-gradient",
+                "fluid-cover-color-gradient",
+                "m3-emorphing-theme",
+                "m3-emorphing-cover",
+                "linear",
+                "mesh",
+                "mesmerizing-lens",
+                "glossy-gradients",
+                "gradient-flow",
+                "purple-liquid",
+                "ink-flow",
+                "oil-flow",
+                "ice-reflection",
+                "stage",
+                "golden-magma",
+                "black-cherry-cosmos",
+                "random"
+              ]
+            },
+            "blurStrength": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "expandedCoverFade": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "coverFade": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "coverSpacing": {
+              "type": "number",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "showHeaderIcons": {
+              "type": "boolean"
+            },
+            "actionButtons": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "addToPlaylist",
+                "arrow",
+                "download",
+                "loop",
+                "lyrics",
+                "shuffle",
+                "sleepTimer",
+                "menu",
+                "startRadio",
+                "discover",
+                "video"
+              ],
+              "properties": {
+                "addToPlaylist": {
+                  "type": "boolean"
+                },
+                "arrow": {
+                  "type": "boolean"
+                },
+                "download": {
+                  "type": "boolean"
+                },
+                "loop": {
+                  "type": "boolean"
+                },
+                "lyrics": {
+                  "type": "boolean"
+                },
+                "shuffle": {
+                  "type": "boolean"
+                },
+                "sleepTimer": {
+                  "type": "boolean"
+                },
+                "menu": {
+                  "type": "boolean"
+                },
+                "startRadio": {
+                  "type": "boolean"
+                },
+                "discover": {
+                  "type": "boolean"
+                },
+                "video": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "navigation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "labels"
+          ],
+          "properties": {
+            "position": {
+              "enum": [
+                "left",
+                "right",
+                "top",
+                "bottom",
+                "bottom-floating"
+              ]
+            },
+            "labels": {
+              "enum": [
+                "icon-and-text",
+                "icon-only"
+              ]
+            }
+          }
+        },
+        "glass": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "enabled",
+            "tintSource",
+            "navigation",
+            "miniPlayer",
+            "nowPlaying"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "tintSource": {
+              "enum": [
+                "none",
+                "theme-accent",
+                "artwork",
+                "system-accent"
+              ]
+            },
+            "navigation": {
+              "enum": [
+                "disabled",
+                "contour-only",
+                "glass-only",
+                "glass-and-contour"
+              ]
+            },
+            "miniPlayer": {
+              "enum": [
+                "disabled",
+                "contour-only",
+                "glass-only",
+                "glass-and-contour"
+              ]
+            },
+            "nowPlaying": {
+              "enum": [
+                "disabled",
+                "contour-only",
+                "glass-only",
+                "glass-and-contour"
+              ]
+            }
+          }
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

@@ -1,0 +1,17 @@
+name: Bug report
+description: Report a problem with the Theme Store catalog or a published theme.
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: input
+    id: theme
+    attributes:
+      label: Theme link, ID or revision
+      description: Include the affected catalog entry when applicable.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include steps to reproduce, expected behavior and app version when relevant.
+    validations:
+      required: true
