@@ -2,21 +2,45 @@
   <img alt="N-Zik project banner" src="https://raw.githubusercontent.com/N-Zik-Group/N-Zik/main/assets/design/ic_banner2.png" width="1080" />
 
   <h3>🌐 <a href="https://n-zik.vercel.app/">Official Website</a></h3>
-  <h1>N-Zik Theme Store</h1>
-  <p>The community appearance catalog for <a href="https://github.com/N-Zik-Group/N-Zik">N-Zik on Android</a>.</p>
+  <p>
+    <b>N-Zik Theme Store</b> is the community appearance catalog for <a href="https://github.com/N-Zik-Group/N-Zik">N-Zik on Android</a>.
+  </p>
+  <p>
+    Find theme configurations and preview images for the player, queue and navigation.
+  </p>
 </div>
 
 <div align="center">
 
 [![License: GPL v3](https://img.shields.io/github/license/N-Zik-Group/N-Zik-Theme-Store?style=flat&color=blue)](LICENSE)
-[![Discord](https://discord.com/api/guilds/1345079801324634193/widget.png?style=shield)](https://discord.gg/bneHC7QRje)
 
 </div>
 
-# 🎨 Theme catalog
+# 🎨 Browse themes
 
+Browse the [catalog index](catalog/index.json) for the latest published revision of each theme. Check the manifest for Android compatibility before applying a theme.
 
-Browse the [catalog index](catalog/index.json) for published theme revisions. A maintainer publishes changes by merging a pull request into `main`.
+<div align="center">
+
+## 📚 Documentation
+
+[Theme format and repository layout](#-repository-layout) · [Contribution guide](CONTRIBUTING.md)
+
+## 🌍 Community
+
+Join the N-Zik Discord:
+
+<a href="https://discord.gg/bneHC7QRje">
+  <img src="https://discord.com/api/guilds/1345079801324634193/widget.png?style=banner2" alt="Discord Server">
+</a>
+
+</div>
+
+# 🎧 Features
+
+- Versioned theme configurations with compatibility information.
+- Separate appearance categories for colors, player and queue, navigation, and Glass.
+- Optional preview galleries and a manual review process for catalog submissions.
 
 ## 📦 Repository layout
 
@@ -54,15 +78,7 @@ Appearance field mappings are defined by the source settings. `coverSize` maps t
 
 # 🤝 Contributing
 
-## 🛠️ Improve the Theme Store
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) to submit, update or withdraw a theme and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community standards. See [SECURITY.md](SECURITY.md) for private vulnerability reporting.
-
-# 📜 Clone the repo
-
-~~~sh
-git clone -b main --single-branch https://github.com/N-Zik-Group/N-Zik-Theme-Store.git
-~~~
+See [CONTRIBUTING.md](CONTRIBUTING.md) to submit, update or withdraw a theme. See the [code of conduct](CODE_OF_CONDUCT.md) and [security policy](SECURITY.md) for community standards and private reporting.
 
 # 👀 Status
 
@@ -85,6 +101,6 @@ Run `uv run --no-project --with-requirements requirements-validation.txt python 
 
 See the [repository contributors](https://github.com/N-Zik-Group/N-Zik-Theme-Store/graphs/contributors). The built-in preset credits are listed above.
 
-# 🎖️ Credits & License
+# 🎖️ Credits
 
-The repository tooling and documentation use [GPL-3.0](LICENSE). Each theme declares its own license in its manifest.
+Made with ❤️ by the N-Zik Group community · Project license: GPLv3 - see [LICENSE](LICENSE). Each theme declares its own license in its manifest.
