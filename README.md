@@ -48,7 +48,7 @@ Join the N-Zik Discord:
 
 The six built-in presets shown with the same demonstration track in the N-Zik Android player. Select a preview to open its manifest.
 
-<table>
+<table align="center">
   <tr>
     <td align="center"><a href="themes/99edc843-6a9b-5753-8e76-cc11fe9b3295/1/manifest.json"><img src="docs/previews/blurred-cover.webp" width="180" alt="Blurred Cover player preview" /></a><br /><b>Blurred Cover</b></td>
     <td align="center"><a href="themes/8f13dfe9-5dc9-5dc3-b563-aa9f11cf67b7/1/manifest.json"><img src="docs/previews/carousel.webp" width="180" alt="Carousel player preview" /></a><br /><b>Carousel</b></td>
