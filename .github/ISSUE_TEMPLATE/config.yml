@@ -1,8 +1,17 @@
 blank_issues_enabled: false
 contact_links:
-  - name: N-Zik Android app issues
-    url: https://github.com/N-Zik-Group/N-Zik/issues
-    about: Report issues with playback, app settings or other Android features.
-  - name: N-Zik community
+  - name: 💬 Join the Community (Discord)
     url: https://discord.gg/bneHC7QRje
-    about: Ask questions, share themes or find a moderator.
+    about: Ask questions or share your theme setup.
+  - name: ❓ GitHub Discussions
+    url: https://github.com/N-Zik-Group/N-Zik/discussions
+    about: Ask questions and discuss ideas with the N-Zik community.
+  - name: 📱 N-Zik Android issue tracker
+    url: https://github.com/N-Zik-Group/N-Zik/issues/new/choose
+    about: Report playback and other Android app issues.
+  - name: 🔒 Report a vulnerability privately
+    url: https://github.com/N-Zik-Group/N-Zik-Theme-Store/security/advisories/new
+    about: Contact maintainers privately about a security issue.
+  - name: 🎨 Submit or update a theme
+    url: https://github.com/N-Zik-Group/N-Zik-Theme-Store/blob/main/CONTRIBUTING.md
+    about: Read the pull request process for adding, updating or withdrawing a theme.
