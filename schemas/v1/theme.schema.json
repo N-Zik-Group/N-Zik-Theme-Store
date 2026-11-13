@@ -4,11 +4,31 @@
   "title": "N-Zik theme manifest v1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "themeId", "revision", "title", "description", "author", "license", "tags", "compatibility", "appearance", "previews"],
+  "required": [
+    "schemaVersion",
+    "themeId",
+    "revision",
+    "title",
+    "description",
+    "author",
+    "license",
+    "tags",
+    "compatibility",
+    "appearance",
+    "previews"
+  ],
   "properties": {
-    "schemaVersion": {"const": 1},
-    "themeId": {"type": "string", "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"},
-    "revision": {"type": "integer", "minimum": 1},
+    "schemaVersion": {
+      "const": 1
+    },
+    "themeId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
     "title": {
       "type": "string",
       "minLength": 1,
@@ -22,13 +42,25 @@
     "author": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["githubId", "login"],
+      "required": [
+        "githubId",
+        "login"
+      ],
       "properties": {
-        "githubId": {"type": "integer", "minimum": 1},
-        "login": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}(?![\\s\\S])"}
+        "githubId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "login": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}(?![\\s\\S])"
+        }
       }
     },
-    "license": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9.+-]{0,99}(?![\\s\\S])"},
+    "license": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9.+-]{0,99}(?![\\s\\S])"
+    },
     "tags": {
       "type": "array",
       "items": {
@@ -42,18 +74,35 @@
     "compatibility": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["minVersionCode"],
+      "required": [
+        "minVersionCode"
+      ],
       "properties": {
-        "minVersionCode": {"type": "integer", "minimum": 1}
+        "minVersionCode": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Minimum version code with import support, or null while compatibility is pending."
+        }
       }
     },
     "appearance": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["path", "sha256"],
+      "required": [
+        "path",
+        "sha256"
+      ],
       "properties": {
-        "path": {"const": "appearance.json"},
-        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}(?![\\s\\S])"}
+        "path": {
+          "const": "appearance.json"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+        }
       }
     },
     "previews": {
@@ -61,18 +110,33 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["path", "role", "sha256"],
+        "required": [
+          "path",
+          "role",
+          "sha256"
+        ],
         "properties": {
-          "path": {"type": "string", "pattern": "^previews/[a-z0-9][a-z0-9_-]{0,79}\\.(jpg|png|webp|gif)(?![\\s\\S])"},
+          "path": {
+            "type": "string",
+            "pattern": "^previews/[a-z0-9][a-z0-9_-]{0,79}\\.(jpg|png|webp|gif)(?![\\s\\S])"
+          },
           "role": {
-            "enum": ["player", "queue", "navigation", "other"]
+            "enum": [
+              "player",
+              "queue",
+              "navigation",
+              "other"
+            ]
           },
           "caption": {
             "type": "string",
             "minLength": 1,
             "maxLength": 160
           },
-          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}(?![\\s\\S])"}
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+          }
         }
       },
       "maxItems": 12

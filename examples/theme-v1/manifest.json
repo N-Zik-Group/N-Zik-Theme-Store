@@ -4,10 +4,20 @@
   "revision": 1,
   "title": "Example Theme",
   "description": "Example configuration for validating the version 1 theme contract.",
-  "author": {"githubId": 63956787, "login": "NEVARLeVrai"},
+  "author": {
+    "githubId": 63956787,
+    "login": "NEVARLeVrai"
+  },
   "license": "CC-BY-4.0",
-  "tags": ["glass"],
-  "compatibility": {"minVersionCode": 1},
-  "appearance": {"path": "appearance.json", "sha256": "5c30c89bad3dc4c12487569156d7a22a420bc012601f3b93dc893a087a70a7be"},
+  "tags": [
+    "glass"
+  ],
+  "compatibility": {
+    "minVersionCode": null
+  },
+  "appearance": {
+    "path": "appearance.json",
+    "sha256": "75f9f8687e254be363e48ab640c5fb6943cdbc86047218bc9add428b0af51a7b"
+  },
   "previews": []
 }
