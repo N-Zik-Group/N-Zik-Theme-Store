@@ -48,7 +48,7 @@ Join the N-Zik Discord:
 
 Compare the six built-in presets in Normal and Glass mode. All screenshots use the same demonstration track and artwork.
 
-<h3 align="center"><a href="themes/99edc843-6a9b-5753-8e76-cc11fe9b3295/2/manifest.json">Blurred Cover</a></h3>
+<h3 align="center"><a href="themes/99edc843-6a9b-5753-8e76-cc11fe9b3295/3/manifest.json">Blurred Cover</a></h3>
 
 <p align="center">
   <a href="docs/previews/blurred-cover.webp"><img src="docs/previews/blurred-cover.webp" width="185" alt="Blurred Cover in Normal mode" /></a>
@@ -57,7 +57,7 @@ Compare the six built-in presets in Normal and Glass mode. All screenshots use t
   <b>Normal</b> · <b>Glass</b>
 </p>
 
-<h3 align="center"><a href="themes/8f13dfe9-5dc9-5dc3-b563-aa9f11cf67b7/2/manifest.json">Carousel</a></h3>
+<h3 align="center"><a href="themes/8f13dfe9-5dc9-5dc3-b563-aa9f11cf67b7/3/manifest.json">Carousel</a></h3>
 
 <p align="center">
   <a href="docs/previews/carousel.webp"><img src="docs/previews/carousel.webp" width="185" alt="Carousel in Normal mode" /></a>
@@ -66,7 +66,7 @@ Compare the six built-in presets in Normal and Glass mode. All screenshots use t
   <b>Normal</b> · <b>Glass</b>
 </p>
 
-<h3 align="center"><a href="themes/8d06299d-a4c1-5dc7-bf21-8694af77ae36/2/manifest.json">Coverless</a></h3>
+<h3 align="center"><a href="themes/8d06299d-a4c1-5dc7-bf21-8694af77ae36/3/manifest.json">Coverless</a></h3>
 
 <p align="center">
   <a href="docs/previews/coverless.webp"><img src="docs/previews/coverless.webp" width="185" alt="Coverless in Normal mode" /></a>
@@ -75,7 +75,7 @@ Compare the six built-in presets in Normal and Glass mode. All screenshots use t
   <b>Normal</b> · <b>Glass</b>
 </p>
 
-<h3 align="center"><a href="themes/e9fb0ce8-3b8d-5c96-9d00-f4d5f1fdcf4a/2/manifest.json">Audio Waves</a></h3>
+<h3 align="center"><a href="themes/e9fb0ce8-3b8d-5c96-9d00-f4d5f1fdcf4a/3/manifest.json">Audio Waves</a></h3>
 
 <p align="center">
   <a href="docs/previews/audio-waves.webp"><img src="docs/previews/audio-waves.webp" width="185" alt="Audio Waves in Normal mode" /></a>
@@ -84,7 +84,7 @@ Compare the six built-in presets in Normal and Glass mode. All screenshots use t
   <b>Normal</b> · <b>Glass</b>
 </p>
 
-<h3 align="center"><a href="themes/1a59f7da-312a-52a4-93f3-8e469a987709/2/manifest.json">Pitch Black Gradient</a></h3>
+<h3 align="center"><a href="themes/1a59f7da-312a-52a4-93f3-8e469a987709/3/manifest.json">Pitch Black Gradient</a></h3>
 
 <p align="center">
   <a href="docs/previews/pitch-black-gradient.webp"><img src="docs/previews/pitch-black-gradient.webp" width="185" alt="Pitch Black Gradient in Normal mode" /></a>
@@ -93,7 +93,7 @@ Compare the six built-in presets in Normal and Glass mode. All screenshots use t
   <b>Normal</b> · <b>Glass</b>
 </p>
 
-<h3 align="center"><a href="themes/481186ac-8178-55b6-a20d-a01dbc5efe64/2/manifest.json">Artwork Gradient</a></h3>
+<h3 align="center"><a href="themes/481186ac-8178-55b6-a20d-a01dbc5efe64/3/manifest.json">Artwork Gradient</a></h3>
 
 <p align="center">
   <a href="docs/previews/artwork-gradient.webp"><img src="docs/previews/artwork-gradient.webp" width="185" alt="Artwork Gradient in Normal mode" /></a>

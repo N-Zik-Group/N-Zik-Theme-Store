@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "categories": {
+    "colors": {
+      "palette": "dynamic",
+      "mode": "system"
+    },
+    "playerAndQueue": {
+      "playerStyle": "modern",
+      "queueStyle": "modern",
+      "coverStyle": "modern",
+      "headerStyle": "modern",
+      "controlsStyle": "essential",
+      "background": "blurred-cover-color",
+      "timeline": "thin-bar",
+      "showQueueDuration": false,
+      "showCover": false,
+      "transparentPlayerBar": true,
+      "showLyricsOnCover": false,
+      "expandedPlayer": true,
+      "playButtonStyle": "disabled",
+      "bottomGradient": true,
+      "visualizerEnabled": false,
+      "coverSize": 90.0,
+      "timelineSize": "biggest",
+      "showExpandPlayerButton": false,
+      "showNextSongs": false,
+      "showRemainingSongTime": true,
+      "coverRoundnessDp": 12.0,
+      "showTopActionsBar": false,
+      "transparentActionBar": true,
+      "actionButtonsSpacedEvenly": true,
+      "noBlur": true,
+      "coverFadingEdge": false,
+      "carousel": true,
+      "carouselSize": "biggest",
+      "topPadding": false,
+      "animatedGradient": "m3-emorphing-cover",
+      "blurStrength": 50.0,
+      "expandedCoverFade": 5.0,
+      "coverFade": 5.0,
+      "coverSpacing": 0.0,
+      "showHeaderIcons": false,
+      "actionButtons": {
+        "addToPlaylist": false,
+        "arrow": true,
+        "download": false,
+        "loop": false,
+        "lyrics": false,
+        "shuffle": false,
+        "sleepTimer": false,
+        "menu": true,
+        "startRadio": false,
+        "discover": false,
+        "video": false
+      }
+    }
+  }
+}

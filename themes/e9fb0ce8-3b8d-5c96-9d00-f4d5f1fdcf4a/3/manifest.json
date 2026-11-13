@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "themeId": "e9fb0ce8-3b8d-5c96-9d00-f4d5f1fdcf4a",
+  "revision": 3,
+  "title": "Audio Waves",
+  "description": "Pure Black palette, modern controls and an audio-wave timeline.",
+  "author": {
+    "githubId": 292738521,
+    "login": "N-Zik-Group"
+  },
+  "license": "GPL-3.0-only",
+  "tags": [
+    "built-in",
+    "dark",
+    "audio-waves"
+  ],
+  "compatibility": {
+    "minVersionCode": null
+  },
+  "appearance": {
+    "path": "appearance.json",
+    "sha256": "361644556e5eb73b11e6838a75f610774474de7bcfaa03c762307a568c47e14b"
+  },
+  "previews": [
+    {
+      "path": "previews/player-normal.webp",
+      "role": "player",
+      "caption": "Player · Normal",
+      "sha256": "432f702fad1859884d6b6fa2f8dbbde2eecedcc5972facf014c1a26f56ef4558"
+    },
+    {
+      "path": "previews/player-glass.webp",
+      "role": "player",
+      "caption": "Player · Glass",
+      "sha256": "f5532260ef2f8c5fc2cb1ce8b691ffb9f72bbcf2cd0e7431a7d765de806ec6c1"
+    }
+  ]
+}

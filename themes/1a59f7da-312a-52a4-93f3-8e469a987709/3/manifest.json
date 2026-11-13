@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "themeId": "1a59f7da-312a-52a4-93f3-8e469a987709",
+  "revision": 3,
+  "title": "Pitch Black Gradient",
+  "description": "Pitch Black mode with a linear animated gradient and a pin timeline.",
+  "author": {
+    "githubId": 292738521,
+    "login": "N-Zik-Group"
+  },
+  "license": "GPL-3.0-only",
+  "tags": [
+    "built-in",
+    "dark",
+    "animated-gradient"
+  ],
+  "compatibility": {
+    "minVersionCode": null
+  },
+  "appearance": {
+    "path": "appearance.json",
+    "sha256": "a532e8cb9275ae39d52b324ddd8d0b14da917278e4cb7dce0465e49f5c38c0af"
+  },
+  "previews": [
+    {
+      "path": "previews/player-normal.webp",
+      "role": "player",
+      "caption": "Player · Normal",
+      "sha256": "36a1b1df76979591e8af0c5e6ae131aadab417d99398f040468b6ad008197d9b"
+    },
+    {
+      "path": "previews/player-glass.webp",
+      "role": "player",
+      "caption": "Player · Glass",
+      "sha256": "3277747be2f5b6c1b2727cef90710a7679dffcf1170aecad3de25ec1545e41bd"
+    }
+  ]
+}

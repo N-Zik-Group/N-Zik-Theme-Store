@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "themeId": "481186ac-8178-55b6-a20d-a01dbc5efe64",
+  "revision": 3,
+  "title": "Artwork Gradient",
+  "description": "Artwork gradient, a wavy timeline and a ribbed circular play button.",
+  "author": {
+    "githubId": 292738521,
+    "login": "N-Zik-Group"
+  },
+  "license": "GPL-3.0-only",
+  "tags": [
+    "built-in",
+    "artwork",
+    "gradient"
+  ],
+  "compatibility": {
+    "minVersionCode": null
+  },
+  "appearance": {
+    "path": "appearance.json",
+    "sha256": "f4e987eb7b0bf15835eff52261097b6986364aa140837b38329630dbcc08cc0f"
+  },
+  "previews": [
+    {
+      "path": "previews/player-normal.webp",
+      "role": "player",
+      "caption": "Player · Normal",
+      "sha256": "5fb3caef9549ac16cf38449a74fa855670a5199950e6ee81b6e586a77b374310"
+    },
+    {
+      "path": "previews/player-glass.webp",
+      "role": "player",
+      "caption": "Player · Glass",
+      "sha256": "a902c007b5b91645ea6ca5d64049c6795fd45b8ceb16023ee7f51aad59f653e1"
+    }
+  ]
+}
