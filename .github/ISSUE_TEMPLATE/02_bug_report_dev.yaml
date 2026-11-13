@@ -1,0 +1,77 @@
+name: 👷 Dev Bug report
+description: Report a Theme Store bug found in an N-Zik Dev build.
+title: "[Dev BUG]: "
+labels: ["bug"]
+assignees:
+  - NEVARLeVrai
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### ❗ READ BEFORE SUBMITTING ❗
+
+        Use this form for catalog, preview, download, theme application or submission problems.
+        Use the N-Zik Android issue tracker for playback and other app features.
+        Report vulnerabilities privately through the Security tab.
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: 📝 Before submitting
+      options:
+        - label: I searched for an existing report.
+          required: true
+        - label: I removed personal information and credentials from attachments.
+          required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 🧩 Affected area
+      options:
+        - Catalog or theme details
+        - Preview images
+        - Download or apply
+        - Contribution or validation
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: theme
+    attributes:
+      label: 🎨 Theme link, ID or revision
+      description: Include the affected catalog entry when applicable.
+  - type: input
+    id: version-number
+    attributes:
+      label: 🏷️ N-Zik version and build type
+      description: Include the exact version of the build you tested.
+      placeholder: "Example: 1.15.0 / Dev64"
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 📱 Device and Android version (Optional)
+  - type: textarea
+    id: description
+    attributes:
+      label: 👾 Bug description
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 🔄 How to reproduce
+      description: List the steps in order.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: ✨ Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: media
+    attributes:
+      label: 📸 Screenshots or logs (Optional)
+      description: Include sanitized screenshots, recordings or logs if they help explain the issue.
