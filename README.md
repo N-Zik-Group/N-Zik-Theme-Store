@@ -24,6 +24,8 @@ Browse the [catalog index](catalog/index.json) for the latest published revision
 
 ## 📚 Documentation
 
+[![Ask DeepWiki](https://img.shields.io/badge/Ask-DeepWiki-8d5cff?style=flat)](https://deepwiki.com/N-Zik-Group/N-Zik-Theme-Store)
+
 [Theme format and repository layout](#-repository-layout) · [Contribution guide](CONTRIBUTING.md)
 
 ## 🌍 Community
