@@ -58,8 +58,10 @@ jobs:
             const pull = event.pull_request;
             const ref = event.repository.default_branch;
             const target = { ...context.repo, issue_number: pull.number };
-            const isSubmission = pull.head.ref === `nzik/creator-profile-${pull.user.id}`
-              && pull.head.repo?.owner?.id === pull.user.id;
+            const authorOwnsHead = pull.head.repo?.owner?.id === pull.user.id;
+            const isSubmission = authorOwnsHead && pull.head.ref === `nzik/creator-profile-${pull.user.id}`;
+            const isThemeSubmission = authorOwnsHead
+              && /^nzik\/theme-[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/.test(pull.head.ref);
             const labelAdded = event.action === 'labeled' ? event.label.name : '';
             if (labelAdded) {
               if ((!['accepted', 'refused', 'ban'].includes(labelAdded) && !Object.hasOwn(reasons, labelAdded)) || pull.merged) return;
@@ -200,7 +202,7 @@ jobs:
               });
             }
             if (!blocked && decision !== 'refused') {
-              if (isSubmission && current.state === 'open' && !current.labels.some(label => ['accepted', 'refused', 'ban'].includes(label.name))) {
+              if ((isSubmission || isThemeSubmission) && current.state === 'open' && !current.labels.some(label => ['accepted', 'refused', 'ban'].includes(label.name))) {
                 await status('in review');
               }
               return;
@@ -209,7 +211,7 @@ jobs:
               ? [...currentLabels].find(label => Object.hasOwn(reasons, label))
               : ''));
             let cleaned = false;
-            if (current.state === 'open' && isSubmission && current.head.repo?.id === pull.head.repo.id
+            if (current.state === 'open' && (isSubmission || isThemeSubmission) && current.head.repo?.id === pull.head.repo.id
                 && current.head.ref === pull.head.ref && current.base.ref === ref) {
               const [owner, repo] = current.head.repo.full_name.split('/');
               const branch = 'heads/' + current.head.ref;
