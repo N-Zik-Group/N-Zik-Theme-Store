@@ -5,7 +5,7 @@ on:
     types: [opened, reopened, synchronize, ready_for_review, labeled, closed]
   workflow_dispatch:
 permissions:
-  checks: read
+  actions: read
   contents: write
   issues: write
   pull-requests: write
@@ -169,10 +169,11 @@ jobs:
                 core.setFailed('The submission changed after approval. Review the new commit before accepting it.');
                 return;
               }
-              const checks = await github.paginate(github.rest.checks.listForRef, {
-                ...context.repo, ref: current.head.sha, check_name: 'validate', filter: 'latest'
-              }, response => response.data.check_runs);
-              if (!checks.some(check => check.app?.slug === 'github-actions' && check.conclusion === 'success')) {
+              const { data: validation } = await github.rest.actions.listWorkflowRuns({
+                ...context.repo, workflow_id: 'validate-catalog.yml',
+                event: 'pull_request', head_sha: current.head.sha, per_page: 1
+              });
+              if (validation.workflow_runs[0]?.conclusion !== 'success') {
                 core.setFailed('Catalog validation must pass on the approved commit. Retry approval after the check succeeds.');
                 return;
               }
