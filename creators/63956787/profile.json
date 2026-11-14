@@ -1,13 +1,13 @@
 {
-  "schemaVersion": 1,
-  "githubId": 63956787,
-  "login": "NEVARLeVrai",
-  "displayName": "NEVAR",
-  "bio": "I build N-Zik and customize how it looks.",
-  "avatar": {
-    "source": "github"
-  },
-  "banner": {
-    "source": "generated"
-  }
+    "schemaVersion": 1,
+    "githubId": 63956787,
+    "login": "NEVARLeVrai",
+    "displayName": "NEVAR",
+    "bio": "I build N-Zik and customize how it looks.",
+    "avatar": {
+        "source": "github"
+    },
+    "banner": {
+        "source": "generated"
+    }
 }

@@ -6,12 +6,12 @@
       "profileSha256": "82fb40867f32ee72a3e445c10037771de330fc0e7d0203f026165326952e58fa"
     },
     {
-      "githubId": 63956787,
-      "profileSha256": "66e206ff4976976b26f4be14900cb1b9f3a4c61d25011015d2a635f0e72f2acc"
-    },
-    {
       "githubId": 104271365,
       "profileSha256": "9a4d04ae58df9b8b9d121bed74c8d43e4d8e36a4f2674319c2322ecccc26f7fe"
+    },
+    {
+      "githubId": 63956787,
+      "profileSha256": "7f1b1b55988b58d6e175be8c605d2ebb33f69842cd36739310c7a9a771868d80"
     }
   ]
 }
