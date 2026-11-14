@@ -78,3 +78,7 @@ default artwork if a profile or image is unavailable.
 
 See the [creator schema](../schemas/v1/creator.schema.json) and
 [example](../examples/creator-v1/profile.json).
+
+The [creator index](../creators/index.json) lists published profiles independently
+of the theme catalog and pins each profile's SHA-256. Update the index when a
+profile is added, removed or changed.

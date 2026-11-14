@@ -101,10 +101,17 @@ def main():
     creator_validator = load_schema("creator")
     validate_creator(ROOT / "examples" / "creator-v1", creator_validator)
     creators = {}
-    for folder in sorted((ROOT / "creators").iterdir()):
-        if folder.is_dir():
-            profile = validate_creator(folder, creator_validator, folder.name)
-            creators[profile["githubId"]] = profile
+    creator_root = ROOT / "creators"
+    index = validate_json(creator_root / "index.json", load_schema("creators-index"))
+    for entry in index["creators"]:
+        github_id = entry["githubId"]
+        if github_id in creators:
+            raise ValueError(f"creators: duplicate GitHub ID {github_id}")
+        folder = creator_root / str(github_id)
+        check_hash(folder / "profile.json", entry["profileSha256"])
+        creators[github_id] = validate_creator(folder, creator_validator, folder.name)
+    if {p.name for p in creator_root.iterdir() if p.is_dir()} != {str(i) for i in creators}:
+        raise ValueError("creators: index and profile directories differ")
     example = ROOT / "examples" / "theme-v1"
     validate_theme(example, manifest_validator, appearance_validator)
     validate_reviews(example, reviews_validator)
