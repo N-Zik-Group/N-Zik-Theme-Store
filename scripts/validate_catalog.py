@@ -99,6 +99,7 @@ def main():
     catalog = validate_json(ROOT / "themes" / "index.json", load_schema("catalog"))
     reviews_validator = load_schema("reviews")
     creator_validator = load_schema("creator")
+    validate_json(ROOT / "creators" / "verified.json", load_schema("verified-creators"))
     validate_creator(ROOT / "examples" / "creator-v1", creator_validator)
     creators = {}
     creator_root = ROOT / "creators"

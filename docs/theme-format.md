@@ -82,3 +82,7 @@ See the [creator schema](../schemas/v1/creator.schema.json) and
 The [creator index](../creators/index.json) lists published profiles independently
 of the theme catalog and pins each profile's SHA-256. Update the index when a
 profile is added, removed or changed.
+
+The [verified creator list](../creators/verified.json) is maintained by the
+project. A verified GitHub ID marks the creator and their themes as official.
+Keep this list separate from editable profiles.
