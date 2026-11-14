@@ -72,11 +72,22 @@ def validate_gallery(manifest):
         raise ValueError(f'{manifest["title"]}: missing previews: {", ".join(missing)}')
 
 
+def validate_reviews(folder, validator):
+    path = folder / "reviews.json"
+    reviews = validate_json(path, validator)["reviews"]
+    author_ids = [review["author"]["githubId"] for review in reviews]
+    if len(author_ids) != len(set(author_ids)):
+        raise ValueError(f"{path}: duplicate review author")
+
+
 def main():
     manifest_validator = load_schema("theme")
     appearance_validator = load_schema("appearance")
     catalog = validate_json(ROOT / "catalog" / "index.json", load_schema("catalog"))
-    validate_theme(ROOT / "examples" / "theme-v1", manifest_validator, appearance_validator)
+    reviews_validator = load_schema("reviews")
+    example = ROOT / "examples" / "theme-v1"
+    validate_theme(example, manifest_validator, appearance_validator)
+    validate_reviews(example, reviews_validator)
 
     theme_ids = set()
     for entry in catalog["themes"]:
@@ -89,6 +100,8 @@ def main():
         check_hash(folder / "manifest.json", entry["manifestSha256"])
         manifest = validate_theme(folder, manifest_validator, appearance_validator)
         validate_gallery(manifest)
+        if (folder / "reviews.json").exists():
+            validate_reviews(folder, reviews_validator)
         if (manifest["themeId"], manifest["revision"]) != (theme_id, revision):
             raise ValueError(f"{folder}: manifest ID or revision differs from the catalog")
 

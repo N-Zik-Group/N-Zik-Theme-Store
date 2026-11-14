@@ -56,6 +56,9 @@ queue and navigation. Use `other` for all other screens. Add a readable caption.
 
 ## Maintainer reviews
 
-`catalog/reviews.json` contains the initial maintainer reviews, keyed by permanent
-`themeId`. Each review includes the GitHub author ID and login, a rating from 1 to 5,
-and a comment. The `maintainer` kind identifies reviews written by the project team.
+A theme revision can have a `themes/<themeId>/<revision>/reviews.json` file
+next to its manifest. Reviews apply to that revision. A missing file means the
+revision has no maintainer reviews. Each GitHub author can review a revision once.
+
+See the [review schema](../schemas/v1/reviews.schema.json) and
+[example](../examples/theme-v1/reviews.json).

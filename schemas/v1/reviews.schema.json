@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Theme reviews v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "reviews"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "author",
+          "kind",
+          "rating",
+          "comment"
+        ],
+        "properties": {
+          "author": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "githubId",
+              "login"
+            ],
+            "properties": {
+              "githubId": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "login": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}$"
+              }
+            }
+          },
+          "kind": {
+            "const": "maintainer"
+          },
+          "rating": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "comment": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "pattern": "\\S"
+          }
+        }
+      }
+    }
+  }
+}

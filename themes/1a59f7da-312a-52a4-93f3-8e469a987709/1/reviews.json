@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "author": {
+        "githubId": 63956787,
+        "login": "NEVARLeVrai"
+      },
+      "kind": "maintainer",
+      "rating": 5,
+      "comment": "The gradient adds a nice touch to the pitch-black player."
+    }
+  ]
+}

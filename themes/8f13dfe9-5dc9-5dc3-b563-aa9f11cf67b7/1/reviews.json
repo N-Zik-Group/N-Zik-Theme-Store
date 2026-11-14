@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "author": {
+        "githubId": 63956787,
+        "login": "NEVARLeVrai"
+      },
+      "kind": "maintainer",
+      "rating": 5,
+      "comment": "The cover carousel gives the player a lot of personality."
+    }
+  ]
+}
