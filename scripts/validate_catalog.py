@@ -80,11 +80,31 @@ def validate_reviews(folder, validator):
         raise ValueError(f"{path}: duplicate review author")
 
 
+def validate_creator(folder, validator, expected_id=None):
+    path = folder / "profile.json"
+    profile = validate_json(path, validator)
+    if expected_id is not None and str(profile["githubId"]) != expected_id:
+        raise ValueError(f"{path}: GitHub ID differs from the creator directory")
+    for field in ("avatar", "banner"):
+        media = profile[field]
+        if media["source"] == "custom":
+            asset = media["asset"]
+            check_hash(folder / asset["path"], asset["sha256"])
+    return profile
+
+
 def main():
     manifest_validator = load_schema("theme")
     appearance_validator = load_schema("appearance")
     catalog = validate_json(ROOT / "catalog" / "index.json", load_schema("catalog"))
     reviews_validator = load_schema("reviews")
+    creator_validator = load_schema("creator")
+    validate_creator(ROOT / "examples" / "creator-v1", creator_validator)
+    creators = {}
+    for folder in sorted((ROOT / "creators").iterdir()):
+        if folder.is_dir():
+            profile = validate_creator(folder, creator_validator, folder.name)
+            creators[profile["githubId"]] = profile
     example = ROOT / "examples" / "theme-v1"
     validate_theme(example, manifest_validator, appearance_validator)
     validate_reviews(example, reviews_validator)
@@ -100,12 +120,16 @@ def main():
         check_hash(folder / "manifest.json", entry["manifestSha256"])
         manifest = validate_theme(folder, manifest_validator, appearance_validator)
         validate_gallery(manifest)
+        author = manifest["author"]
+        creator = creators.get(author["githubId"])
+        if creator and creator["login"].casefold() != author["login"].casefold():
+            raise ValueError(f"{folder}: manifest author and creator GitHub logins differ")
         if (folder / "reviews.json").exists():
             validate_reviews(folder, reviews_validator)
         if (manifest["themeId"], manifest["revision"]) != (theme_id, revision):
             raise ValueError(f"{folder}: manifest ID or revision differs from the catalog")
 
-    print(f"Validated the v1 schemas, the example and {len(theme_ids)} published themes.")
+    print(f"Validated the v1 schemas, examples, {len(theme_ids)} published themes and {len(creators)} creators.")
 
 
 if __name__ == "__main__":

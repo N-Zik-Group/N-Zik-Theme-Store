@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "githubId": 292738521,
+  "login": "N-Zik-Group",
+  "displayName": "N-Zik Group",
+  "bio": "The team behind N-Zik and its official themes.",
+  "avatar": {
+    "source": "github"
+  },
+  "banner": {
+    "source": "generated"
+  }
+}

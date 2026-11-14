@@ -62,3 +62,19 @@ revision has no maintainer reviews. Each GitHub author can review a revision onc
 
 See the [review schema](../schemas/v1/reviews.schema.json) and
 [example](../examples/theme-v1/reviews.json).
+
+## Creator profiles
+
+Look up `creators/<githubId>/profile.json` using the theme manifest's author ID.
+The GitHub ID and login identify the authenticated account. The profile editor
+must keep them read-only. Maintainers verify account ownership before publishing
+profile changes. The display name and bio are editable.
+
+An avatar with source `github` uses the account avatar resolved by GitHub ID.
+A banner with source `generated` uses a gradient derived from that ID, so it
+looks consistent across visits. For either image, `custom` refers to an image
+committed next to the profile JSON and pinned by SHA-256. Clients can use the
+default artwork if a profile or image is unavailable.
+
+See the [creator schema](../schemas/v1/creator.schema.json) and
+[example](../examples/creator-v1/profile.json).

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Theme Store creator v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "githubId",
+    "login",
+    "displayName",
+    "bio",
+    "avatar",
+    "banner"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "githubId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "login": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}(?![\\s\\S])"
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60,
+      "pattern": "\\S"
+    },
+    "bio": {
+      "type": "string",
+      "maxLength": 280
+    },
+    "avatar": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source"
+          ],
+          "properties": {
+            "source": {
+              "const": "github"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source",
+            "asset"
+          ],
+          "properties": {
+            "source": {
+              "const": "custom"
+            },
+            "asset": {
+              "$ref": "#/$defs/asset"
+            }
+          }
+        }
+      ]
+    },
+    "banner": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source"
+          ],
+          "properties": {
+            "source": {
+              "const": "generated"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source",
+            "asset"
+          ],
+          "properties": {
+            "source": {
+              "const": "custom"
+            },
+            "asset": {
+              "$ref": "#/$defs/asset"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}\\.(webp|png|jpg)(?![\\s\\S])"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+        }
+      }
+    }
+  }
+}
