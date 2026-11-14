@@ -100,6 +100,10 @@ def main():
     reviews_validator = load_schema("reviews")
     creator_validator = load_schema("creator")
     validate_json(ROOT / "creators" / "verified.json", load_schema("verified-creators"))
+    blocked = validate_json(ROOT / "creators" / "blocked.json", load_schema("blocked-creators"))
+    blocked_ids = [entry["githubId"] for entry in blocked["accounts"]]
+    if len(blocked_ids) != len(set(blocked_ids)):
+        raise ValueError("creators: duplicate blocked GitHub ID")
     validate_creator(ROOT / "examples" / "creator-v1", creator_validator)
     creators = {}
     creator_root = ROOT / "creators"

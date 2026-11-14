@@ -95,3 +95,9 @@ profile is added, removed or changed.
 The [verified creator list](../creators/verified.json) is maintained by the
 project. A verified GitHub ID marks the creator and their themes as official.
 Keep this list separate from editable profiles.
+
+Maintainers can add a numeric GitHub ID and a public moderation message to
+[`creators/blocked.json`](../creators/blocked.json). N-Zik shows that message when
+the account tries to connect or submit a profile. The repository workflow closes
+pull requests from listed accounts and posts the same message. Keep private
+information out of these messages.

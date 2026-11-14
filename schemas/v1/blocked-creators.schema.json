@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "accounts"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["githubId", "message"],
+        "properties": {
+          "githubId": { "type": "integer", "minimum": 1 },
+          "message": { "type": "string", "maxLength": 400, "pattern": "\\S" }
+        }
+      }
+    }
+  }
+}

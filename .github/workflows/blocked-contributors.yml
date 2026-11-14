@@ -1,0 +1,245 @@
+name: Blocked contributors
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, reopened, synchronize, ready_for_review, labeled, closed]
+  workflow_dispatch:
+permissions:
+  checks: read
+  contents: write
+  issues: write
+  pull-requests: write
+concurrency:
+  group: theme-store-moderation-${{ github.event.pull_request.number || 'setup' }}
+jobs:
+  moderation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
+        env:
+          THEME_STORE_CLEANUP_TOKEN: ${{ secrets.THEME_STORE_CLEANUP_TOKEN }}
+        with:
+          script: |
+            const event = context.payload;
+            const statusLabels = { 'in review': 'fbca04', accepted: '0e8a16', refused: 'd73a4a', merged: '6f42c1', ban: 'b60205' };
+            const reasons = {
+              'reason: explicit content': 'Remove the explicit material.',
+              'reason: personal information': 'Remove personal information from the submitted files.',
+              'reason: rights issue': 'Replace material you do not have permission to publish.',
+              'reason: invalid profile': 'Correct the profile fields or images.',
+              'reason: invalid theme': 'Correct the theme files or compatibility settings.',
+              'reason: preview issue': 'Add the missing previews or replace inaccurate previews.',
+              'reason: duplicate': 'Use the existing submission.',
+              'reason: not working': 'Fix the theme and test it in N-Zik before resubmitting.',
+              'reason: other': 'See the moderator’s note for details.',
+              'reason: spam': 'The submission was identified as spam.',
+              'reason: repeated violations': 'The account has repeatedly violated the contribution rules.'
+            };
+            const typeLabels = {
+              'new creator profile': '1d76db',
+              'update creator profile': '0052cc',
+              'new theme': '0e8a16',
+              'theme update': '006b75'
+            };
+            async function ensureLabel(name, color) {
+              try {
+                await github.rest.issues.createLabel({ ...context.repo, name, color });
+              } catch (error) {
+                if (error.status !== 422) throw error;
+              }
+            }
+            if (context.eventName === 'workflow_dispatch') {
+              for (const [name, color] of Object.entries({ ...statusLabels, ...typeLabels })) {
+                await ensureLabel(name, color);
+              }
+              for (const name of Object.keys(reasons)) await ensureLabel(name, 'f9d0c4');
+              return;
+            }
+            const pull = event.pull_request;
+            const ref = event.repository.default_branch;
+            const target = { ...context.repo, issue_number: pull.number };
+            const isSubmission = pull.head.ref === `nzik/creator-profile-${pull.user.id}`
+              && pull.head.repo?.owner?.id === pull.user.id;
+            const labelAdded = event.action === 'labeled' ? event.label.name : '';
+            if (labelAdded) {
+              if ((!['accepted', 'refused', 'ban'].includes(labelAdded) && !Object.hasOwn(reasons, labelAdded)) || pull.merged) return;
+              const { data: access } = await github.rest.repos.getCollaboratorPermissionLevel({
+                ...context.repo, username: event.sender.login
+              });
+              if (!['admin', 'maintain', 'write'].includes(access.permission)) return;
+            }
+            const themeLabels = ['new theme', 'theme update'];
+            const isTheme = item => item.labels.some(label => themeLabels.includes(label.name));
+            if (event.action === 'closed' && ((!isSubmission && !isTheme(pull)) || !pull.merged)) return;
+            const { data: current } = await github.rest.pulls.get({ ...context.repo, pull_number: pull.number });
+            if (current.merged && event.action !== 'closed') return;
+            const currentLabels = new Set(current.labels.map(label => label.name));
+            if (event.action === 'reopened' && current.locked
+                && ['refused', 'ban'].some(label => currentLabels.has(label))) {
+              await github.rest.pulls.update({ ...context.repo, pull_number: pull.number, state: 'closed' });
+              return;
+            }
+            let decision = '';
+            let reason = '';
+            if (labelAdded && labelAdded !== 'accepted') {
+              const selected = Object.keys(reasons).filter(name => currentLabels.has(name));
+              const decisions = ['refused', 'ban'].filter(name => currentLabels.has(name));
+              if (!currentLabels.has(labelAdded) || selected.length !== 1 || decisions.length !== 1) return;
+              decision = decisions[0];
+              reason = selected[0];
+            }
+            if (!labelAdded && current.state === 'open') {
+              const files = await github.paginate(github.rest.pulls.listFiles, {
+                ...context.repo, pull_number: pull.number, per_page: 100
+              });
+              const types = new Set();
+              const themes = new Set();
+              for (const file of files) {
+                if (file.status === 'removed') continue;
+                if (/^creators\/\d+\/profile\.json$/.test(file.filename)) {
+                  types.add(file.status === 'added' ? 'new creator profile' : 'update creator profile');
+                }
+                const theme = /^themes\/([0-9a-f-]{36})\/\d+\/[^/]+/.exec(file.filename);
+                if (theme) themes.add(theme[1]);
+              }
+              if (themes.size) {
+                const { data: index } = await github.rest.repos.getContent({
+                  ...context.repo, path: 'themes/index.json', ref: current.base.sha
+                });
+                const published = new Set(JSON.parse(Buffer.from(index.content, 'base64')).themes.map(theme => theme.themeId));
+                for (const id of themes) types.add(published.has(id) ? 'theme update' : 'new theme');
+              }
+              const labels = new Set(current.labels.map(label => label.name));
+              for (const [name, color] of Object.entries(typeLabels)) {
+                if (types.has(name) && !labels.has(name)) {
+                  await ensureLabel(name, color);
+                  await github.rest.issues.addLabels({ ...target, labels: [name] });
+                } else if (!types.has(name) && labels.has(name)) {
+                  try {
+                    await github.rest.issues.removeLabel({ ...target, name });
+                  } catch (error) {
+                    if (error.status !== 404) throw error;
+                  }
+                }
+              }
+            }
+            async function status(name, selectedReason = '') {
+              await ensureLabel(name, statusLabels[name]);
+              await github.rest.issues.addLabels({ ...target, labels: [name] });
+              const obsolete = name === 'in review' ? [] : [...Object.keys(statusLabels), ...Object.keys(reasons)];
+              for (const label of obsolete) {
+                if (label === name || label === selectedReason || !currentLabels.has(label)) continue;
+                try {
+                  await github.rest.issues.removeLabel({ ...target, name: label });
+                } catch (error) {
+                  if (error.status !== 404) throw error;
+                }
+              }
+            }
+            async function announcePublication() {
+              await status('merged');
+              if (!current.locked) {
+                const marker = '<!-- nzik-submission-merged -->';
+                const comments = await github.paginate(github.rest.issues.listComments, target);
+                if (!comments.some(comment => comment.user?.login === 'github-actions[bot]' && comment.body?.includes(marker))) {
+                  await github.rest.issues.createComment({
+                    ...target,
+                    body: marker + '\n' + (isTheme(current)
+                      ? 'Your theme was accepted and merged. Refresh the Theme Store in N-Zik to view and download it.'
+                      : 'Your creator profile was accepted and merged. Refresh the Theme Store in N-Zik to see it.')
+                  });
+                }
+              }
+              await github.rest.issues.lock(target);
+            }
+            if (pull.merged) {
+              await announcePublication();
+              return;
+            }
+            const { data } = await github.rest.repos.getContent({
+              ...context.repo, path: 'creators/blocked.json', ref
+            });
+            const list = JSON.parse(Buffer.from(data.content, 'base64').toString('utf8'));
+            if (list.schemaVersion !== 1 || !Array.isArray(list.accounts)) throw new Error('Invalid moderation list');
+            let blocked = list.accounts.find(account => account.githubId === pull.user.id);
+            if (labelAdded === 'accepted' && !blocked) {
+              if ((!isSubmission && !isTheme(current)) || current.state !== 'open'
+                  || current.draft || !currentLabels.has('accepted') || currentLabels.has('refused') || currentLabels.has('ban')) return;
+              if (current.head.sha !== pull.head.sha) {
+                core.setFailed('The submission changed after approval. Review the new commit before accepting it.');
+                return;
+              }
+              const checks = await github.paginate(github.rest.checks.listForRef, {
+                ...context.repo, ref: current.head.sha, check_name: 'validate', filter: 'latest'
+              }, response => response.data.check_runs);
+              if (!checks.some(check => check.app?.slug === 'github-actions' && check.conclusion === 'success')) {
+                core.setFailed('Catalog validation must pass on the approved commit. Retry approval after the check succeeds.');
+                return;
+              }
+              const { data: merge } = await github.rest.pulls.merge({
+                ...context.repo, pull_number: pull.number, sha: pull.head.sha
+              });
+              if (!merge.merged) {
+                core.setFailed('GitHub did not merge the submission. Check the required checks and branch rules.');
+                return;
+              }
+              await announcePublication();
+              return;
+            }
+            if (decision === 'ban' && !blocked) {
+              blocked = {
+                githubId: pull.user.id,
+                message: `Your account is blocked from contributing to the Theme Store. Reason: ${reason.slice(8)}.`
+              };
+              list.accounts.push(blocked);
+              await github.rest.repos.createOrUpdateFileContents({
+                ...context.repo, path: 'creators/blocked.json', branch: ref, sha: data.sha,
+                message: `Block contributor ${pull.user.id}`,
+                content: Buffer.from(JSON.stringify(list, null, 2) + '\n').toString('base64')
+              });
+            }
+            if (!blocked && decision !== 'refused') {
+              if (isSubmission && current.state === 'open' && !current.labels.some(label => ['accepted', 'refused', 'ban'].includes(label.name))) {
+                await status('in review');
+              }
+              return;
+            }
+            await status(blocked ? 'ban' : 'refused', reason || (blocked
+              ? [...currentLabels].find(label => Object.hasOwn(reasons, label))
+              : ''));
+            let cleaned = false;
+            if (current.state === 'open' && isSubmission && current.head.repo?.id === pull.head.repo.id
+                && current.head.ref === pull.head.ref && current.base.ref === ref) {
+              const [owner, repo] = current.head.repo.full_name.split('/');
+              const branch = 'heads/' + current.head.ref;
+              const headers = process.env.THEME_STORE_CLEANUP_TOKEN
+                ? { authorization: 'Bearer ' + process.env.THEME_STORE_CLEANUP_TOKEN }
+                : {};
+              try {
+                const { data: head } = await github.rest.git.getRef({ owner, repo, ref: branch, headers });
+                if (head.object.sha !== current.head.sha) throw new Error('Submission branch changed during moderation');
+                await github.rest.git.updateRef({
+                  owner, repo, ref: branch, sha: current.base.sha, force: true, headers
+                });
+                const { data: reset } = await github.rest.git.getRef({ owner, repo, ref: branch, headers });
+                cleaned = reset.object.sha === current.base.sha;
+              } catch (error) {
+                core.warning('Could not reset the submission branch. Check fork write access and the branch state.');
+              }
+            }
+            if (current.state === 'open') {
+              await github.rest.pulls.update({ ...context.repo, pull_number: pull.number, state: 'closed' });
+            }
+            const refusal = `Submission refused (${reason.slice(8)}). ${reasons[reason]} You may send a corrected version.`;
+            const message = (blocked?.message ?? refusal).replaceAll('@', '@\u200b').replaceAll('\n', ' ');
+            const comments = await github.paginate(github.rest.issues.listComments, { ...context.repo, issue_number: pull.number });
+            const marker = '<!-- nzik-contribution-block -->';
+            if (!comments.some(comment => comment.user?.login === 'github-actions[bot]' && comment.body?.includes(marker))) {
+              await github.rest.issues.createComment({
+                ...context.repo, issue_number: pull.number,
+                body: marker + '\n' + (cleaned ? 'Submission removed from the branch.\n\n' : '')
+                  + message.split('\r').join(' ')
+              });
+            }
+            await github.rest.issues.lock(target);
+            core.setFailed(blocked ? 'This account is blocked from Theme Store contributions.' : 'Submission refused.');
