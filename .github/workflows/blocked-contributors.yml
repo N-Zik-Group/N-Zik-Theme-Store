@@ -84,6 +84,7 @@ jobs:
             let decision = '';
             let reason = '';
             if (labelAdded && labelAdded !== 'accepted') {
+              if (current.state !== 'open') return;
               const selected = Object.keys(reasons).filter(name => currentLabels.has(name));
               const decisions = ['refused', 'ban'].filter(name => currentLabels.has(name));
               if (!currentLabels.has(labelAdded) || selected.length !== 1 || decisions.length !== 1) return;
