@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "themeId": "99edc843-6a9b-5753-8e76-cc11fe9b3295",
+      "author": {
+        "githubId": 63956787,
+        "login": "NEVARLeVrai"
+      },
+      "kind": "maintainer",
+      "rating": 5,
+      "comment": "The soft blur keeps the player clean and easy to read."
+    },
+    {
+      "themeId": "8f13dfe9-5dc9-5dc3-b563-aa9f11cf67b7",
+      "author": {
+        "githubId": 63956787,
+        "login": "NEVARLeVrai"
+      },
+      "kind": "maintainer",
+      "rating": 5,
+      "comment": "The cover carousel gives the player a lot of personality."
+    },
+    {
+      "themeId": "8d06299d-a4c1-5dc7-bf21-8694af77ae36",
+      "author": {
+        "githubId": 63956787,
+        "login": "NEVARLeVrai"
+      },
+      "kind": "maintainer",
+      "rating": 5,
+      "comment": "Love the clean layout and the space it gives the artwork."
+    },
+    {
+      "themeId": "e9fb0ce8-3b8d-5c96-9d00-f4d5f1fdcf4a",
+      "author": {
+        "githubId": 63956787,
+        "login": "NEVARLeVrai"
+      },
+      "kind": "maintainer",
+      "rating": 5,
+      "comment": "The waveform looks great against the black background."
+    },
+    {
+      "themeId": "1a59f7da-312a-52a4-93f3-8e469a987709",
+      "author": {
+        "githubId": 63956787,
+        "login": "NEVARLeVrai"
+      },
+      "kind": "maintainer",
+      "rating": 5,
+      "comment": "The gradient adds a nice touch to the pitch-black player."
+    },
+    {
+      "themeId": "481186ac-8178-55b6-a20d-a01dbc5efe64",
+      "author": {
+        "githubId": 63956787,
+        "login": "NEVARLeVrai"
+      },
+      "kind": "maintainer",
+      "rating": 5,
+      "comment": "The colors from the artwork and the wavy timeline work perfectly together."
+    }
+  ]
+}

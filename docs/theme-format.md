@@ -53,3 +53,9 @@ accepted by the schema. Required screen names are `player`, `queue`, `lyrics`,
 `home`, `navigation`, `album`, `artist`, `playlist`, `local-playlist`, `search`,
 `search-albums` and `search-artists`. Use the corresponding role for the player,
 queue and navigation. Use `other` for all other screens. Add a readable caption.
+
+## Maintainer reviews
+
+`catalog/reviews.json` contains the initial maintainer reviews, keyed by permanent
+`themeId`. Each review includes the GitHub author ID and login, a rating from 1 to 5,
+and a comment. The `maintainer` kind identifies reviews written by the project team.
