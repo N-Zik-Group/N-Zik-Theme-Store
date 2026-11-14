@@ -55,8 +55,6 @@ PREVIEW_ROLES = {"player": "player", "queue": "queue", "navigation": "navigation
 
 
 def validate_gallery(manifest):
-    if manifest["revision"] <= 3 and manifest["author"]["login"].lower() == "n-zik-group" and "built-in" in manifest["tags"]:
-        return
     previews = {}
     for preview in manifest["previews"]:
         stem = Path(preview["path"]).stem
