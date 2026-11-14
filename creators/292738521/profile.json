@@ -8,6 +8,10 @@
     "source": "github"
   },
   "banner": {
-    "source": "generated"
+    "source": "custom",
+    "asset": {
+      "path": "ic_banner2.png",
+      "sha256": "21fc3f12b97e7c9b2a16aa87fac5becbe313542db5bcddfb0d887f8470970c84"
+    }
   }
 }
