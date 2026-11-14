@@ -15,7 +15,7 @@
     "audio-waves"
   ],
   "compatibility": {
-    "minVersionCode": null
+    "minVersionCode": 96
   },
   "appearance": {
     "path": "appearance.json",
