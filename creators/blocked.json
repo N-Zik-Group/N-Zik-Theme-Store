@@ -1,4 +1,9 @@
 {
   "schemaVersion": 1,
-  "accounts": []
+  "accounts": [
+    {
+      "githubId": 63956787,
+      "message": "Your account is blocked from contributing to the Theme Store. Reason: other."
+    }
+  ]
 }
