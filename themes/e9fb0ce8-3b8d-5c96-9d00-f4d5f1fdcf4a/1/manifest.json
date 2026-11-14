@@ -25,146 +25,147 @@
     {
       "path": "previews/player-normal.webp",
       "role": "player",
-      "caption": "Player · Normal",
+      "caption": "Player \u00b7 Normal",
       "sha256": "113f9989ec9818a1b14cf823fd3a45d7ff1b62a6ab8415ecb26dc4a3c71f942f"
     },
     {
       "path": "previews/player-glass.webp",
       "role": "player",
-      "caption": "Player · Glass",
+      "caption": "Player \u00b7 Glass",
       "sha256": "8418a82efe0a2aee2d63fa9a454c79a288f1581f0b30caccfe17638316e98899"
     },
     {
       "path": "previews/queue-normal.webp",
       "role": "queue",
-      "caption": "Queue · Normal",
+      "caption": "Queue \u00b7 Normal",
       "sha256": "2f6bcdc8cb1e085c5c7360ed7281b6c1e39dfd10e820d39d48ad85e39a8a28ab"
     },
     {
       "path": "previews/queue-glass.webp",
       "role": "queue",
-      "caption": "Queue · Glass",
+      "caption": "Queue \u00b7 Glass",
       "sha256": "d5a731ca7cc792063b103d8c3a0f3d17c14f3848f56a28fee3c768a689f830be"
     },
     {
       "path": "previews/home-normal.webp",
       "role": "other",
-      "caption": "Home · Normal",
+      "caption": "Home \u00b7 Normal",
       "sha256": "d149f2e6dfe916771359981e2ea673a68f789ab64179b148e3d11faa551cdae3"
     },
     {
       "path": "previews/home-glass.webp",
       "role": "other",
-      "caption": "Home · Glass",
+      "caption": "Home \u00b7 Glass",
       "sha256": "83e40c979cb0489805aee8d3f19a14dd87af5fa370e0eb286292c173a7097654"
     },
     {
       "path": "previews/navigation-normal.webp",
       "role": "navigation",
-      "caption": "Library and navigation · Normal",
+      "caption": "Library and navigation \u00b7 Normal",
       "sha256": "adcbc738d1d5b0151ce7b1974c151cdf355b1ae9ca97ad40feb50b295adc7d4f"
     },
     {
       "path": "previews/navigation-glass.webp",
       "role": "navigation",
-      "caption": "Library and navigation · Glass",
+      "caption": "Library and navigation \u00b7 Glass",
       "sha256": "ab6b817ce3abda696cca5dfc454feb39299499f723792ecb07013b08236bee11"
     },
     {
       "path": "previews/search-normal.webp",
       "role": "other",
-      "caption": "Search · Normal",
+      "caption": "Search \u00b7 Normal",
       "sha256": "a12b658a604494b049f12340cdebd595807e5f91c296fa6db0954f298213eeed"
     },
     {
       "path": "previews/search-glass.webp",
       "role": "other",
-      "caption": "Search · Glass",
+      "caption": "Search \u00b7 Glass",
       "sha256": "6bf6ab31f1396fd72fb6422e5296615e008acf330a729c9583c59bb8c70ed5be"
     },
     {
       "path": "previews/album-normal.webp",
       "role": "other",
-      "caption": "Album · Normal",
+      "caption": "Album \u00b7 Normal",
       "sha256": "e87e7233268139e8e1153e452c4f683c6eec9fcf7cfc7691c924ccf557996d7c"
     },
     {
       "path": "previews/album-glass.webp",
       "role": "other",
-      "caption": "Album · Glass",
+      "caption": "Album \u00b7 Glass",
       "sha256": "2fd284a99436dabb1fd24a590b890eb8c84e668e04a3946f438e16252349d2b6"
     },
     {
       "path": "previews/search-albums-normal.webp",
       "role": "other",
-      "caption": "Search albums · Normal",
+      "caption": "Search albums \u00b7 Normal",
       "sha256": "f92cb50baf738e6cf24b607956e426837cfbae1c005f58adc2904aae76caba51"
     },
     {
       "path": "previews/search-albums-glass.webp",
       "role": "other",
-      "caption": "Search albums · Glass",
+      "caption": "Search albums \u00b7 Glass",
       "sha256": "b4301fb28c3f62d23cca66968046c57c5dfcb2d2a5dc93d4d4d39668f5413e86"
     },
     {
       "path": "previews/search-artists-normal.webp",
       "role": "other",
-      "caption": "Search artists · Normal",
+      "caption": "Search artists \u00b7 Normal",
       "sha256": "7bc484557e550f0185166fa05bf12d20c5c0aeddacb4b2c6a2dee6a6ce148611"
     },
     {
       "path": "previews/search-artists-glass.webp",
       "role": "other",
-      "caption": "Search artists · Glass",
+      "caption": "Search artists \u00b7 Glass",
       "sha256": "9a6d06eff3fb543aa48107a0fd80c230f03f1dfec4b9c500130ef7d03ad63e58"
     },
     {
       "path": "previews/lyrics-normal.webp",
       "role": "other",
-      "caption": "Lyrics · Normal",
+      "caption": "Lyrics \u00b7 Normal",
       "sha256": "5194edf5179decaa9846f69b592dec3a2ee411b3bf43784298e0d09006d0eadb"
     },
     {
       "path": "previews/lyrics-glass.webp",
       "role": "other",
-      "caption": "Lyrics · Glass",
+      "caption": "Lyrics \u00b7 Glass",
       "sha256": "1ce25ecb8f76fa4aed5fd7c50f8f2bda08382d2f4cd420abbc148cd7952b3877"
     },
     {
       "path": "previews/artist-normal.webp",
       "role": "other",
-      "caption": "Artist · Normal",
+      "caption": "Artist \u00b7 Normal",
       "sha256": "5b175272143e780c1a17826d2e25d8945a427f672576ee519b3626150c5778a1"
     },
     {
       "path": "previews/artist-glass.webp",
       "role": "other",
-      "caption": "Artist · Glass",
+      "caption": "Artist \u00b7 Glass",
       "sha256": "4e9298e11b08988d7406324d968247e72381d248e5240dbbc6d413c7357d0a93"
     },
     {
       "path": "previews/playlist-normal.webp",
       "role": "other",
-      "caption": "Playlist · Normal",
+      "caption": "Playlist \u00b7 Normal",
       "sha256": "d982e508662f9c7ff9259a9f9b050d91ecef62bfff9ede685485a274ce856c10"
     },
     {
       "path": "previews/playlist-glass.webp",
       "role": "other",
-      "caption": "Playlist · Glass",
+      "caption": "Playlist \u00b7 Glass",
       "sha256": "c043dea57e21e0a570be7c312e3dcb22064fcbcfb70787a785980fba49a40484"
     },
     {
       "path": "previews/local-playlist-normal.webp",
       "role": "other",
-      "caption": "Local playlist · Normal",
+      "caption": "Local playlist \u00b7 Normal",
       "sha256": "58c1677990947f8f85526e0f591ec85a08024e8332cc1f65a64ad23620c98e8e"
     },
     {
       "path": "previews/local-playlist-glass.webp",
       "role": "other",
-      "caption": "Local playlist · Glass",
+      "caption": "Local playlist \u00b7 Glass",
       "sha256": "78ca4edcccb68b6d3423ebb201c3cb98f9840dec72d9fb124b7d9af4c7ae3265"
     }
-  ]
+  ],
+  "publishedOn": "2026-11-13"
 }

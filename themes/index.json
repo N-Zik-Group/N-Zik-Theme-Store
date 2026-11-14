@@ -4,32 +4,32 @@
     {
       "themeId": "99edc843-6a9b-5753-8e76-cc11fe9b3295",
       "revision": 1,
-      "manifestSha256": "b6a2ba9960159ff3006bfd7550e91926a6fd30478e6931d72a597d3ea639f5da"
+      "manifestSha256": "32d067956f6b95e99029aac8f3d0458e7d0b06c8b32e29879f01c347be815b74"
     },
     {
       "themeId": "8f13dfe9-5dc9-5dc3-b563-aa9f11cf67b7",
       "revision": 1,
-      "manifestSha256": "8f46970cbbab280f6046e9af2ee9432a234983cf778b087c657abf3d006bdee7"
+      "manifestSha256": "d7e5f6de05218d63f2ac6fac5a70b97216ba7d77f9550c2770e522b061af8591"
     },
     {
       "themeId": "8d06299d-a4c1-5dc7-bf21-8694af77ae36",
       "revision": 1,
-      "manifestSha256": "0c4619b532855a4863dd93f896356a121435e772026b300dbddc3ec4ad518ade"
+      "manifestSha256": "3bd87ca232dc3d916ac0428e9b6b52bdc6f379ea000db2a2ec7fb5f7421011da"
     },
     {
       "themeId": "e9fb0ce8-3b8d-5c96-9d00-f4d5f1fdcf4a",
       "revision": 1,
-      "manifestSha256": "27cfd7d7ddfb2c73343dbb20dd3c8b5181efe402612ede3ca2a0ecfc47a97811"
+      "manifestSha256": "3673d8322fb978f45b135b77051f21dd6ee010e5bf4aaa5386e4a49869a8dfad"
     },
     {
       "themeId": "1a59f7da-312a-52a4-93f3-8e469a987709",
       "revision": 1,
-      "manifestSha256": "7cc795c3677dd3e09e55d0616cf3281628011fda4e26aa92fc6917f8438d0523"
+      "manifestSha256": "b22edccb103d9bf7bf1d172fdb1f262855c888c0c0749ac74de28b016000c4f0"
     },
     {
       "themeId": "481186ac-8178-55b6-a20d-a01dbc5efe64",
       "revision": 1,
-      "manifestSha256": "b12468b0760ad50fe8f27e95c41f68ec4f6265bbd3527e9ce537e2efedee4934"
+      "manifestSha256": "1082d767f09f2490c50d7ae02577e7ee90020469e4cbe925011c6f6f750ff3f0"
     }
   ]
 }

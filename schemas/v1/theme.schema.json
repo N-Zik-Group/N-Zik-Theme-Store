@@ -25,6 +25,7 @@
       "type": "string",
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
     },
+    "publishedOn": {"type": "string", "format": "date", "description": "Publication date of this revision (UTC)."},
     "revision": {
       "type": "integer",
       "minimum": 1
