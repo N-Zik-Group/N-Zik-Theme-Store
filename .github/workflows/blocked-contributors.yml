@@ -225,7 +225,19 @@ jobs:
                   owner, repo, ref: branch, sha: current.base.sha, force: true, headers
                 });
                 const { data: reset } = await github.rest.git.getRef({ owner, repo, ref: branch, headers });
-                cleaned = reset.object.sha === current.base.sha;
+                if (reset.object.sha === current.base.sha) {
+                  for (let attempt = 0; attempt < 8; attempt++) {
+                    const { data: refreshed } = await github.rest.pulls.get({
+                      ...context.repo, pull_number: pull.number
+                    });
+                    if (refreshed.head.sha === reset.object.sha && refreshed.changed_files === 0) {
+                      cleaned = true;
+                      break;
+                    }
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                  }
+                  if (!cleaned) core.warning('The branch was reset, but GitHub still reports the previous pull request diff.');
+                }
               } catch (error) {
                 core.warning('Could not reset the submission branch. Check fork write access and the branch state.');
               }
