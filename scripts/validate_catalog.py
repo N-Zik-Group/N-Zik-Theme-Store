@@ -49,16 +49,13 @@ def validate_theme(folder, manifest_validator, appearance_validator):
     return manifest
 
 
-# Revision 3 contains the original two player captures. New official revisions
-# must include the complete base gallery; Glass and conditional scenes may vary.
-OFFICIAL_NORMAL_SCENES = ("player", "queue", "navigation", "home", "search", "album")
-OFFICIAL_PREVIEW_ROLES = {"player": "player", "queue": "queue", "navigation": "navigation"}
+BASE_SCENES = ("player", "queue", "lyrics", "home", "navigation", "album", "artist",
+               "playlist", "local-playlist", "search", "search-albums", "search-artists")
+PREVIEW_ROLES = {"player": "player", "queue": "queue", "navigation": "navigation"}
 
 
-def validate_official_gallery(manifest):
-    if manifest["author"]["login"].lower() != "n-zik-group" or "built-in" not in manifest["tags"]:
-        return
-    if manifest["revision"] <= 3:
+def validate_gallery(manifest):
+    if manifest["revision"] <= 3 and manifest["author"]["login"].lower() == "n-zik-group" and "built-in" in manifest["tags"]:
         return
     previews = {}
     for preview in manifest["previews"]:
@@ -68,18 +65,13 @@ def validate_official_gallery(manifest):
             raise ValueError(f'{manifest["title"]}: name previews <screen>-normal or <screen>-glass')
         if stem in previews:
             raise ValueError(f'{manifest["title"]}: duplicate preview variant {stem}')
-        if preview["role"] != OFFICIAL_PREVIEW_ROLES.get(scene, "other"):
+        if preview["role"] != PREVIEW_ROLES.get(scene, "other"):
             raise ValueError(f'{manifest["title"]}: incorrect preview role for {stem}')
         previews[stem] = preview
-    missing = [scene for scene in OFFICIAL_NORMAL_SCENES if f"{scene}-normal" not in previews]
+    missing = [f"{scene}-{variant}" for scene in BASE_SCENES
+               for variant in ("normal", "glass") if f"{scene}-{variant}" not in previews]
     if missing:
-        raise ValueError(f'{manifest["title"]}: missing Normal previews: {", ".join(missing)}')
-    for stem in previews:
-        if not stem.endswith("-glass"):
-            continue
-        normal = previews.get(stem.removesuffix("-glass") + "-normal")
-        if not normal or previews[stem]["sha256"] == normal["sha256"]:
-            raise ValueError(f'{manifest["title"]}: {stem} needs a distinct Normal counterpart')
+        raise ValueError(f'{manifest["title"]}: missing previews: {", ".join(missing)}')
 
 
 def main():
@@ -98,7 +90,7 @@ def main():
         folder = ROOT / "themes" / theme_id / str(revision)
         check_hash(folder / "manifest.json", entry["manifestSha256"])
         manifest = validate_theme(folder, manifest_validator, appearance_validator)
-        validate_official_gallery(manifest)
+        validate_gallery(manifest)
         if (manifest["themeId"], manifest["revision"]) != (theme_id, revision):
             raise ValueError(f"{folder}: manifest ID or revision differs from the catalog")
 

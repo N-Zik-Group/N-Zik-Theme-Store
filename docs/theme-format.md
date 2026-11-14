@@ -35,18 +35,21 @@ Each theme uses N-Zik's Appearance reset values for fields its original preset i
 Appearance field mappings are defined by the source settings. `coverSize` maps to the portrait `thumbnailSizeDp` preference, which the UI exposes as a 0–100 control. `transparentPlayerBar`, `noBlur` and `showExpandPlayerButton` map to `transparentbar`, `noblur` and `expandedplayertoggle`, respectively. The app still resolves how these settings interact with its layout and rendering rules.
 
 
-## Official preview coverage
+## Preview coverage
 
-The six current revisions (3) each contain two player previews: Normal and Glass.
-For the next official revision, provide full portrait captures of the player, queue,
-library/navigation, home, search and album screens. Include other affected screens,
-such as lyrics, when the configuration supports them. Use the actual N-Zik pages
-and synthetic demo data. A Glass variant is only needed when supported and visually
-different; it must have a matching Normal capture.
+Each new submission includes one Normal and one Glass preview for each of these views:
 
-Use `<screen>-normal.webp` and `<screen>-glass.webp` (other schema-supported
-extensions are allowed). The base screen names are `player`, `queue`,
-`navigation`, `home`, `search` and `album`. Use the matching manifest role for
-player, queue and navigation, and `other` for the remaining screens. Write a readable
-caption for each image. CI checks the base coverage and manifest integrity; visual
-accuracy and conditional coverage are part of review.
+- Player, queue and lyrics.
+- Quick Picks and library/navigation.
+- Album, artist, online playlist and local playlist.
+- Online search results for songs, albums and artists.
+
+Use the actual N-Zik pages with demo content or content you have permission to share.
+Keep both variants even when they look similar. You can add up to 12 extra previews.
+WebP is preferred for still images. Animated GIFs are also accepted.
+
+Name files `<screen>-normal.webp` and `<screen>-glass.webp`, using the extensions
+accepted by the schema. Required screen names are `player`, `queue`, `lyrics`,
+`home`, `navigation`, `album`, `artist`, `playlist`, `local-playlist`, `search`,
+`search-albums` and `search-artists`. Use the corresponding role for the player,
+queue and navigation. Use `other` for all other screens. Add a readable caption.

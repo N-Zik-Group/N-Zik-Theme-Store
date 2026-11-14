@@ -5,7 +5,7 @@ Follow the [Code of Conduct](CODE_OF_CONDUCT.md). Use the [issue forms](https://
 ## Submit a theme
 
 1. Fork the repository. Use the [worked example](examples/theme-v1/) and [v1 schemas](schemas/v1/) to prepare a manifest and appearance file under `themes/<themeId>/1/`. Choose a new lowercase UUID and include your numeric GitHub ID and login.
-2. Put any preview files in the revision's `previews/` folder. Label them by role and publish only images you have permission to share. Follow the [official preview coverage checklist](docs/theme-format.md#official-preview-coverage) for official themes. Use demo content to keep private information out of public images.
+2. Put your Normal and Glass preview files in the revision's `previews/` folder. Label them by role and publish only images you have permission to share. Follow the [preview coverage checklist](docs/theme-format.md#preview-coverage) for every submission. You may add extra views. Use demo content to keep private information out of public images.
 3. Set the SHA-256 of the exact appearance and preview files in the manifest, then add the manifest's SHA-256 to [the index](catalog/index.json). Keep older revision directories intact.
 4. Run `uv run --no-project --with-requirements requirements-validation.txt python scripts/validate_catalog.py` and open a PR. The maintainer verifies authorship, licensing, media and compatibility before merging.
 

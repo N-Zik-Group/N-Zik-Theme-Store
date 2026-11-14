@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "themeId": "8d06299d-a4c1-5dc7-bf21-8694af77ae36",
+  "revision": 4,
+  "title": "Coverless",
+  "description": "Blurred artwork backdrop with the foreground cover hidden and a compact action bar.",
+  "author": {
+    "githubId": 292738521,
+    "login": "N-Zik-Group"
+  },
+  "license": "GPL-3.0-only",
+  "tags": [
+    "built-in",
+    "artwork",
+    "coverless"
+  ],
+  "compatibility": {
+    "minVersionCode": null
+  },
+  "appearance": {
+    "path": "appearance.json",
+    "sha256": "79723bdbf98bad98cc01b7e512aaf692240d1a45a2a17152e9054fe372e5cf57"
+  },
+  "previews": [
+    {
+      "path": "previews/player-normal.webp",
+      "role": "player",
+      "caption": "Player · Normal",
+      "sha256": "6401108800bffc6af255ec848a414c0dd9fdc6ae7af4d55cc628123fd3980c7e"
+    },
+    {
+      "path": "previews/player-glass.webp",
+      "role": "player",
+      "caption": "Player · Glass",
+      "sha256": "0571e94d52bb638c3ae107bb923a1b9a8c7f746634489fc115472ca4b4a4c3bc"
+    },
+    {
+      "path": "previews/queue-normal.webp",
+      "role": "queue",
+      "caption": "Queue · Normal",
+      "sha256": "ae647c44b247193169514b3b620eaa301615350b25eb0fe93b0b08b3fcc60067"
+    },
+    {
+      "path": "previews/queue-glass.webp",
+      "role": "queue",
+      "caption": "Queue · Glass",
+      "sha256": "d86a079bfb0fe7c0fc7deb773cedd27d24fa3c84bedc152e56b81e7efd0d08c9"
+    },
+    {
+      "path": "previews/home-normal.webp",
+      "role": "other",
+      "caption": "Home · Normal",
+      "sha256": "5d57c481521cc2335e646aeb6d85d4383b5390912fdde61a66112f9c641ce59b"
+    },
+    {
+      "path": "previews/home-glass.webp",
+      "role": "other",
+      "caption": "Home · Glass",
+      "sha256": "09329164a407184a921b66c778ca6fe4c99b46c9d7496fc4d506d241beb875c4"
+    },
+    {
+      "path": "previews/navigation-normal.webp",
+      "role": "navigation",
+      "caption": "Library and navigation · Normal",
+      "sha256": "2469f70ba09c792b97b362b2dad19e732105175b00b2ef10d1ba3c8bc7cd3fce"
+    },
+    {
+      "path": "previews/navigation-glass.webp",
+      "role": "navigation",
+      "caption": "Library and navigation · Glass",
+      "sha256": "d4b71904e855ac16d29a9d4a4e7ea4a05fe5da9db192a78fa1fba408e012ada8"
+    },
+    {
+      "path": "previews/search-normal.webp",
+      "role": "other",
+      "caption": "Search · Normal",
+      "sha256": "9c420f02ae625acc2b0adfe602dab54123bb3ab188d21a48bcb26d660cbda2d6"
+    },
+    {
+      "path": "previews/search-glass.webp",
+      "role": "other",
+      "caption": "Search · Glass",
+      "sha256": "5b477946d369efaa2d6db03e64df1712d8d66a23fe688b998f08229b3e3a6d96"
+    },
+    {
+      "path": "previews/album-normal.webp",
+      "role": "other",
+      "caption": "Album · Normal",
+      "sha256": "3297ce4a8dc35236db0ba901a90880cdeecae9b9de87dac0b26976d77c7f1e1d"
+    },
+    {
+      "path": "previews/album-glass.webp",
+      "role": "other",
+      "caption": "Album · Glass",
+      "sha256": "b07812cfe3070b0e887cd04e686c5755834dc3392fa9cd8086bb0d0d054ac968"
+    },
+    {
+      "path": "previews/search-albums-normal.webp",
+      "role": "other",
+      "caption": "Search albums · Normal",
+      "sha256": "e260310cc188b5706c0b32f79b22bd2f09a7c300f42232add8ffecbb2011cb8d"
+    },
+    {
+      "path": "previews/search-albums-glass.webp",
+      "role": "other",
+      "caption": "Search albums · Glass",
+      "sha256": "7f928847c1ce78f6ab656fbc5347d250a6fae8b1fd942a7df96080c0acada03d"
+    },
+    {
+      "path": "previews/search-artists-normal.webp",
+      "role": "other",
+      "caption": "Search artists · Normal",
+      "sha256": "f8629201bc216d0a893eaa4993aac651dbe311d547d3fd0ad4e1f65e535ad66a"
+    },
+    {
+      "path": "previews/search-artists-glass.webp",
+      "role": "other",
+      "caption": "Search artists · Glass",
+      "sha256": "b1d0b4252f1c76b694a454294d4891c8155b1ec7fedbd12f751c0531fe13f678"
+    },
+    {
+      "path": "previews/lyrics-normal.webp",
+      "role": "other",
+      "caption": "Lyrics · Normal",
+      "sha256": "5dfd9b8e20a837b50719c57267eb71877c9a1655525ee240b60dfc81bd44e4a5"
+    },
+    {
+      "path": "previews/lyrics-glass.webp",
+      "role": "other",
+      "caption": "Lyrics · Glass",
+      "sha256": "0435cbd5981431aa264e3a25aebc177b370d01e7ec3cd1030e0fe7cb3caa393d"
+    },
+    {
+      "path": "previews/artist-normal.webp",
+      "role": "other",
+      "caption": "Artist · Normal",
+      "sha256": "20a05865aba8ed4a0ca021fb6f923aede56a7cb1f9cfdb982cddf055c0bac34e"
+    },
+    {
+      "path": "previews/artist-glass.webp",
+      "role": "other",
+      "caption": "Artist · Glass",
+      "sha256": "4ed088641a68500c372b96199d5499d0adc20ada6e9f09432b784f2c8d0627f5"
+    },
+    {
+      "path": "previews/playlist-normal.webp",
+      "role": "other",
+      "caption": "Playlist · Normal",
+      "sha256": "c10eed17cc6fa0822c60ff5ba8fb187a12f564ac7880ffa83a53fefac4c35de8"
+    },
+    {
+      "path": "previews/playlist-glass.webp",
+      "role": "other",
+      "caption": "Playlist · Glass",
+      "sha256": "80a5e669092005fd55ac8cc1fc98b8298cb7bbb7e3c775cd372fb220d366c1a0"
+    },
+    {
+      "path": "previews/local-playlist-normal.webp",
+      "role": "other",
+      "caption": "Local playlist · Normal",
+      "sha256": "efde02509fdd58ec8c742b375da7b9543468ef21eaf3d7a48f68eecc9e3fe770"
+    },
+    {
+      "path": "previews/local-playlist-glass.webp",
+      "role": "other",
+      "caption": "Local playlist · Glass",
+      "sha256": "c5db779adb88ba7a2b6c6e3a53f4f3168c484880500a376ac67e9c0d7e775d1b"
+    }
+  ]
+}
