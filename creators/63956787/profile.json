@@ -3,11 +3,15 @@
     "githubId": 63956787,
     "login": "NEVARLeVrai",
     "displayName": "NEVAR",
-    "bio": "I build N-Zik and customize how it looks.",
+    "bio": "I build N-Zik, like i want it to look",
     "avatar": {
         "source": "github"
     },
     "banner": {
-        "source": "generated"
+        "source": "custom",
+        "asset": {
+            "path": "banner-0118ec1a7bf92bc7.jpg",
+            "sha256": "0118ec1a7bf92bc7f71ed734f9ef8ed7b005a06db280e33366ec3e0915d54454"
+        }
     }
 }
