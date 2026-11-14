@@ -76,6 +76,15 @@ looks consistent across visits. For either image, `custom` refers to an image
 committed next to the profile JSON and pinned by SHA-256. Clients can use the
 default artwork if a profile or image is unavailable.
 
+Recommended dimensions for custom images:
+
+| Image | Dimensions | Aspect ratio | Framing |
+| --- | --- | --- | --- |
+| Avatar | 256 x 256 px | 1:1 | Center the subject for a circular crop. |
+| Banner | 1100 x 500 px | 2.2:1 | Fill the canvas and remove transparent outer margins. |
+
+The dimensions are recommendations. The schema does not inspect image pixels.
+
 See the [creator schema](../schemas/v1/creator.schema.json) and
 [example](../examples/creator-v1/profile.json).
 

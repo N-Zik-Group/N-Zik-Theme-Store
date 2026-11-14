@@ -35,6 +35,7 @@
       "maxLength": 280
     },
     "avatar": {
+      "description": "Custom image recommendation: 256 x 256 px (1:1). Keep the subject centered for circular cropping.",
       "oneOf": [
         {
           "type": "object",
@@ -67,6 +68,7 @@
       ]
     },
     "banner": {
+      "description": "Custom image recommendation: 1100 x 500 px (2.2:1). Export without transparent outer margins.",
       "oneOf": [
         {
           "type": "object",
