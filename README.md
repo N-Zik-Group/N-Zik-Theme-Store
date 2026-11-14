@@ -18,7 +18,7 @@
 
 # 🎨 Browse themes
 
-The [catalog index](catalog/index.json) lists the current revision of each theme. Its manifest shows the author, included files, license and minimum compatible N-Zik version. The six built-in presets are listed while release compatibility is pending.
+The [catalog index](themes/index.json) lists the current revision of each theme. Its manifest shows the author, included files, license and minimum compatible N-Zik version. The six built-in presets are listed while release compatibility is pending.
 
 <div align="center">
 

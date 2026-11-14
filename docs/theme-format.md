@@ -2,7 +2,7 @@
 
 ## 📦 Repository layout
 
-- [catalog/index.json](../catalog/index.json) lists the revisions available for download.
+- [themes/index.json](../themes/index.json) lists the revisions available for download.
 - [schemas/v1/](../schemas/v1/) defines the catalog index, theme manifest and appearance payload in JSON Schema Draft 2020-12.
 - [examples/theme-v1/](../examples/theme-v1/) contains a sample manifest and configuration for validation.
 

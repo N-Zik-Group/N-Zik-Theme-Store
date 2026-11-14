@@ -96,7 +96,7 @@ def validate_creator(folder, validator, expected_id=None):
 def main():
     manifest_validator = load_schema("theme")
     appearance_validator = load_schema("appearance")
-    catalog = validate_json(ROOT / "catalog" / "index.json", load_schema("catalog"))
+    catalog = validate_json(ROOT / "themes" / "index.json", load_schema("catalog"))
     reviews_validator = load_schema("reviews")
     creator_validator = load_schema("creator")
     validate_creator(ROOT / "examples" / "creator-v1", creator_validator)
