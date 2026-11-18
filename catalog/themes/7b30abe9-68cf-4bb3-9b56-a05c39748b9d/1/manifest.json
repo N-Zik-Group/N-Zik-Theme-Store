@@ -23,162 +23,162 @@
     {
       "path": "previews/player-normal.webp",
       "role": "player",
-      "sha256": "f9dfdc0387b0e2d490cc8d8fcd6ed632c32f19ef42636813cb3f75d90f3f78f9"
+      "sha256": "39dd7f8789f2aba0b036b4bf3dabb490f1def46b3d8d7277eddd622422d661f9"
     },
     {
       "path": "previews/player-glass.webp",
       "role": "player",
-      "sha256": "f56b1f35c38a787d085042534a1e012a71d11c0d9e9883d2aa02304768560b8c"
+      "sha256": "2283ee539f9087bcb26e337790dd422884ba751cfaa35a6a576a4dcfb9c5f406"
     },
     {
       "path": "previews/queue-normal.webp",
       "role": "queue",
-      "sha256": "79b28ecaf38625b796a93edca2367de013aa21b526e60a30b9b2380ab3e97fa4"
+      "sha256": "af51d57cc359f6c8889959bd39aa3f4fd421bf5701a3331ba374b172b6a80b13"
     },
     {
       "path": "previews/queue-glass.webp",
       "role": "queue",
-      "sha256": "20a796a3921a9fc463837e8c2574b8c8f62ff2ad4ec51c6c2224ec153d16d05b"
+      "sha256": "e68df110894e0e7efa10fa7b46ebaaeb8c3ce4a5015c0e9457fbe790dd5d7734"
     },
     {
       "path": "previews/lyrics-normal.webp",
       "role": "other",
-      "sha256": "9235ff683990529a5ce031ad9110e67d77448af51a831d73f1b229b78f979e02"
+      "sha256": "cb02ad279e7a60572f99aad1d6b626cf362b2608b4b82e618358d5e76adc7ca6"
     },
     {
       "path": "previews/lyrics-glass.webp",
       "role": "other",
-      "sha256": "bc8122ba406566789bf5a39682c38d99abf80dc3e82627e80543412603ba5180"
+      "sha256": "d5e97b30e6e872dbb63869bc79bae32547165109bca908b57b266546a94f2fff"
     },
     {
       "path": "previews/home-normal.webp",
       "role": "other",
-      "sha256": "b7ae56daaa752cc3e02af6329d2cae4da57c7ad99ce4d529afb77526874af95b"
+      "sha256": "6e6ba78bdb26337a261d4c8d1fcff4bd8a4e3a6603d4af42f9468ab42e554493"
     },
     {
       "path": "previews/home-glass.webp",
       "role": "other",
-      "sha256": "0972d344958f0f6cddd95439f3e5bbc9bda0ce47d9bd1092c006a4af345f5257"
+      "sha256": "891bb4d153797484cdd8582f8c03edbbfbc05dc32308219c06429bc68350ec35"
     },
     {
       "path": "previews/navigation-normal.webp",
       "role": "navigation",
-      "sha256": "e0f9bbd6037c4fd43e20a1682bce3d5436054b853fd4f9c19df23da81487cb3f"
+      "sha256": "8c9422498141b44b80f5a24bc0a40ffe76f51c9305542ea887b7b57ddd9a5e7d"
     },
     {
       "path": "previews/navigation-glass.webp",
       "role": "navigation",
-      "sha256": "bd830a3e3efca0c76236227c584fb8f4b68ae2581899adf4bf6e283731e7d458"
+      "sha256": "94b5f1a1b7fbc95e022cbaaa9ea656218d551ae9b30302b71807c7db0df50b7c"
     },
     {
       "path": "previews/album-normal.webp",
       "role": "other",
-      "sha256": "8e30b0cf6e5e191fb7dab789339c317d59e89f206460af04be0838f219fbe364"
+      "sha256": "e88ed19d89c919049046be8ec20c138e4594f4b78a3c3905af7dc5bbf66e63d3"
     },
     {
       "path": "previews/album-glass.webp",
       "role": "other",
-      "sha256": "743a0d59828a0c0c555a4c4a965d1e7b8d6aba24068e5ee665794b7a15259a1f"
+      "sha256": "600a49abe3f77e4975ac5cf9846a5bb25cd25ab96ee7369e93188e7f04b001c1"
     },
     {
       "path": "previews/artist-normal.webp",
       "role": "other",
-      "sha256": "e6505615467aaf20ddf1839b3b5819e1dc298db9d29f679609c3cd2c34d41f50"
+      "sha256": "664b373fe2219cbc0247741c7ae281701417d85f5136bbb0b654aea32b31d5a2"
     },
     {
       "path": "previews/artist-glass.webp",
       "role": "other",
-      "sha256": "0df674bf442e2a273bfb4dbd09608fbe39e68ba84f53b903e21b7b58a6d210ff"
+      "sha256": "3857a3c47ea322afaea499f3914dde6beb8159de63372621ae5ef354c647d6d2"
     },
     {
       "path": "previews/playlist-normal.webp",
       "role": "other",
-      "sha256": "6652cb32588c20e87968ec9f7184ab5cc1951f7959ac4f3b4fd91703dd054e93"
+      "sha256": "1c51541670b923c95df850ad8c6ef06f22865a2340c9da64628aaeb106cc9eda"
     },
     {
       "path": "previews/playlist-glass.webp",
       "role": "other",
-      "sha256": "38cfea7143ad3ab64158783db939ee90f7aedcaba49faf1c054aa68459114faa"
+      "sha256": "02eafd599b409501b2df9186527f46f03c1b38e3006cd610c9c90e014f5343f3"
     },
     {
       "path": "previews/local-playlist-normal.webp",
       "role": "other",
-      "sha256": "76bdefca3b113a6e43fa28aba63ed489364e0511314845a73039e4a7d609efc5"
+      "sha256": "2848b65163d72d183051aca142836e9cb5b6016028f8bca952b215cb0372f20c"
     },
     {
       "path": "previews/local-playlist-glass.webp",
       "role": "other",
-      "sha256": "361911230424bafa2ef0384f80978d6cec5e4e2b94afced484f5024cc07c3a5a"
+      "sha256": "290bf9b5d145834c0eb10da15ac475c8d0f39677e681e4c8eaf31da8fcaf4273"
     },
     {
       "path": "previews/search-normal.webp",
       "role": "other",
-      "sha256": "ddbea0f4d1f9a85c89a70af249fccda93e0a4c89e482530f1c3c28390dc6f32d"
+      "sha256": "481e2b8035ce45483e9ed1672cedce3add859485bc973c05e146b994fcf5c4d8"
     },
     {
       "path": "previews/search-glass.webp",
       "role": "other",
-      "sha256": "920f77bd99bf663ce590b1d4c0c3619884247704b6e83367eb61c8d274170f9d"
+      "sha256": "6fe892494f7531e6876053c3b7eadd217cb167a805561d8e6559d9592b1a5651"
     },
     {
       "path": "previews/search-albums-normal.webp",
       "role": "other",
-      "sha256": "902f95559a98a776ef1371ffe7ea2abfdc613da325e7976b09b68825010fb498"
+      "sha256": "bff51d09489d07da1bfcddf556aaa6b81211daa1e041daf65dddafb268ac1bae"
     },
     {
       "path": "previews/search-albums-glass.webp",
       "role": "other",
-      "sha256": "3a7a6d5ef56d3319357ab27f35c5a336740943dfbe3d0475a576cf1ede242f06"
+      "sha256": "ce924daa5881902a491329c175b722f67df2e6c284ac3b8eb0e1bb1c4ef03401"
     },
     {
       "path": "previews/search-artists-normal.webp",
       "role": "other",
-      "sha256": "358aa26ca9e3c053fbd82de933e65a58ead48abd35ccb80389d54a0f9ac621fe"
+      "sha256": "cd5c14624816798c9e8a52b2ed1fcc56971d10e0a8490b32899d1771f8f7e92b"
     },
     {
       "path": "previews/search-artists-glass.webp",
       "role": "other",
-      "sha256": "e49eaf702883f9d8ef0bbb0bb18dfd0154249e750c8390e7370d34d7f4869703"
+      "sha256": "152d0d641ef6063cf6d373039a6a1c64ed0ee2271e0001176e8b315a3ab163d9"
     },
     {
       "path": "previews/player-playing-normal.webp",
       "role": "other",
-      "sha256": "edabfca01e155153c9d40e3e3a5da2b4f55b72969f471837bf7dd54c21d9f953"
+      "sha256": "cad552eb7d06f08ad7bb08f8a9b7c4ed8141ff03bba4a9a5112a33d09b0c332a"
     },
     {
       "path": "previews/player-playing-glass.webp",
       "role": "other",
-      "sha256": "a92501bf825a894eff27b66487990c1c5b1bac2237844354eed2ef4b86d5599f"
+      "sha256": "7a8e2f6f231a93366c2126ace0690f93d65be1c0be3603409329944334fbcd5f"
     },
     {
       "path": "previews/miniplayer-playing-normal.webp",
       "role": "other",
-      "sha256": "7c50edc5494e90c925668a24dda094745e9ba2012375ac7c5bd9f690a668de58"
+      "sha256": "80a5dd88d19acb5f5d1a8abd13e03330f766d46c63ee1914f2b7a47d2a12a014"
     },
     {
       "path": "previews/miniplayer-playing-glass.webp",
       "role": "other",
-      "sha256": "0efab8161c874afc460bddbf1bfcb24e11f60be0023c6319594dfdb7319c9ad0"
+      "sha256": "747be25b972542e10fe203afb4730c643569cb68435849a7e1cbbe6f18dcd19e"
     },
     {
       "path": "previews/menu-normal.webp",
       "role": "other",
-      "sha256": "7347fe7ed004b1b8b838fb5c6c1968922681098b71c8f936ab6bed1c45dbd70f"
+      "sha256": "a7e6e42eccb99125ee0233933b243d6443330d198af566f5afac38ed4bc03b36"
     },
     {
       "path": "previews/menu-glass.webp",
       "role": "other",
-      "sha256": "a3af1561e5dab11750c8447dc53e9706387ab483f86c3641eff2e7913fba218d"
+      "sha256": "1b9fcd2bebfbe8411b76e4755e7ce349cd24b73fba25ba42c41ce21211e25b07"
     },
     {
       "path": "previews/dialog-normal.webp",
       "role": "other",
-      "sha256": "a7a92e1f915afb77018470716ccc7bd219c87c981265766993566d7188b0f242"
+      "sha256": "59352d1f34df99678490f68886a83b49036f6d7a6aa6177b47d234c4e07f1b8b"
     },
     {
       "path": "previews/dialog-glass.webp",
       "role": "other",
-      "sha256": "3bedcdc08c67fc5b5254dad90821f43a7bca3addf671396650c1e8279a24d667"
+      "sha256": "e2ba909df0287e06295ab2250f7933d354e6caaf1be743624aed007910ff7d7e"
     }
   ],
   "publishedOn": "2026-11-17"
