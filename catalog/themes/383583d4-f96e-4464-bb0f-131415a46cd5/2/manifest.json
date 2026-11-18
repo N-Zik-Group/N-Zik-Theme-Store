@@ -1,1 +1,186 @@
-{"schemaVersion":2,"themeId":"383583d4-f96e-4464-bb0f-131415a46cd5","revision":2,"title":"Pure Black, Animated Gradient & Glass Theme","description":"I've crafted a amazing theme featuring pure black, animated gradient and glass elements. I hope you like it :)","author":{"githubId":253926674,"login":"LeonDayi"},"tags":["dark","animated-gradient","glass"],"compatibility":{"minVersionCode":100},"appearance":{"path":"appearance.json","sha256":"6ea3d781a4cb1d82cdd7554f4c494a7af945db713f1967ae76b96b736ff539a2"},"previews":[{"path":"previews/player-normal.webp","role":"player","sha256":"8c575bba0d4ddf40f459473dc6d4c6eeb2440c0566a4ac5fceb0312db6f49ca4"},{"path":"previews/player-glass.webp","role":"player","sha256":"562b6e1b8da4a0b879bb39bad77ed9188d2ae4b1af2716b2f44e913cdcd1eeee"},{"path":"previews/queue-normal.webp","role":"queue","sha256":"1d15a0ac25c6068a10fbc0ffcd8c76e6ca1073681a7a40c847a1b4e4c495f89a"},{"path":"previews/queue-glass.webp","role":"queue","sha256":"cf3d9e20bd4eec19caa1ec7c214e754477fb70ecd64310ad8159e38718c72126"},{"path":"previews/lyrics-normal.webp","role":"other","sha256":"8cb3bdd4e695b3a795d70d4c3a7f0873f51a819ec073cde6a52b109fda7b57e0"},{"path":"previews/lyrics-glass.webp","role":"other","sha256":"c936b18779d4880e6992b870c5a823c1429f8a18d3eb1080f81cb4d9188ecfad"},{"path":"previews/home-normal.webp","role":"other","sha256":"273a4e77baef632aaaa80bda38557b6d1caab6339cfdd03b4a9397119431682d"},{"path":"previews/home-glass.webp","role":"other","sha256":"04bce4079847015df6febd23f0289cf0145e14eca265fe1161cdfdc5fd19b766"},{"path":"previews/navigation-normal.webp","role":"navigation","sha256":"4248a556bf445741b1ffd35ba190a33a24cb2fd5ef8c11d6d1ccf1c9b7b3a147"},{"path":"previews/navigation-glass.webp","role":"navigation","sha256":"86909754924fcc89038bd8cafcf5da43784f7e2f43c3e481b53f113fc4ac904e"},{"path":"previews/album-normal.webp","role":"other","sha256":"c40e516dd0957cb354b510fbb1519460598e7aa92bcb79b33bc5213265c19826"},{"path":"previews/album-glass.webp","role":"other","sha256":"0fcfedf314decac37e913f0ae582375e00d66ddf468cddc5d3acd44f8d5847e6"},{"path":"previews/artist-normal.webp","role":"other","sha256":"daf9ed90586e71fab9beafd681e9ffe5907f59a862490ef2ad3fcdb0480d72d9"},{"path":"previews/artist-glass.webp","role":"other","sha256":"b2ada31df6ec386f9e02ed949f4e1d3ea0d74b0fc5502bd37a9d227ebce2bf06"},{"path":"previews/playlist-normal.webp","role":"other","sha256":"1cb2e34d462aa3f35ee79d290c0c9d70fd1609db1326d47a7794ca8d5ad40d08"},{"path":"previews/playlist-glass.webp","role":"other","sha256":"27279ae4290800fdc98519ae1c03c7f03889bbb97557a7b6c684e521f6920eae"},{"path":"previews/local-playlist-normal.webp","role":"other","sha256":"06b533d693ba4b6669ec6663b90840287b3ba846a58655d6341a076cbd0f9d71"},{"path":"previews/local-playlist-glass.webp","role":"other","sha256":"459d9c6b0c8660f2fda5d407be0a4eb9b1d629e8448903239f4eaa74aa12ffa6"},{"path":"previews/search-normal.webp","role":"other","sha256":"99dbbed55e0b137c922332b4b1960164668ec2c3e27a2e896efbeeec0241c154"},{"path":"previews/search-glass.webp","role":"other","sha256":"bcf9f3526bbc49a637226acae650bb76ce34b620e6e0ad10da1c70224855db81"},{"path":"previews/search-albums-normal.webp","role":"other","sha256":"e38740ac74653ec20aa655d68f9613f44c5e8cf8ba5ce39d5392e31989c93308"},{"path":"previews/search-albums-glass.webp","role":"other","sha256":"44613d60825a3ca68a7465ece2d8b28cbc61f2bb1a3fb100464be2093a638e8f"},{"path":"previews/search-artists-normal.webp","role":"other","sha256":"eddd93dc8948aae2efdd89fbe443f4fb952c4e57bd41d284283eaf122f907adb"},{"path":"previews/search-artists-glass.webp","role":"other","sha256":"420b334fce86df60ff882bb0a20529c3e4c467ec7d0a41916cb9a771fa1e7184"},{"path":"previews/player-playing-normal.webp","role":"other","sha256":"9d5ae8d443f21dce767f1df8714e825e40581320af1d6e14f998c8e9e04608c9"},{"path":"previews/player-playing-glass.webp","role":"other","sha256":"97f477875fab38bd6d836459ce8845b98118b7e47b1bf0afaf08b2cdcb1b9e56"},{"path":"previews/miniplayer-playing-normal.webp","role":"other","sha256":"9466b5ed2412b814e4d9adf064cc9bd7d9d75c2eb0f1938c4a9c54455533b310"},{"path":"previews/miniplayer-playing-glass.webp","role":"other","sha256":"d64286f3bb6e82d5cbfe490ff4dec7fd2371e7409c9a821feb443f7b3d0deee2"},{"path":"previews/menu-normal.webp","role":"other","sha256":"781ed3dcb425955f6fed0edf2e8dafbe3159f50bd1f1605c3914debdee21cddf"},{"path":"previews/menu-glass.webp","role":"other","sha256":"2f12695db1a752ec8f93b4114d8b5cc1c3f520a76decbabc5afaed4f5911f24d"},{"path":"previews/dialog-normal.webp","role":"other","sha256":"dcb84bc8a24bad432dd39f04274d367ad2d499eb39e843ea9284bfefa7cdc083"},{"path":"previews/dialog-glass.webp","role":"other","sha256":"8baa86cab33eefe3562eed514331c312c374e92f22e4719633b09a771f9e885c"}]}
+{
+  "schemaVersion": 2,
+  "themeId": "383583d4-f96e-4464-bb0f-131415a46cd5",
+  "revision": 2,
+  "title": "Pure Black, Animated Gradient & Glass Theme",
+  "description": "I've crafted a amazing theme featuring pure black, animated gradient and glass elements. I hope you like it :)",
+  "author": {
+    "githubId": 253926674,
+    "login": "LeonDayi"
+  },
+  "tags": [
+    "dark",
+    "animated-gradient",
+    "glass"
+  ],
+  "compatibility": {
+    "minVersionCode": 100
+  },
+  "appearance": {
+    "path": "appearance.json",
+    "sha256": "6ea3d781a4cb1d82cdd7554f4c494a7af945db713f1967ae76b96b736ff539a2"
+  },
+  "previews": [
+    {
+      "path": "previews/player-normal.webp",
+      "role": "player",
+      "sha256": "8c575bba0d4ddf40f459473dc6d4c6eeb2440c0566a4ac5fceb0312db6f49ca4"
+    },
+    {
+      "path": "previews/player-glass.webp",
+      "role": "player",
+      "sha256": "562b6e1b8da4a0b879bb39bad77ed9188d2ae4b1af2716b2f44e913cdcd1eeee"
+    },
+    {
+      "path": "previews/queue-normal.webp",
+      "role": "queue",
+      "sha256": "1d15a0ac25c6068a10fbc0ffcd8c76e6ca1073681a7a40c847a1b4e4c495f89a"
+    },
+    {
+      "path": "previews/queue-glass.webp",
+      "role": "queue",
+      "sha256": "cf3d9e20bd4eec19caa1ec7c214e754477fb70ecd64310ad8159e38718c72126"
+    },
+    {
+      "path": "previews/lyrics-normal.webp",
+      "role": "other",
+      "sha256": "8cb3bdd4e695b3a795d70d4c3a7f0873f51a819ec073cde6a52b109fda7b57e0"
+    },
+    {
+      "path": "previews/lyrics-glass.webp",
+      "role": "other",
+      "sha256": "c936b18779d4880e6992b870c5a823c1429f8a18d3eb1080f81cb4d9188ecfad"
+    },
+    {
+      "path": "previews/home-normal.webp",
+      "role": "other",
+      "sha256": "273a4e77baef632aaaa80bda38557b6d1caab6339cfdd03b4a9397119431682d"
+    },
+    {
+      "path": "previews/home-glass.webp",
+      "role": "other",
+      "sha256": "04bce4079847015df6febd23f0289cf0145e14eca265fe1161cdfdc5fd19b766"
+    },
+    {
+      "path": "previews/navigation-normal.webp",
+      "role": "navigation",
+      "sha256": "4248a556bf445741b1ffd35ba190a33a24cb2fd5ef8c11d6d1ccf1c9b7b3a147"
+    },
+    {
+      "path": "previews/navigation-glass.webp",
+      "role": "navigation",
+      "sha256": "86909754924fcc89038bd8cafcf5da43784f7e2f43c3e481b53f113fc4ac904e"
+    },
+    {
+      "path": "previews/album-normal.webp",
+      "role": "other",
+      "sha256": "c40e516dd0957cb354b510fbb1519460598e7aa92bcb79b33bc5213265c19826"
+    },
+    {
+      "path": "previews/album-glass.webp",
+      "role": "other",
+      "sha256": "0fcfedf314decac37e913f0ae582375e00d66ddf468cddc5d3acd44f8d5847e6"
+    },
+    {
+      "path": "previews/artist-normal.webp",
+      "role": "other",
+      "sha256": "daf9ed90586e71fab9beafd681e9ffe5907f59a862490ef2ad3fcdb0480d72d9"
+    },
+    {
+      "path": "previews/artist-glass.webp",
+      "role": "other",
+      "sha256": "b2ada31df6ec386f9e02ed949f4e1d3ea0d74b0fc5502bd37a9d227ebce2bf06"
+    },
+    {
+      "path": "previews/playlist-normal.webp",
+      "role": "other",
+      "sha256": "1cb2e34d462aa3f35ee79d290c0c9d70fd1609db1326d47a7794ca8d5ad40d08"
+    },
+    {
+      "path": "previews/playlist-glass.webp",
+      "role": "other",
+      "sha256": "27279ae4290800fdc98519ae1c03c7f03889bbb97557a7b6c684e521f6920eae"
+    },
+    {
+      "path": "previews/local-playlist-normal.webp",
+      "role": "other",
+      "sha256": "06b533d693ba4b6669ec6663b90840287b3ba846a58655d6341a076cbd0f9d71"
+    },
+    {
+      "path": "previews/local-playlist-glass.webp",
+      "role": "other",
+      "sha256": "459d9c6b0c8660f2fda5d407be0a4eb9b1d629e8448903239f4eaa74aa12ffa6"
+    },
+    {
+      "path": "previews/search-normal.webp",
+      "role": "other",
+      "sha256": "99dbbed55e0b137c922332b4b1960164668ec2c3e27a2e896efbeeec0241c154"
+    },
+    {
+      "path": "previews/search-glass.webp",
+      "role": "other",
+      "sha256": "bcf9f3526bbc49a637226acae650bb76ce34b620e6e0ad10da1c70224855db81"
+    },
+    {
+      "path": "previews/search-albums-normal.webp",
+      "role": "other",
+      "sha256": "e38740ac74653ec20aa655d68f9613f44c5e8cf8ba5ce39d5392e31989c93308"
+    },
+    {
+      "path": "previews/search-albums-glass.webp",
+      "role": "other",
+      "sha256": "44613d60825a3ca68a7465ece2d8b28cbc61f2bb1a3fb100464be2093a638e8f"
+    },
+    {
+      "path": "previews/search-artists-normal.webp",
+      "role": "other",
+      "sha256": "eddd93dc8948aae2efdd89fbe443f4fb952c4e57bd41d284283eaf122f907adb"
+    },
+    {
+      "path": "previews/search-artists-glass.webp",
+      "role": "other",
+      "sha256": "420b334fce86df60ff882bb0a20529c3e4c467ec7d0a41916cb9a771fa1e7184"
+    },
+    {
+      "path": "previews/player-playing-normal.webp",
+      "role": "other",
+      "sha256": "9d5ae8d443f21dce767f1df8714e825e40581320af1d6e14f998c8e9e04608c9"
+    },
+    {
+      "path": "previews/player-playing-glass.webp",
+      "role": "other",
+      "sha256": "97f477875fab38bd6d836459ce8845b98118b7e47b1bf0afaf08b2cdcb1b9e56"
+    },
+    {
+      "path": "previews/miniplayer-playing-normal.webp",
+      "role": "other",
+      "sha256": "9466b5ed2412b814e4d9adf064cc9bd7d9d75c2eb0f1938c4a9c54455533b310"
+    },
+    {
+      "path": "previews/miniplayer-playing-glass.webp",
+      "role": "other",
+      "sha256": "d64286f3bb6e82d5cbfe490ff4dec7fd2371e7409c9a821feb443f7b3d0deee2"
+    },
+    {
+      "path": "previews/menu-normal.webp",
+      "role": "other",
+      "sha256": "781ed3dcb425955f6fed0edf2e8dafbe3159f50bd1f1605c3914debdee21cddf"
+    },
+    {
+      "path": "previews/menu-glass.webp",
+      "role": "other",
+      "sha256": "2f12695db1a752ec8f93b4114d8b5cc1c3f520a76decbabc5afaed4f5911f24d"
+    },
+    {
+      "path": "previews/dialog-normal.webp",
+      "role": "other",
+      "sha256": "dcb84bc8a24bad432dd39f04274d367ad2d499eb39e843ea9284bfefa7cdc083"
+    },
+    {
+      "path": "previews/dialog-glass.webp",
+      "role": "other",
+      "sha256": "8baa86cab33eefe3562eed514331c312c374e92f22e4719633b09a771f9e885c"
+    }
+  ],
+  "publishedOn": "2026-11-18"
+}
