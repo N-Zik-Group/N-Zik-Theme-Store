@@ -125,7 +125,7 @@ def validate_theme(folder, manifest_validator, appearance_validators, *, publish
     if published:
         if version != manifest["schemaVersion"]:
             raise ValueError(f"{appearance_path}: manifest and appearance schema versions must match")
-        validate_publication_compatibility(manifest, version)
+        validate_publication_compatibility(manifest, version, document)
 
     preview_paths = set()
     for preview in manifest["previews"]:
@@ -152,8 +152,12 @@ def validate_reserved_tags(manifest, verified_ids):
             raise ValueError(f'{manifest["title"]}: tag {tag!r} is reserved for verified N-Zik creators')
 
 
-def validate_publication_compatibility(manifest, appearance_version):
+def validate_publication_compatibility(manifest, appearance_version, appearance=None):
     required_version_code = MINIMUM_PUBLISHED_VERSION_CODES[appearance_version]
+    if (appearance or {}).get("categories", {}).get("colors", {}).get("mode") == "pure-black":
+        if appearance_version != 2:
+            raise ValueError("Pure Black mode requires appearance V2 for publication")
+        required_version_code = max(required_version_code, 101)
     minimum = (manifest.get("compatibility") or {}).get("minVersionCode")
     if type(minimum) is not int or minimum < required_version_code:
         raise ValueError(f"Published themes must require Android version code {required_version_code} or later")

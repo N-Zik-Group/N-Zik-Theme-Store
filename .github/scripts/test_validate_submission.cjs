@@ -461,3 +461,24 @@ for (const updating of [false, true]) {
     assert.throws(() => conflicting.publishValidatedMerge('Unsafe repair'), /must pass/);
   });
 }
+
+test('Pure Black mode publication requires V2 and feature code 101 for create and edit', () => {
+  for (const published of [false, true]) {
+    for (const appearanceVersion of [1, 2]) {
+      for (const minVersionCode of [98, 99, 100, 101]) {
+        const { candidate } = themeFixture({ published, appearanceVersion,
+          compatibility: { minVersionCode }, categories: { colors: { palette: 'dynamic', mode: 'pure-black' } } });
+        if (appearanceVersion === 2 && minVersionCode >= 101) {
+          assert.doesNotThrow(() => themeSubmission(candidate, id, login, themeId));
+        } else {
+          assert.throws(() => themeSubmission(candidate, id, login, themeId), /V2|version code 101/);
+        }
+      }
+    }
+    const namedPalette = themeFixture({ published, appearanceVersion: 2,
+      compatibility: { minVersionCode: 99 }, categories: { colors: { palette: 'pure-black', mode: 'dark' } },
+      scenes: ['player', 'queue', 'lyrics', 'home', 'navigation', 'album', 'artist', 'playlist',
+        'local-playlist', 'search', 'search-albums', 'search-artists'].flatMap(scene => [`${scene}-normal`, `${scene}-glass`]) });
+    assert.doesNotThrow(() => themeSubmission(namedPalette.candidate, id, login, themeId));
+  }
+});

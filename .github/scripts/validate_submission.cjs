@@ -104,7 +104,11 @@ function themeSubmission(candidate, id, login, themeId) {
     Array.isArray(manifest.previews), 'The index and manifest must identify the submitted revision.');
   const appearanceFile = directory + 'appearance.json';
   const appearance = JSON.parse(read(head, appearanceFile));
-  const minimumPublishedVersionCode = minimumVersionCodeByAppearance.get(appearance?.schemaVersion);
+  let minimumPublishedVersionCode = minimumVersionCodeByAppearance.get(appearance?.schemaVersion);
+  if (appearance.categories?.colors?.mode === 'pure-black') {
+    assert(appearance.schemaVersion === 2, 'Pure Black mode requires appearance V2 for publication.');
+    minimumPublishedVersionCode = Math.max(minimumPublishedVersionCode ?? 0, 101);
+  }
   assert(minimumPublishedVersionCode !== undefined, 'Unsupported appearance schema version.');
   assert(manifest.schemaVersion === format && appearance.schemaVersion === format,
     'The manifest and appearance versions must match the catalog index.');

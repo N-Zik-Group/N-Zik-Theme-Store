@@ -41,7 +41,8 @@
                 "light",
                 "dark",
                 "system",
-                "pitch-black"
+                "pitch-black",
+                "pure-black"
               ]
             },
             "customAccent": {

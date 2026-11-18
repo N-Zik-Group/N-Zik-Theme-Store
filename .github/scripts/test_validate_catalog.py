@@ -88,6 +88,28 @@ class CatalogValidationTest(unittest.TestCase):
                     with self.assertRaisesRegex(ValueError, "version code 99"):
                         self.validate_theme(published=True)
 
+    def test_pure_black_mode_requires_v2_and_publication_code_101(self):
+        appearance = {"schemaVersion": 1, "categories": {"colors": {
+            "palette": "dynamic", "mode": "pure-black"}}}
+        self.assertFalse(catalog.load_schema("appearance", 1).is_valid(appearance))
+        appearance["schemaVersion"] = 2
+        self.assertTrue(catalog.load_schema("appearance", 2).is_valid(appearance))
+        self.manifest["schemaVersion"] = 2
+        for minimum in (98, 99, 100, 101):
+            with self.subTest(minimum=minimum):
+                self.manifest["compatibility"]["minVersionCode"] = minimum
+                self.write_theme(json.dumps(appearance).encode())
+                self.validate_theme()
+                if minimum >= 101:
+                    self.validate_theme(published=True)
+                else:
+                    with self.assertRaisesRegex(ValueError, "version code 101"):
+                        self.validate_theme(published=True)
+        appearance["categories"]["colors"] = {"palette": "pure-black", "mode": "dark"}
+        self.manifest["compatibility"]["minVersionCode"] = 99
+        self.write_theme(json.dumps(appearance).encode())
+        self.validate_theme(published=True)
+
     def test_v2_player_preferences_and_retired_video_fields(self):
         appearance = json.loads(self.appearance)
         self.assertTrue(catalog.load_schema("appearance").is_valid(appearance))
