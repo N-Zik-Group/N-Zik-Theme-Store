@@ -16,12 +16,33 @@ permissions:
   statuses: read
   issues: write
   pull-requests: write
-concurrency:
-  # All moderation runs share main, including post-merge catalog writes.
-  group: theme-store-moderation-main
-  queue: max
 jobs:
+  labels:
+    if: github.event_name == 'pull_request_target' && contains(fromJSON('["opened", "reopened", "synchronize", "ready_for_review"]'), github.event.action)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+        with:
+          script: |
+            const labelSubmission = require('./.github/scripts/label_submission.cjs');
+            await labelSubmission({ github, context });
   moderation:
+    needs: labels
+    # Label failures or skipped classification must not bypass failure reconciliation.
+    if: always() && !cancelled()
+    concurrency:
+      # Only moderation serializes writes to main; classification never waits in this queue.
+      group: theme-store-moderation-main
+      queue: max
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -466,44 +487,6 @@ jobs:
                   selected[0] !== eventReasons[0] || decisions[0] !== eventDecisions[0]) return;
               decision = decisions[0];
               reason = selected[0];
-            }
-            if (!labelAdded && current.state === 'open') {
-              const files = await github.paginate(github.rest.pulls.listFiles, {
-                ...context.repo, pull_number: pull.number, per_page: 100
-              });
-              const types = new Set();
-              const themes = new Set();
-              if (isWithdrawal) types.add('theme withdrawal');
-              for (const file of isWithdrawal ? [] : files) {
-                if (file.status === 'removed') continue;
-                if (isReview && file.filename === reviewPath) {
-                  types.add('theme review');
-                  continue;
-                }
-                if (/^catalog\/creators\/\d+\/profile\.json$/.test(file.filename)) {
-                  types.add(file.status === 'added' ? 'new creator profile' : 'update creator profile');
-                }
-                const theme = /^catalog\/themes\/([0-9a-f-]{36})\/\d+\/[^/]+/.exec(file.filename);
-                if (theme) themes.add(theme[1]);
-              }
-              if (themes.size) {
-                const indexes = await Promise.all(themeIndexPaths.map(path => readThemeIndex(path, current.base.sha)));
-                const published = new Set(indexes.flatMap(index => index.themes.map(theme => theme.themeId)));
-                for (const id of themes) types.add(published.has(id) ? 'theme update' : 'new theme');
-              }
-              const labels = new Set(current.labels.map(label => label.name));
-              for (const [name, color] of Object.entries(typeLabels)) {
-                if (types.has(name) && !labels.has(name)) {
-                  await ensureLabel(name, color);
-                  await github.rest.issues.addLabels({ ...target, labels: [name] });
-                } else if (!types.has(name) && labels.has(name)) {
-                  try {
-                    await github.rest.issues.removeLabel({ ...target, name });
-                  } catch (error) {
-                    if (error.status !== 404) throw error;
-                  }
-                }
-              }
             }
             async function status(name, selectedReason = '') {
               await ensureLabel(name, statusLabels[name]);

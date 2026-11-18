@@ -7,6 +7,8 @@ const { execFileSync } = require('node:child_process');
 const { pathToFileURL } = require('node:url');
 const { test } = require('node:test');
 
+const labelSubmission = require('./label_submission.cjs');
+
 const workflow = fs.readFileSync(path.join(__dirname, '../workflows/blocked-contributors.yml'), 'utf8');
 const script = workflow.slice(workflow.indexOf('            const event = context.payload;'));
 const functions = [
@@ -149,6 +151,7 @@ function lifecycle({ liveHead = original, decision = 'refused', resetFailure = f
   const failures = [];
   const writes = [];
   const publications = [];
+  const labelFailures = [];
   let validatedRepair = false;
   let forkReads = 0;
   const faults = { reset: resetFailure, deletion: deletionFailure, close: false, publication: false };
@@ -296,7 +299,7 @@ function lifecycle({ liveHead = original, decision = 'refused', resetFailure = f
     },
   };
   return {
-    current, labels, comments, failures, faults, writes, publications, otherPulls, github,
+    current, labels, comments, failures, faults, writes, publications, otherPulls, github, labelFailures,
     head: () => refHead, blocked: () => accounts,
     publishCreator() { publishedCreator = true; },
     reapprove() { approvalId++; },
@@ -306,6 +309,8 @@ function lifecycle({ liveHead = original, decision = 'refused', resetFailure = f
         ...(dispatch ? { inputs: { pull_request_number: '7' } }
           : { action, label: { name: label }, sender: { login: 'Moderator' },
             pull_request: { ...initial, head: { ...initial.head, sha: eventHead }, labels: eventLabels } }) };
+      try { await labelSubmission({ github, context: { repo, payload } }); }
+      catch (error) { labelFailures.push(error.message); }
       const context = vm.createContext({ ...globals, context: { repo,
         runId, eventName: dispatch ? 'workflow_dispatch' : 'pull_request_target', payload } });
       await vm.runInContext(`(async () => {\n${script}\n})()`, context);
@@ -878,6 +883,73 @@ test('delayed profile merge confirmation resumes waiting themes before publicati
   assert.deepEqual(calls, ['poll', 'resume', 'announce']);
 });
 
+// Exercise the complete workflow: informational writes must precede even the first check read.
+for (const action of ['opened', 'reopened', 'synchronize', 'ready_for_review']) {
+  for (const published of [false, true]) {
+    test(`${action} labels a ${published ? 'published' : 'new'} theme immediately while CodeFactor stays pending`, async () => {
+      const h = lifecycle();
+      h.labels.clear();
+      h.labels.add(published ? 'new theme' : 'theme update');
+      const themeId = branch.slice('nzik/theme-'.length);
+      h.github.rest.pulls.listFiles = async () => ({ data: [
+        { filename: `catalog/themes/${themeId}/2/manifest.json`, status: 'added' }
+      ] });
+      h.github.rest.repos.getContent = async args => {
+        assert.equal(args.ref, main, 'Classification must read the trusted base catalog');
+        return { data: { content: Buffer.from(JSON.stringify({ themes:
+          published && args.path.endsWith('index-v2.json') ? [{ themeId }] : []
+        })).toString('base64') } };
+      };
+      let reads = 0;
+      const expected = published ? 'theme update' : 'new theme';
+      const checks = h.github.rest.checks.listForRef;
+      h.github.rest.checks.listForRef = async args => {
+        reads++;
+        assert.ok(h.labels.has(expected), 'Type label must exist before polling checks');
+        assert.ok(h.labels.has('in review'), 'Review label must exist before polling checks');
+        assert.equal(h.labels.has(published ? 'new theme' : 'theme update'), false);
+        return { data: [...(await checks(args)).data,
+          { id: 2, name: 'CodeFactor', head_sha: args.ref, status: 'in_progress', app: { id: 3 } }] };
+      };
+      await h.run({ action });
+      assert.ok(reads > 1, 'The moderation gate must still wait');
+      assert.deepEqual([...h.labels].sort(), [expected, 'in review'].sort());
+      assert.equal(h.publications.length, 0);
+      assert.equal(h.writes.length, 0);
+      assert.equal(h.comments.length, 0);
+      assert.equal(h.current.state, 'open');
+      assert.equal(h.current.locked, false);
+    });
+  }
+}
+
+for (const decision of ['accepted', 'refused', 'ban', 'cleanup pending']) {
+  test(`immediate classification preserves ${decision} without adding in review`, async () => {
+    const h = lifecycle({ decision });
+    h.labels.delete('in review');
+    h.github.rest.checks.listForRef = async () => ({ data: [] });
+    await h.run({ action: 'opened' });
+    assert.ok(h.labels.has(decision));
+    assert.equal(h.labels.has('in review'), false);
+    assert.equal(h.publications.length, 0);
+    assert.equal(h.writes.length, 0);
+  });
+}
+
+for (const merged of [false, true]) {
+  test(`immediate labels do not alter a closed ${merged ? 'merged' : 'unmerged'} PR`, async () => {
+    const h = lifecycle();
+    h.current.state = 'closed'; h.current.merged = merged;
+    h.labels.clear();
+    h.github.rest.pulls.listFiles = async () => { assert.fail('No classification on closed PRs'); };
+    h.github.rest.checks.listForRef = async () => ({ data: [] });
+    await h.run({ action: 'reopened' });
+    assert.equal(h.labels.size, 0);
+    assert.equal(h.publications.length, 0);
+    assert.equal(h.writes.length, 0);
+  });
+}
+
 for (const condition of ['pending', 'missing validation', 'pending status', 'pending workflow']) {
   test(`check gate permits no moderation writes with ${condition}`, async () => {
     const h = lifecycle({ decision: 'accepted' });
@@ -1182,4 +1254,86 @@ test('locked cleanup updates the existing bot record even when pull lock snapsho
   assert.equal(h.comments.length, count, 'Existing cleanup comment must be patched, not duplicated');
   assert.equal(h.labels.has('cleanup pending'), false);
   assert.ok(h.comments.some(comment => comment.body.includes('"completed":true')));
+});
+
+
+test('classification failure cannot prevent failed-check reconciliation', async () => {
+  const h = lifecycle({ decision: 'accepted' });
+  h.github.rest.pulls.listFiles = async () => { throw new Error('Label API unavailable'); };
+  const checks = h.github.rest.checks.listForRef;
+  h.github.rest.checks.listForRef = async args => ({ data: [...(await checks(args)).data,
+    { id: 2, name: 'CodeFactor', head_sha: args.ref, status: 'completed', conclusion: 'failure', app: { id: 3 } }] });
+  await h.run({ action: 'opened' });
+  assert.equal(h.labelFailures.length, 1);
+  assert.equal(h.labels.has('accepted'), false);
+  assert.match(h.comments[0].body, /CodeFactor/);
+  assert.equal(h.publications.length, 0);
+  assert.equal(h.writes.length, 0);
+});
+
+test('classification runs outside the serialized moderation queue and cannot skip its gate', () => {
+  assert.match(workflow, /moderation:\s+needs: labels\s+#.*\s+if: always\(\) && !cancelled\(\)\s+concurrency:/);
+  const labelsJob = workflow.slice(workflow.indexOf('  labels:'), workflow.indexOf('  moderation:'));
+  assert.doesNotMatch(labelsJob, /concurrency:/);
+  assert.match(labelsJob, /github.event.pull_request.base.sha/);
+  assert.match(labelsJob, /persist-credentials: false/);
+});
+
+
+for (const [type, ref, filename, status] of [
+  ['new creator profile', 'nzik/creator-profile-101', 'catalog/creators/101/profile.json', 'added'],
+  ['update creator profile', 'nzik/creator-profile-101', 'catalog/creators/101/profile.json', 'modified'],
+  ['theme review', `nzik/review-${branch.slice(11)}-2-101`, `catalog/themes/${branch.slice(11)}/2/reviews.json`, 'modified'],
+  ['theme withdrawal', `nzik/withdraw-${branch.slice(11)}`, 'catalog/themes/index-v2.json', 'modified']
+]) {
+  test(`${type} labels precede pending validation without moderation writes`, async () => {
+    const h = lifecycle();
+    h.labels.clear();
+    h.current.head.ref = ref;
+    h.github.rest.pulls.listFiles = async () => ({ data: [{ filename, status }] });
+    h.github.rest.checks.listForRef = async () => {
+      assert.ok(h.labels.has(type));
+      assert.ok(h.labels.has('in review'));
+      return { data: [] };
+    };
+    await h.run({ action: 'opened' });
+    assert.equal(h.labelFailures.length, 0);
+    assert.deepEqual([...h.labels].sort(), [type, 'in review'].sort());
+    assert.equal(h.publications.length, 0);
+    assert.equal(h.writes.length, 0);
+  });
+}
+
+
+for (const change of ['accepted', 'refused', 'ban', 'closed', 'merged', 'head']) {
+  test(`classification rechecks ${change} appearing during file listing`, async () => {
+    const h = lifecycle();
+    h.labels.clear();
+    h.github.rest.pulls.listFiles = async () => {
+      if (change === 'closed' || change === 'merged') h.current.state = 'closed';
+      if (change === 'merged') { h.current.merged = true; h.labels.add('merged'); }
+      if (change === 'head') h.push(concurrent);
+      if (['accepted', 'refused', 'ban'].includes(change)) h.labels.add(change);
+      return { data: [] };
+    };
+    await labelSubmission({ github: h.github, context: {
+      repo: {}, payload: { action: 'opened', pull_request: { number: 7 } }
+    } });
+    assert.equal(h.labels.has('in review'), false);
+    assert.equal(h.publications.length, 0);
+    assert.equal(h.writes.length, 0);
+  });
+}
+
+test('classification rechecks moderation after creating the review label definition', async () => {
+  const h = lifecycle();
+  h.labels.clear();
+  h.github.rest.issues.createLabel = async args => {
+    if (args.name === 'in review') h.labels.add('accepted');
+  };
+  await labelSubmission({ github: h.github, context: {
+    repo: {}, payload: { action: 'opened', pull_request: { number: 7 } }
+  } });
+  assert.equal(h.labels.has('in review'), false);
+  assert.ok(h.labels.has('accepted'));
 });
