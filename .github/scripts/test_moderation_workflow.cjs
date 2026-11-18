@@ -1020,6 +1020,47 @@ test('check gate ignores every own workflow suite, but another app named moderat
   assert.match(other.comments[0].body, /moderation/);
 });
 
+for (const [status, conclusion] of [['in_progress', null], ['queued', null], ['completed', 'failure'], ['completed', 'success']]) {
+  test(`CodeFactor is advisory when ${status}/${conclusion}`, async () => {
+    const h = lifecycle({ decision: 'accepted' });
+    const checks = h.github.rest.checks.listForRef;
+    let reads = 0;
+    h.github.rest.checks.listForRef = async args => {
+      reads++;
+      return { data: [...(await checks(args)).data,
+        { id: 2, name: 'CodeFactor', head_sha: args.ref, status, conclusion, app: { id: 25603 } }] };
+    };
+    await h.run();
+    assert.equal(h.publications.length, 1);
+    assert.equal(h.failures.length, 0);
+    assert.equal(reads, 2, 'Only the initial gate and pre-publication recheck should run, without polling');
+  });
+}
+
+for (const [status, conclusion] of [['in_progress', null], ['completed', 'failure']]) {
+  test(`another app named CodeFactor still blocks when ${status}`, async () => {
+    const h = lifecycle({ decision: 'accepted' });
+    const checks = h.github.rest.checks.listForRef;
+    h.github.rest.checks.listForRef = async args => ({ data: [...(await checks(args)).data,
+      { id: 2, name: 'CodeFactor', head_sha: args.ref, status: 'in_progress', app: { id: 25603 } },
+      { id: 3, name: 'CodeFactor', head_sha: args.ref, status, conclusion, app: { id: 9 } }] });
+    await h.run();
+    assert.equal(h.publications.length, 0);
+    assert.equal(h.writes.length, 0);
+    if (conclusion === 'failure') assert.match(h.comments[0].body, /CodeFactor/);
+  });
+}
+
+test('advisory CodeFactor does not bypass failed catalog validation', async () => {
+  const h = lifecycle({ decision: 'accepted' });
+  h.github.rest.checks.listForRef = async args => ({ data: [
+    { id: 1, name: 'validate', head_sha: args.ref, status: 'completed', conclusion: 'failure', check_suite: { id: 1 } },
+    { id: 2, name: 'CodeFactor', head_sha: args.ref, status: 'in_progress', app: { id: 25603 } }] });
+  await h.run();
+  assert.equal(h.publications.length, 0);
+  assert.match(h.comments[0].body, /validate/);
+});
+
 test('check gate paginates all APIs and keeps latest context and check name across pages', async () => {
   const h = lifecycle({ decision: 'accepted' });
   const checks = h.github.rest.checks.listForRef;

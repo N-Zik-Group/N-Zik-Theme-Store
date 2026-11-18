@@ -261,6 +261,9 @@ jobs:
               }
               for (const check of checks) {
                 if (check.head_sha !== sha || workflowPath(suites.get(check.check_suite?.id) ?? {}) === moderationPath) continue;
+                // CodeFactor is advisory; its service can leave reviews pending indefinitely.
+                // Match its immutable GitHub App ID, never a caller-controlled check name.
+                if (check.app?.id === 25603) continue;
                 // Never exclude another app's check merely because it is named moderation.
                 const owner = suites.get(check.check_suite?.id)?.workflow_id ?? check.app?.id;
                 keep(`check:${owner}:${check.name}`, { id: check.id, name: check.name,
