@@ -154,9 +154,14 @@ def validate_reserved_tags(manifest, verified_ids):
 
 def validate_publication_compatibility(manifest, appearance_version, appearance=None):
     required_version_code = MINIMUM_PUBLISHED_VERSION_CODES[appearance_version]
-    if (appearance or {}).get("categories", {}).get("colors", {}).get("mode") == "pure-black":
+    categories = (appearance or {}).get("categories", {})
+    if categories.get("colors", {}).get("mode") == "pure-black":
         if appearance_version != 2:
             raise ValueError("Pure Black mode requires appearance V2 for publication")
+        required_version_code = max(required_version_code, 101)
+    if "m3eAlwaysShowShapes" in categories.get("playerAndQueue", {}):
+        if appearance_version != 2:
+            raise ValueError("Always Show M3E Shapes requires appearance V2 for publication")
         required_version_code = max(required_version_code, 101)
     minimum = (manifest.get("compatibility") or {}).get("minVersionCode")
     if type(minimum) is not int or minimum < required_version_code:

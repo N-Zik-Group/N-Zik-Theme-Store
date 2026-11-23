@@ -265,6 +265,9 @@
                 "random"
               ]
             },
+            "m3eAlwaysShowShapes": {
+              "type": "boolean"
+            },
             "blurStrength": {
               "type": "number",
               "minimum": 0,

@@ -109,6 +109,10 @@ function themeSubmission(candidate, id, login, themeId) {
     assert(appearance.schemaVersion === 2, 'Pure Black mode requires appearance V2 for publication.');
     minimumPublishedVersionCode = Math.max(minimumPublishedVersionCode ?? 0, 101);
   }
+  if (Object.hasOwn(appearance.categories?.playerAndQueue ?? {}, 'm3eAlwaysShowShapes')) {
+    assert(appearance.schemaVersion === 2, 'Always Show M3E Shapes requires appearance V2 for publication.');
+    minimumPublishedVersionCode = Math.max(minimumPublishedVersionCode ?? 0, 101);
+  }
   assert(minimumPublishedVersionCode !== undefined, 'Unsupported appearance schema version.');
   assert(manifest.schemaVersion === format && appearance.schemaVersion === format,
     'The manifest and appearance versions must match the catalog index.');

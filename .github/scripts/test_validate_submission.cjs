@@ -482,3 +482,19 @@ test('Pure Black mode publication requires V2 and feature code 101 for create an
     assert.doesNotThrow(() => themeSubmission(namedPalette.candidate, id, login, themeId));
   }
 });
+
+test('M3E shape overrides require code 101 for create and edit', () => {
+  for (const published of [false, true]) {
+    for (const enabled of [true, false]) {
+      for (const minVersionCode of [100, 101]) {
+        const { candidate } = themeFixture({ published, appearanceVersion: 2,
+          compatibility: { minVersionCode }, categories: { playerAndQueue: { m3eAlwaysShowShapes: enabled } } });
+        if (minVersionCode === 101) {
+          assert.doesNotThrow(() => themeSubmission(candidate, id, login, themeId));
+        } else {
+          assert.throws(() => themeSubmission(candidate, id, login, themeId), /version code 101/);
+        }
+      }
+    }
+  }
+});

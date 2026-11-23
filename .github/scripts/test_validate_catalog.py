@@ -122,6 +122,16 @@ class CatalogValidationTest(unittest.TestCase):
         player.update(openingMode="remember-last", holdToSpeedUp=True, holdToSpeedUpRate=1.1)
         self.write_theme(json.dumps(appearance).encode())
         self.validate_theme()
+        self.manifest["compatibility"]["minVersionCode"] = 100
+        catalog.validate_publication_compatibility(self.manifest, 2, appearance)
+        for enabled in (True, False):
+            with self.subTest(m3e_shapes=enabled):
+                player["m3eAlwaysShowShapes"] = enabled
+                self.assertTrue(v2.is_valid(appearance))
+                with self.assertRaisesRegex(ValueError, "version code 101"):
+                    catalog.validate_publication_compatibility(self.manifest, 2, appearance)
+                catalog.validate_publication_compatibility({"compatibility": {"minVersionCode": 101}}, 2, appearance)
+        del player["m3eAlwaysShowShapes"]
         for field, value in (("openingMode", "automatic"), ("holdToSpeedUp", 1),
                              ("holdToSpeedUpRate", 1.09), ("holdToSpeedUpRate", 4.01),
                              ("actionBarOrder", ["video"])):
