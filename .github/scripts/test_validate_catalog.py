@@ -123,6 +123,21 @@ class CatalogValidationTest(unittest.TestCase):
         legacy = catalog.load_json(path / "1" / "manifest.json")
         catalog.validate_gallery(legacy, colors=colors)
 
+    def test_v3_smart_shuffle_is_an_independent_music_toolbar_action(self):
+        custom = {
+            surface: {"order": ["shuffle", "smartShuffle"], "visibility": {"shuffle": False, "smartShuffle": True}}
+            for surface in ("albumOnline", "artistLibrary", "onlinePlaylist", "queue")
+        }
+        document = {"schemaVersion": 3, "categories": {"navigation": {"position": "bottom-floating", "labels": "icon-only", "toolbars": {
+            "custom": custom,
+            "localPlaylist": {"order": ["smart-shuffle", "rename-author", "change-browse-id"],
+                              "visibility": {"smart_shuffle": True, "rename_author": False, "change_browse_id": False}},
+        }}}}
+        validator = catalog.load_schema("appearance", 3)
+        self.assertTrue(validator.is_valid(document))
+        custom["podcast"] = {"order": ["smartShuffle"]}
+        self.assertFalse(validator.is_valid(document))
+
     def test_v3_bottom_toolbar_can_include_audio_video_with_an_optional_switch(self):
         path = catalog.CATALOG / "themes" / MINIMAL_THEME_ID / "2" / "appearance.json"
         appearance = catalog.load_json(path, catalog.THEME_DOCUMENT_LIMIT)
