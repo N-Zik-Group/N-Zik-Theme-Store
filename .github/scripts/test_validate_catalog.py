@@ -126,10 +126,12 @@ class CatalogValidationTest(unittest.TestCase):
     def test_v3_smart_shuffle_is_an_independent_music_toolbar_action(self):
         custom = {
             surface: {"order": ["shuffle", "smartShuffle"], "visibility": {"shuffle": False, "smartShuffle": True}}
-            for surface in ("albumOnline", "artistLibrary", "onlinePlaylist", "queue")
+            for surface in ("albumOnline", "artistOverview", "artistLibrary", "onlinePlaylist", "queue")
         }
         document = {"schemaVersion": 3, "categories": {"navigation": {"position": "bottom-floating", "labels": "icon-only", "toolbars": {
             "custom": custom,
+            **{group: {"all": {"order": ["smart-shuffle"], "visibility": {"smart_shuffle": True}}}
+               for group in ("albums", "artists", "library")},
             "localPlaylist": {"order": ["smart-shuffle", "rename-author", "change-browse-id"],
                               "visibility": {"smart_shuffle": True, "rename_author": False, "change_browse_id": False}},
         }}}}
@@ -154,6 +156,20 @@ class CatalogValidationTest(unittest.TestCase):
         self.assertFalse(validator.is_valid(appearance))
         player["actionButtons"]["audioVideo"] = True
         player["bottomActionOrder"].append("audioVideo")
+        self.assertFalse(validator.is_valid(appearance))
+
+    def test_v3_smart_shuffle_is_configurable_in_both_players(self):
+        path = catalog.CATALOG / "themes" / MINIMAL_THEME_ID / "2" / "appearance.json"
+        appearance = catalog.load_json(path, catalog.THEME_DOCUMENT_LIMIT)
+        player = appearance["categories"]["playerAndQueue"]
+        player["bottomActionOrder"].append("smart-shuffle")
+        player["actionButtons"]["smartShuffle"] = True
+        player["topActionSlots"] = ["collapsePlayer", "smart-shuffle", "menu"]
+        player["miniPlayer"]["buttonOrder"].append("smart-shuffle")
+        player["miniPlayer"]["visibleButtons"]["smartShuffle"] = True
+        validator = catalog.load_schema("appearance", 3)
+        self.assertTrue(validator.is_valid(appearance))
+        player["topActionSlots"] = ["smart-shuffle", "smart-shuffle", "menu"]
         self.assertFalse(validator.is_valid(appearance))
 
     def test_v3_cover_dimming_fields_are_optional_and_bounded(self):
