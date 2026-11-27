@@ -27,7 +27,7 @@ const fork = { id: 2, owner: { id: 101, login: 'Creator' }, name: 'N-Zik-Theme-S
 test('withdrawal requires all indexed revisions and preserves unrelated catalog metadata', async () => {
   const themeId = branch.slice('nzik/theme-'.length);
   const withdrawalRef = `nzik/withdraw-${themeId}`;
-  const themeIndexPaths = ['catalog/themes/index.json', 'catalog/themes/index-v2.json'];
+  const themeIndexPaths = ['catalog/themes/index.json', 'catalog/themes/index-v2.json', 'catalog/themes/index-v3.json'];
   const manifest = revision => Buffer.from(JSON.stringify({ themeId, revision, author: { githubId: 101 } }));
   const entry = revision => ({
     themeId, revision, manifestSha256: require('node:crypto').createHash('sha256').update(manifest(revision)).digest('hex'),
@@ -35,6 +35,7 @@ test('withdrawal requires all indexed revisions and preserves unrelated catalog 
   const indexes = new Map([
     [themeIndexPaths[0], { schemaVersion: 1, themes: [entry(1)] }],
     [themeIndexPaths[1], { schemaVersion: 1, previewLimit: 80, legacyMaxVersionCode: 98, themes: [entry(2)] }],
+    [themeIndexPaths[2], { schemaVersion: 1, previewLimit: 80, legacyMaxVersionCode: 98, themes: [entry(3)] }],
   ]);
   const functions = script.slice(script.indexOf('            function readThemeIndex('),
     script.indexOf('            const themeLabels'));
@@ -51,11 +52,14 @@ test('withdrawal requires all indexed revisions and preserves unrelated catalog 
   };
   await assert.rejects(validate(current, candidate), /every catalog that lists it/);
   candidate.changes.push({ filename: themeIndexPaths[0], status: 'modified' });
+  await assert.rejects(validate(current, candidate), /every catalog that lists it/);
+  candidate.changes.push({ filename: themeIndexPaths[2], status: 'modified' });
   const repaired = await validate(current, candidate);
   assert.deepEqual(JSON.parse(JSON.stringify(repaired.get(themeIndexPaths[1]))), {
     schemaVersion: 1, previewLimit: 80, legacyMaxVersionCode: 98, themes: [],
   });
   assert.equal(repaired.get(themeIndexPaths[0]).themes.length, 0);
+  assert.equal(repaired.get(themeIndexPaths[2]).themes.length, 0);
 });
 
 function harness({ race, missingInstallation = false, environment = {} } = {}) {

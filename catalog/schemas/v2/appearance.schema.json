@@ -1168,6 +1168,277 @@
                     }
                   }
                 },
+                "custom": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "minProperties": 1,
+                  "properties": {
+                    "albumOnline": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "minProperties": 1,
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": ["bookmark", "search", "locate", "shuffle", "radio", "playNext", "enqueue", "select", "favorites", "addToPlaylist", "download", "deleteDownloads", "changeTitle", "changeArtists", "changeCover"]
+                          }
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "minProperties": 1,
+                          "propertyNames": {
+                            "enum": ["bookmark", "search", "locate", "shuffle", "radio", "playNext", "enqueue", "select", "favorites", "addToPlaylist", "download", "deleteDownloads", "changeTitle", "changeArtists", "changeCover"]
+                          },
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "albumDevice": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "minProperties": 1,
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": ["bookmark", "search", "shuffle", "playNext", "enqueue", "select", "addToPlaylist"]
+                          }
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "minProperties": 1,
+                          "propertyNames": {
+                            "enum": ["bookmark", "search", "shuffle", "playNext", "enqueue", "select", "addToPlaylist"]
+                          },
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "artistOverview": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "minProperties": 1,
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": ["follow", "search", "shuffle", "radio", "playNext", "enqueue", "select", "addToPlaylist", "download", "deleteDownloads"]
+                          }
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "minProperties": 1,
+                          "propertyNames": {
+                            "enum": ["follow", "search", "shuffle", "radio", "playNext", "enqueue", "select", "addToPlaylist", "download", "deleteDownloads"]
+                          },
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "artistLibrary": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "minProperties": 1,
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": ["follow", "search", "shuffle", "playNext", "enqueue", "select", "addToPlaylist", "download", "deleteDownloads"]
+                          }
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "minProperties": 1,
+                          "propertyNames": {
+                            "enum": ["follow", "search", "shuffle", "playNext", "enqueue", "select", "addToPlaylist", "download", "deleteDownloads"]
+                          },
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "artistDevice": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "minProperties": 1,
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": ["follow", "search", "shuffle", "playNext", "enqueue", "select", "addToPlaylist"]
+                          }
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "minProperties": 1,
+                          "propertyNames": {
+                            "enum": ["follow", "search", "shuffle", "playNext", "enqueue", "select", "addToPlaylist"]
+                          },
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "onlinePlaylist": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "minProperties": 1,
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": ["bookmark", "search", "download", "deleteDownloads", "playNext", "enqueue", "shuffle", "radio", "addToPlaylist", "favorites", "select"]
+                          }
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "minProperties": 1,
+                          "propertyNames": {
+                            "enum": ["bookmark", "search", "download", "deleteDownloads", "playNext", "enqueue", "shuffle", "radio", "addToPlaylist", "favorites", "select"]
+                          },
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "podcast": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "minProperties": 1,
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": ["bookmark", "search", "download", "deleteDownloads", "playNext", "enqueue", "shuffle", "radio", "addToPlaylist", "favorites", "select"]
+                          }
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "minProperties": 1,
+                          "propertyNames": {
+                            "enum": ["bookmark", "search", "download", "deleteDownloads", "playNext", "enqueue", "shuffle", "radio", "addToPlaylist", "favorites", "select"]
+                          },
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "header": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "minProperties": 1,
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": ["notifications", "search", "profileMenu"]
+                          }
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "minProperties": 1,
+                          "propertyNames": {
+                            "enum": ["notifications", "search", "profileMenu"]
+                          },
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "playerTop": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "minProperties": 1,
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": ["collapsePlayer", "audioVideo", "menu"]
+                          }
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "minProperties": 1,
+                          "propertyNames": {
+                            "enum": ["collapsePlayer", "audioVideo", "menu"]
+                          },
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "queue": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "minProperties": 1,
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": ["locate", "search", "discover", "download", "deleteDownloads", "positionLock", "repeat", "shuffle", "select", "favorites", "remove", "addToPlaylist", "export"]
+                          }
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "minProperties": 1,
+                          "propertyNames": {
+                            "enum": ["locate", "search", "discover", "download", "deleteDownloads", "positionLock", "repeat", "shuffle", "select", "favorites", "remove", "addToPlaylist", "export"]
+                          },
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "history": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "minProperties": 1,
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": ["sort"]
+                          }
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "minProperties": 1,
+                          "propertyNames": {
+                            "enum": ["sort"]
+                          },
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
                 "dockOrder": {
                   "type": "array",
                   "items": {
@@ -1652,10 +1923,12 @@
                       "extensions",
                       "debug-logs",
                       "maintenance",
-                      "rescue-center"
+                      "rescue-center",
+                      "search",
+                      "notifications"
                     ]
                   },
-                  "maxItems": 18,
+                  "maxItems": 20,
                   "allOf": [
                     {
                       "contains": {
@@ -1754,6 +2027,20 @@
                       },
                       "minContains": 0,
                       "maxContains": 1
+                    },
+                    {
+                      "contains": {
+                        "const": "search"
+                      },
+                      "minContains": 0,
+                      "maxContains": 1
+                    },
+                    {
+                      "contains": {
+                        "const": "notifications"
+                      },
+                      "minContains": 0,
+                      "maxContains": 1
                     }
                   ]
                 },
@@ -1794,6 +2081,12 @@
                   "type": "boolean"
                 },
                 "rescue-center": {
+                  "type": "boolean"
+                },
+                "search": {
+                  "type": "boolean"
+                },
+                "notifications": {
                   "type": "boolean"
                 }
               }

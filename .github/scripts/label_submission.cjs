@@ -12,7 +12,7 @@ module.exports = async function ({ github, context }) {
   const isReview = Boolean(review) && review[3] === String(current.user.id);
   const reviewPath = isReview ? `catalog/themes/${review[1]}/${review[2]}/reviews.json` : '';
   const managedSubmission = isSubmission || isThemeSubmission || isWithdrawal || isReview;
-  const themeIndexPaths = ['catalog/themes/index.json', 'catalog/themes/index-v2.json'];
+  const themeIndexPaths = ['catalog/themes/index.json', 'catalog/themes/index-v2.json', 'catalog/themes/index-v3.json'];
   const statusLabels = { 'in review': 'fbca04' };
   const typeLabels = {
     'new creator profile': '1d76db', 'update creator profile': '0052cc',

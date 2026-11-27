@@ -34,7 +34,9 @@ jobs:
               return;
             }
             if (match?.[2] === 'theme') {
-              const indexes = await Promise.all(['catalog/themes/index-v2.json', 'catalog/themes/index.json'].map(read));
+              const indexes = await Promise.all([
+                'catalog/themes/index-v3.json', 'catalog/themes/index-v2.json', 'catalog/themes/index.json'
+              ].map(read));
               const revisions = indexes.flatMap(index => index.themes.filter(theme => theme.themeId === match[1]));
               const latest = revisions.sort((a, b) => b.revision - a.revision)[0];
               const manifest = latest && await read('catalog/themes/' + latest.themeId + '/' + latest.revision + '/manifest.json');

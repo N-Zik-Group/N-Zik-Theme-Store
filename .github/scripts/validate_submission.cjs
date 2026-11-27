@@ -6,9 +6,10 @@ const { isDeepStrictEqual } = require('node:util');
 
 const legacyThemeIndexPath = 'catalog/themes/index.json';
 const currentThemeIndexPath = 'catalog/themes/index-v2.json';
-const themeIndexPaths = [legacyThemeIndexPath, currentThemeIndexPath];
+const v3ThemeIndexPath = 'catalog/themes/index-v3.json';
+const themeIndexPaths = [legacyThemeIndexPath, currentThemeIndexPath, v3ThemeIndexPath];
 const creatorIndexPath = 'catalog/creators/index.json';
-const minimumVersionCodeByAppearance = new Map([[1, 97], [2, 99]]);
+const minimumVersionCodeByAppearance = new Map([[1, 97], [2, 99], [3, 101]]);
 const fixedDarkPalettes = new Set(['pure-black', 'modern-black']);
 const baseScenes = ['player', 'queue', 'lyrics', 'home', 'navigation', 'album', 'artist',
   'playlist', 'local-playlist', 'search', 'search-albums', 'search-artists'];
@@ -70,7 +71,7 @@ function themeSubmission(candidate, id, login, themeId) {
   assert(changedIndexes.length === 1 && changedIndexes[0].status === 'modified',
     'A theme submission must update exactly one catalog index.');
   const themeIndexPath = changedIndexes[0].filename;
-  const format = themeIndexPath === currentThemeIndexPath ? 2 : 1;
+  const format = themeIndexPaths.indexOf(themeIndexPath) + 1;
   const previousIndex = JSON.parse(read(ancestor, themeIndexPath));
   const currentIndex = JSON.parse(read(base, themeIndexPath));
   const submittedIndex = JSON.parse(read(head, themeIndexPath));
@@ -83,6 +84,14 @@ function themeSubmission(candidate, id, login, themeId) {
     const previousLegacy = JSON.parse(read(ancestor, legacyThemeIndexPath)).themes.find(identifies);
     predecessor = JSON.parse(read(base, legacyThemeIndexPath)).themes.find(identifies);
     assert(isDeepStrictEqual(previousLegacy, predecessor), 'The legacy theme changed on main. Resubmit from N-Zik.');
+  }
+  if (format === 3) {
+    for (const olderPath of [legacyThemeIndexPath, currentThemeIndexPath]) {
+      const olderPrevious = JSON.parse(read(ancestor, olderPath)).themes.find(identifies);
+      const olderCurrent = JSON.parse(read(base, olderPath)).themes.find(identifies);
+      assert(isDeepStrictEqual(olderPrevious, olderCurrent), 'An older theme listing changed on main. Resubmit from N-Zik.');
+      if (olderCurrent && olderCurrent.revision > (predecessor?.revision ?? 0)) predecessor = olderCurrent;
+    }
   }
   assert(Number.isSafeInteger(entry.revision) && entry.revision === (predecessor?.revision ?? 0) + 1,
     'A theme submission must add exactly its next revision.');
@@ -106,11 +115,21 @@ function themeSubmission(candidate, id, login, themeId) {
   const appearance = JSON.parse(read(head, appearanceFile));
   let minimumPublishedVersionCode = minimumVersionCodeByAppearance.get(appearance?.schemaVersion);
   if (appearance.categories?.colors?.mode === 'pure-black') {
-    assert(appearance.schemaVersion === 2, 'Pure Black mode requires appearance V2 for publication.');
+    assert(appearance.schemaVersion >= 2, 'Pure Black mode requires appearance V2 or later for publication.');
     minimumPublishedVersionCode = Math.max(minimumPublishedVersionCode ?? 0, 101);
   }
   if (Object.hasOwn(appearance.categories?.playerAndQueue ?? {}, 'm3eAlwaysShowShapes')) {
-    assert(appearance.schemaVersion === 2, 'Always Show M3E Shapes requires appearance V2 for publication.');
+    assert(appearance.schemaVersion >= 2, 'Always Show M3E Shapes requires appearance V2 or later for publication.');
+    minimumPublishedVersionCode = Math.max(minimumPublishedVersionCode ?? 0, 101);
+  }
+  if (Object.hasOwn(appearance.categories?.navigation?.toolbars ?? {}, 'custom')) {
+    assert(appearance.schemaVersion >= 2, 'Custom toolbars require appearance V2 or later for publication.');
+    minimumPublishedVersionCode = Math.max(minimumPublishedVersionCode ?? 0, 101);
+  }
+  const burgerMenu = appearance.categories?.navigation?.burgerMenu ?? {};
+  if (['search', 'notifications'].some(id => Object.hasOwn(burgerMenu, id) ||
+    (Array.isArray(burgerMenu.order) && burgerMenu.order.includes(id)))) {
+    assert(appearance.schemaVersion >= 2, 'Burger menu shortcuts require appearance V2 or later for publication.');
     minimumPublishedVersionCode = Math.max(minimumPublishedVersionCode ?? 0, 101);
   }
   assert(minimumPublishedVersionCode !== undefined, 'Unsupported appearance schema version.');
@@ -122,14 +141,14 @@ function themeSubmission(candidate, id, login, themeId) {
   const legacyMaxVersionCode = minimumVersionCodeByAppearance.get(2) - 1;
   assert(format !== 1 || manifest.compatibility.minVersionCode <= legacyMaxVersionCode,
     `Published V1 themes cannot require an Android version code above ${legacyMaxVersionCode}.`);
-  const previewLimit = format === 2 ? catalogPreviewLimit(currentIndex) : 36;
+  const previewLimit = format >= 2 ? catalogPreviewLimit(currentIndex) : 36;
   assert(manifest.previews.length <= previewLimit, `The catalog allows at most ${previewLimit} previews.`);
   const expected = new Set([manifestFile, appearanceFile]);
   for (const preview of manifest.previews) {
     assert(typeof preview.path === 'string' && previewPath.test(preview.path), 'Invalid preview path.');
     expected.add(directory + preview.path);
   }
-  if (format === 2 && fixedDarkPalettes.has(appearance.categories?.colors?.palette)) {
+  if (format >= 2 && fixedDarkPalettes.has(appearance.categories?.colors?.palette)) {
     const scenes = new Set(manifest.previews.map(preview => path.posix.basename(preview.path, path.posix.extname(preview.path))));
     const missing = baseScenes.flatMap(scene => [`${scene}-normal`, `${scene}-glass`])
       .filter(scene => !scenes.has(scene));
@@ -225,8 +244,9 @@ function trustedCandidate(root, current) {
     return changes;
   }
   const changes = diff(ancestor, head.sha);
-  const fileLimit = changes.some(file => file.filename === currentThemeIndexPath)
-    ? catalogPreviewLimit(JSON.parse(read(base.sha, currentThemeIndexPath))) + 4
+  const modernIndexes = changes.filter(file => file.filename === currentThemeIndexPath || file.filename === v3ThemeIndexPath);
+  const fileLimit = modernIndexes.length
+    ? Math.max(...modernIndexes.map(file => catalogPreviewLimit(JSON.parse(read(base.sha, file.filename))))) + 4
     : 40;
   assert(changes.length > 0 && changes.length <= fileLimit, 'Unexpected submission file count.');
   function blob(filename) {

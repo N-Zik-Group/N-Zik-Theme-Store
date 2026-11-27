@@ -13,6 +13,7 @@ const themeId = '9fabc1ee-37b1-4d82-8d3b-f7b141ceb831';
 const themePath = `catalog/themes/${themeId}/`;
 const themeIndex = 'catalog/themes/index.json';
 const currentThemeIndex = 'catalog/themes/index-v2.json';
+const v3ThemeIndex = 'catalog/themes/index-v3.json';
 const profilePath = `catalog/creators/${id}/profile.json`;
 const creatorIndex = 'catalog/creators/index.json';
 const encode = value => Buffer.from(JSON.stringify(value));
@@ -38,15 +39,16 @@ function makeCandidate() {
 
 function themeFixture({ published = false, submittedOwner = id, publishedOwner = id, publishedLogin = login,
   compatibility = { minVersionCode: 97 }, appearanceVersion = 1, manifestVersion = appearanceVersion,
-  indexVersion = manifestVersion === 2 ? 2 : 1, previewCount = 1, previewLimit = 80, legacyOnly = false,
+  indexVersion = manifestVersion === 2 || manifestVersion === 3 ? manifestVersion : 1,
+  previewCount = 1, previewLimit = 80, legacyOnly = false, v2Only = false,
   categories = {}, scenes = Array.from({ length: previewCount }, (_, index) => `photo-${index}-normal`) } = {}) {
   const { candidate, put } = makeCandidate();
   const profileSha256 = put('base', profilePath, { githubId: id, login });
   put('base', creatorIndex, { schemaVersion: 1, creators: [{ githubId: id, profileSha256 }] });
-  const revision = published || legacyOnly ? 2 : 1;
+  const revision = published || legacyOnly || v2Only ? 2 : 1;
   const manifestFile = `${themePath}${revision}/manifest.json`;
   const oldManifest = { themeId, revision: 1, author: { githubId: publishedOwner, login: publishedLogin } };
-  const previous = published || legacyOnly ? [{
+  const previous = published || legacyOnly || v2Only ? [{
     themeId, revision: 1, manifestSha256: put('base', `${themePath}1/manifest.json`, oldManifest),
   }] : [];
   const previews = scenes.map(scene => ({ path: `previews/${scene}.webp` }));
@@ -57,14 +59,19 @@ function themeFixture({ published = false, submittedOwner = id, publishedOwner =
   put('head', `${themePath}${revision}/appearance.json`, { schemaVersion: appearanceVersion, categories });
   const reviewsFile = `${themePath}${revision}/reviews.json`;
   put('head', reviewsFile, { schemaVersion: 1, reviews: [] });
-  const indexPath = indexVersion === 2 ? currentThemeIndex : themeIndex;
-  const index = { schemaVersion: 1, ...(indexVersion === 2 && { previewLimit, legacyMaxVersionCode: 98 }) };
-  put('ancestor', indexPath, { ...index, themes: legacyOnly ? [] : previous });
-  put('base', indexPath, { ...index, themes: legacyOnly ? [] : previous });
+  const indexPath = [themeIndex, currentThemeIndex, v3ThemeIndex][indexVersion - 1];
+  const index = { schemaVersion: 1, ...(indexVersion >= 2 && { previewLimit, legacyMaxVersionCode: 98 }) };
+  put('ancestor', indexPath, { ...index, themes: legacyOnly || v2Only ? [] : previous });
+  put('base', indexPath, { ...index, themes: legacyOnly || v2Only ? [] : previous });
   put('head', indexPath, { ...index, themes: [entry] });
-  if (indexVersion === 2) {
+  if (indexVersion >= 2) {
     for (const ref of ['ancestor', 'base']) {
       put(ref, themeIndex, { schemaVersion: 1, themes: legacyOnly ? previous : [] });
+    }
+  }
+  if (indexVersion === 3) {
+    for (const ref of ['ancestor', 'base']) {
+      put(ref, currentThemeIndex, { ...index, themes: v2Only ? previous : [] });
     }
   }
   candidate.changes = [
@@ -131,8 +138,24 @@ test('appearance v2 publication requires Android code 99 or later', () => {
 });
 
 test('theme publication rejects an unsupported appearance version', () => {
-  const { candidate } = themeFixture({ appearanceVersion: 3 });
+  const { candidate } = themeFixture({ appearanceVersion: 4 });
   assert.throws(() => themeSubmission(candidate, id, login, themeId), /Unsupported appearance schema version/);
+});
+
+test('V3 publication requires code 101 and the latest V1 or V2 predecessor', () => {
+  for (const predecessor of [{}, { legacyOnly: true }, { v2Only: true }, { published: true }]) {
+    const options = { ...predecessor, appearanceVersion: 3, compatibility: { minVersionCode: 101 } };
+    const { candidate, entry } = themeFixture(options);
+    const submission = themeSubmission(candidate, id, login, themeId);
+    assert.equal(submission.indexPath, v3ThemeIndex);
+    assert.deepEqual(submission.index.themes, [entry]);
+    const tooOld = themeFixture({ ...options, compatibility: { minVersionCode: 100 } });
+    assert.throws(() => themeSubmission(tooOld.candidate, id, login, themeId), /version code 101/);
+  }
+  const wrongOwner = themeFixture({
+    v2Only: true, appearanceVersion: 3, compatibility: { minVersionCode: 101 }, publishedOwner: id + 1,
+  });
+  assert.throws(() => themeSubmission(wrongOwner.candidate, id, login, themeId), /Only the owner/);
 });
 
 test('theme publication enforces the selected index and its trusted preview limit', () => {
@@ -494,6 +517,36 @@ test('M3E shape overrides require code 101 for create and edit', () => {
         } else {
           assert.throws(() => themeSubmission(candidate, id, login, themeId), /version code 101/);
         }
+      }
+    }
+  }
+});
+
+test('custom toolbars require code 101 for create and edit', () => {
+  const categories = { navigation: { toolbars: { custom: { albumOnline: {
+    order: ['enqueue', 'bookmark'], visibility: { bookmark: false },
+  } } } } };
+  for (const published of [false, true]) {
+    for (const minVersionCode of [100, 101]) {
+      const { candidate } = themeFixture({ published, appearanceVersion: 2, compatibility: { minVersionCode }, categories });
+      if (minVersionCode === 101) {
+        assert.doesNotThrow(() => themeSubmission(candidate, id, login, themeId));
+      } else {
+        assert.throws(() => themeSubmission(candidate, id, login, themeId), /version code 101/);
+      }
+    }
+  }
+});
+
+test('burger shortcut flags and ordering require code 101', () => {
+  for (const burgerMenu of [{ search: true }, { order: ['history', 'notifications'] }]) {
+    for (const minVersionCode of [100, 101]) {
+      const categories = { navigation: { burgerMenu } };
+      const { candidate } = themeFixture({ appearanceVersion: 2, compatibility: { minVersionCode }, categories });
+      if (minVersionCode === 101) {
+        assert.doesNotThrow(() => themeSubmission(candidate, id, login, themeId));
+      } else {
+        assert.throws(() => themeSubmission(candidate, id, login, themeId), /version code 101/);
       }
     }
   }

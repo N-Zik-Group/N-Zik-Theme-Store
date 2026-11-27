@@ -18,7 +18,7 @@ PREVIEW_LIMIT = 4 * 1024 * 1024
 CATALOG_SNAPSHOT_LIMIT = 16 * 1024 * 1024
 DEMO_INDEX_LIMIT = 8 * 1024
 STOCK_INDEX_LIMIT = 64 * 1024
-MINIMUM_PUBLISHED_VERSION_CODES = {1: 97, 2: 99}
+MINIMUM_PUBLISHED_VERSION_CODES = {1: 97, 2: 99, 3: 101}
 LEGACY_MAX_VERSION_CODE = MINIMUM_PUBLISHED_VERSION_CODES[2] - 1
 
 
@@ -156,12 +156,23 @@ def validate_publication_compatibility(manifest, appearance_version, appearance=
     required_version_code = MINIMUM_PUBLISHED_VERSION_CODES[appearance_version]
     categories = (appearance or {}).get("categories", {})
     if categories.get("colors", {}).get("mode") == "pure-black":
-        if appearance_version != 2:
-            raise ValueError("Pure Black mode requires appearance V2 for publication")
+        if appearance_version < 2:
+            raise ValueError("Pure Black mode requires appearance V2 or later for publication")
         required_version_code = max(required_version_code, 101)
     if "m3eAlwaysShowShapes" in categories.get("playerAndQueue", {}):
-        if appearance_version != 2:
-            raise ValueError("Always Show M3E Shapes requires appearance V2 for publication")
+        if appearance_version < 2:
+            raise ValueError("Always Show M3E Shapes requires appearance V2 or later for publication")
+        required_version_code = max(required_version_code, 101)
+    if "custom" in categories.get("navigation", {}).get("toolbars", {}):
+        if appearance_version < 2:
+            raise ValueError("Custom toolbars require appearance V2 or later for publication")
+        required_version_code = max(required_version_code, 101)
+    burger_menu = categories.get("navigation", {}).get("burgerMenu", {})
+    if {"search", "notifications"}.intersection(burger_menu) or {"search", "notifications"}.intersection(
+        burger_menu.get("order", [])
+    ):
+        if appearance_version < 2:
+            raise ValueError("Burger menu shortcuts require appearance V2 or later for publication")
         required_version_code = max(required_version_code, 101)
     minimum = (manifest.get("compatibility") or {}).get("minVersionCode")
     if type(minimum) is not int or minimum < required_version_code:
@@ -172,7 +183,7 @@ def validate_publication_compatibility(manifest, appearance_version, appearance=
 
 def validate_gallery(manifest, *, colors=None):
     colors = colors or {}
-    system_gallery = (manifest.get("schemaVersion") == 2 and colors.get("mode", "system") == "system"
+    system_gallery = (manifest.get("schemaVersion", 1) >= 2 and colors.get("mode", "system") == "system"
                       and colors.get("palette") not in FIXED_DARK_PALETTES)
     previews = {}
     for preview in manifest["previews"]:
@@ -194,7 +205,7 @@ def validate_gallery(manifest, *, colors=None):
     if missing:
         raise ValueError(f'{manifest["title"]}: missing previews: {", ".join(missing)}')
     paired_scenes = ("player-playing", "miniplayer-playing")
-    if manifest.get("schemaVersion") == 2:
+    if manifest.get("schemaVersion", 1) >= 2:
         paired_scenes += ("menu", "dialog")
     for scene in paired_scenes:
         names = [f"{scene}{suffix}-{variant}" for suffix in suffixes for variant in ("normal", "glass")]
@@ -350,7 +361,7 @@ def validate_theme_index(index_path, version, appearance_validators, verified_id
         manifest, appearance = validate_theme(folder, manifest_validator, appearance_validators, published=True)
         if manifest["author"]["githubId"] not in creator_ids:
             raise ValueError(f"{manifest_path}: the creator profile must be published before its themes")
-        if version == 2 and len(manifest["previews"]) > catalog["previewLimit"]:
+        if version >= 2 and len(manifest["previews"]) > catalog["previewLimit"]:
             raise ValueError(f"{manifest_path}: gallery exceeds the catalog previewLimit of {catalog['previewLimit']}")
         validate_gallery(manifest, colors=appearance["categories"].get("colors"))
         validate_reserved_tags(manifest, verified_ids)
@@ -394,13 +405,14 @@ def main():
     themes = CATALOG / "themes"
     legacy_theme_ids = validate_theme_index(themes / "index.json", 1, appearance_validators, verified_ids, creator_ids)
     current_theme_ids = validate_theme_index(themes / "index-v2.json", 2, appearance_validators, verified_ids, creator_ids)
+    v3_theme_ids = validate_theme_index(themes / "index-v3.json", 3, appearance_validators, verified_ids, creator_ids)
 
     for reviews in (CATALOG / "themes").glob("*/*/reviews.json"):
         if not (reviews.parent / "manifest.json").is_file():
             raise ValueError(f"{reviews}: missing revision manifest")
         validate_reviews(reviews.parent, reviews_validator)
 
-    print(f"Validated the schemas, examples, {len(legacy_theme_ids)} V1 and {len(current_theme_ids)} V2 theme listings, "
+    print(f"Validated the schemas, examples, {len(legacy_theme_ids)} V1, {len(current_theme_ids)} V2 and {len(v3_theme_ids)} V3 theme listings, "
           f"and {len(creator_ids)} creators.")
 
 

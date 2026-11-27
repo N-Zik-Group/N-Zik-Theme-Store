@@ -1,0 +1,1429 @@
+{
+  "schemaVersion": 3,
+  "categories": {
+    "colors": {
+      "palette": "dynamic",
+      "mode": "pitch-black",
+      "respectThemeBrightness": false,
+      "customAccent": -65536,
+      "customLight": {
+        "background0": -131586,
+        "background1": -460548,
+        "background2": -1381643,
+        "background3": -1381635,
+        "background4": -1381635,
+        "text": -14606047,
+        "textSecondary": -10132122,
+        "textDisabled": -6447715,
+        "iconButtonPlayer": -14606047,
+        "accent": -7643914
+      },
+      "customDark": {
+        "background0": -15329507,
+        "background1": -14737367,
+        "background2": -13947589,
+        "background3": -11972521,
+        "background4": -13421773,
+        "text": -1973790,
+        "textSecondary": -6052698,
+        "textDisabled": -9474189,
+        "iconButtonPlayer": -1973790,
+        "accent": -7643914
+      }
+    },
+    "playerAndQueue": {
+      "coverBackdrop": 0.0,
+      "nowPlayingIndicator": "bars",
+      "playlistIndicator": false,
+      "visualizerPreset": 0,
+      "disableCloseOnSwipeDown": false,
+      "keepPlayerMinimized": false,
+      "rememberLyrics": true,
+      "rememberVisualizer": true,
+      "disableHorizontalSwipe": true,
+      "clickLyricsText": false,
+      "showLyricsPopup": true,
+      "swipeSensitivity": "medium",
+      "shakeSensitivity": "high",
+      "notificationFirstAction": "favorites",
+      "notificationSecondAction": "download",
+      "blackgradient": false,
+      "textoutline": false,
+      "effectRotation": false,
+      "disableScrollingText": false,
+      "showLikeButtonBackgroundPlayer": true,
+      "showDownloadButtonBackgroundPlayer": true,
+      "visualizerWhiteColorOption": "white",
+      "visualizerCustomColor": -1,
+      "playerVisualizerType": "disabled",
+      "visualizerLineThickness": 4.0,
+      "thumbnailTapEnabled": true,
+      "showButtonPlayerSystemEqualizer": false,
+      "backgroundProgress": "mini-player",
+      "showSkipTimeButtons": false,
+      "playerControlsColors": "monochrome",
+      "iconLikeType": "essential",
+      "playerSwapControlsWithTimeline": false,
+      "showvisthumbnail": true,
+      "blackBackgroundForVisThumbnail": true,
+      "showVisualizerButtons": true,
+      "buttonzoomout": true,
+      "thumbnailpause": true,
+      "cropVideoThumbnails": true,
+      "showsongs": "2",
+      "showalbumcover": true,
+      "tapqueue": true,
+      "swipeUpQueue": true,
+      "statsfornerds": false,
+      "queueDurationExpanded": true,
+      "titleExpanded": true,
+      "timelineExpanded": true,
+      "controlsExpanded": true,
+      "miniQueueExpanded": true,
+      "statsExpanded": true,
+      "actionExpanded": true,
+      "showCoverThumbnailAnimation": false,
+      "coverThumbnailAnimation": "c-dwith-cover",
+      "thumbnailSpacingL": 0.0,
+      "vinylSize": 50.0,
+      "swipeAnimationsNoThumbnail": "sliding",
+      "rotatingAlbumCover": false,
+      "albumCoverRotation": false,
+      "lyrics": {
+        "color": "white",
+        "customColor": -1,
+        "fontSize": "medium",
+        "size": 20.0,
+        "sizeLandscape": 20.0,
+        "outline": "none",
+        "alignment": "center",
+        "highlight": "none",
+        "background": "black",
+        "mode": "auto",
+        "animateSize": true,
+        "showBackground": false,
+        "showIntervalIndicator": true,
+        "landscapeControls": true,
+        "romanization": false,
+        "secondLine": false,
+        "karaokeRespectAgentPosition": true
+      },
+      "miniPlayer": {
+        "type": "essential",
+        "buttonOrder": [
+          "skip-back",
+          "play-pause",
+          "skip-forward",
+          "shuffle",
+          "repeat",
+          "queue",
+          "audio-output",
+          "sleep-timer",
+          "like",
+          "add-to-playlist",
+          "download",
+          "share",
+          "radio",
+          "discover",
+          "lyrics",
+          "visualizer"
+        ],
+        "visibleButtons": {
+          "playPause": true,
+          "skipBack": true,
+          "skipForward": true,
+          "shuffle": false,
+          "repeat": false,
+          "like": false,
+          "addToPlaylist": false,
+          "download": false,
+          "share": false,
+          "radio": false,
+          "audioOutput": false,
+          "sleepTimer": false,
+          "lyrics": false,
+          "visualizer": false,
+          "queue": false,
+          "discover": false
+        }
+      },
+      "playerStyle": "essential",
+      "queueStyle": "essential",
+      "coverStyle": "modern",
+      "headerStyle": "modern",
+      "controlsStyle": "modern",
+      "background": "animated-gradient",
+      "timeline": "audio-waves",
+      "showQueueDuration": false,
+      "showCover": true,
+      "transparentPlayerBar": false,
+      "showLyricsOnCover": true,
+      "expandedPlayer": true,
+      "playButtonStyle": "rectangular",
+      "bottomGradient": false,
+      "visualizerEnabled": true,
+      "coverSize": 90.0,
+      "coverSizeLandscape": null,
+      "timelineSize": "biggest",
+      "showExpandPlayerButton": false,
+      "showNextSongs": false,
+      "showRemainingSongTime": true,
+      "coverRoundnessDp": 36.0,
+      "transparentActionBar": true,
+      "actionButtonsSpacedEvenly": true,
+      "noBlur": true,
+      "coverFadingEdge": false,
+      "carousel": false,
+      "carouselSize": "expanded",
+      "topPadding": true,
+      "animatedGradient": "m3-emorphing-theme",
+      "blurStrength": 25.0,
+      "expandedCoverFade": 5.0,
+      "coverFade": 5.0,
+      "coverSpacing": 0.0,
+      "showHeaderIcons": true,
+      "actionButtons": {
+        "addToPlaylist": false,
+        "arrow": true,
+        "download": true,
+        "loop": false,
+        "lyrics": true,
+        "shuffle": true,
+        "sleepTimer": false,
+        "menu": false,
+        "startRadio": false,
+        "discover": false
+      },
+      "topActionSlots": [
+        "collapsePlayer",
+        "audioVideo",
+        "menu"
+      ],
+      "bottomActionOrder": [
+        "discover",
+        "download",
+        "loop",
+        "shuffle",
+        "start-radio",
+        "expanded-player",
+        "sleep-timer",
+        "lyrics",
+        "visualizer",
+        "add-to-playlist",
+        "arrow",
+        "equalizer",
+        "menu"
+      ]
+    },
+    "navigation": {
+      "position": "bottom-floating",
+      "labels": "icon-only",
+      "disableBackStack": false,
+      "rememberQueueScroll": false,
+      "swipeActionsEnabled": true,
+      "defaultTab": "songs",
+      "queueSwipeLeft": "remove-from-queue",
+      "queueSwipeRight": "play-next",
+      "playlistSwipeLeft": "no-action",
+      "playlistSwipeRight": "play-next",
+      "albumSwipeLeft": "no-action",
+      "albumSwipeRight": "play-next",
+      "homeSections": {
+        "songs": {
+          "order": [
+            "favorites",
+            "top",
+            "cached",
+            "downloaded",
+            "on-device",
+            "all",
+            "disliked"
+          ],
+          "disliked": "disabled",
+          "favorites": true,
+          "cached": false,
+          "downloaded": true,
+          "top": false,
+          "on-device": false
+        },
+        "albums": {
+          "order": [
+            "favorites",
+            "all",
+            "disliked"
+          ],
+          "disliked": "disabled",
+          "favorites": true,
+          "on-device": true
+        },
+        "artists": {
+          "order": [
+            "favorites",
+            "all",
+            "disliked"
+          ],
+          "disliked": "disabled",
+          "favorites": true,
+          "on-device": true
+        },
+        "playlists": {
+          "order": [
+            "pinned-playlists",
+            "yt-playlists",
+            "all"
+          ],
+          "yt-playlists": true,
+          "on-device": true,
+          "pinned-playlists": false,
+          "rewind": false
+        },
+        "quickPicks": {
+          "order": [
+            "tips",
+            "fresh-finds-old-favorites",
+            "mixed-for-you",
+            "forgotten-favorites",
+            "your-daily-discover",
+            "fresh-new-music",
+            "new-releases",
+            "new-albums-artists",
+            "new-albums",
+            "albums-for-you",
+            "related-albums",
+            "my-top",
+            "similar-artists",
+            "todays-biggest-hits",
+            "all-hits",
+            "playlists-might-like",
+            "featured-playlists",
+            "trending-community-playlists",
+            "from-the-community",
+            "trending-songs-for-you",
+            "top-music-videos",
+            "cover-and-remixes",
+            "trending-in-shorts",
+            "music-videos-for-you",
+            "live-performances",
+            "moods",
+            "moods-genres",
+            "generic-ytm-sections",
+            "charts"
+          ],
+          "tips": true,
+          "charts": false,
+          "related-albums": true,
+          "similar-artists": true,
+          "new-albums-artists": true,
+          "new-albums": false,
+          "playlists-might-like": true,
+          "moods-genres": false,
+          "my-top": false,
+          "rewind": false,
+          "fresh-finds-old-favorites": true,
+          "mixed-for-you": true,
+          "forgotten-favorites": true,
+          "your-daily-discover": true,
+          "fresh-new-music": true,
+          "new-releases": true,
+          "albums-for-you": true,
+          "todays-biggest-hits": true,
+          "all-hits": true,
+          "featured-playlists": true,
+          "trending-community-playlists": true,
+          "from-the-community": true,
+          "trending-songs-for-you": false,
+          "top-music-videos": false,
+          "cover-and-remixes": true,
+          "trending-in-shorts": false,
+          "music-videos-for-you": false,
+          "live-performances": false,
+          "moods": false,
+          "generic-ytm-sections": false
+        }
+      },
+      "toolbars": {
+        "songs": {
+          "all": {
+            "order": [
+              "sort",
+              "position-lock",
+              "match",
+              "download-all",
+              "delete-downloads",
+              "shuffle",
+              "search",
+              "add-to-favorite",
+              "item-selector",
+              "enqueue",
+              "add-to-playlist",
+              "export-dialog",
+              "smart-shuffle"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "match": true,
+              "search": true,
+              "sync_ytm_likes": true,
+              "locator": false,
+              "download_all": true,
+              "delete_downloads": true,
+              "shuffle": true,
+              "smart_shuffle": true,
+              "item_selector": true,
+              "play_next": false,
+              "enqueue": true,
+              "add_to_favorite": true,
+              "add_to_playlist": true,
+              "import_menu": false,
+              "export_dialog": true,
+              "update": true,
+              "smart_trash": false
+            }
+          },
+          "favs": {
+            "order": [
+              "sort",
+              "position-lock",
+              "match",
+              "download-all",
+              "delete-downloads",
+              "shuffle",
+              "search",
+              "add-to-favorite",
+              "item-selector",
+              "enqueue",
+              "add-to-playlist",
+              "export-dialog",
+              "smart-shuffle"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "match": true,
+              "search": true,
+              "sync_ytm_likes": true,
+              "locator": false,
+              "download_all": true,
+              "delete_downloads": true,
+              "shuffle": true,
+              "smart_shuffle": true,
+              "item_selector": true,
+              "play_next": false,
+              "enqueue": true,
+              "add_to_favorite": true,
+              "add_to_playlist": true,
+              "import_menu": false,
+              "export_dialog": true,
+              "update": true,
+              "smart_trash": false
+            }
+          },
+          "disliked": {
+            "order": [],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "match": true,
+              "search": true,
+              "locator": true,
+              "download_all": true,
+              "delete_downloads": true,
+              "shuffle": true,
+              "smart_shuffle": true,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_favorite": true,
+              "add_to_playlist": true,
+              "export_dialog": true,
+              "update": true,
+              "smart_trash": true
+            }
+          },
+          "off": {
+            "order": [
+              "sort",
+              "position-lock",
+              "match",
+              "download-all",
+              "delete-downloads",
+              "shuffle",
+              "search",
+              "add-to-favorite",
+              "item-selector",
+              "enqueue",
+              "add-to-playlist",
+              "export-dialog",
+              "smart-shuffle",
+              "export-cache"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "match": true,
+              "search": true,
+              "locator": false,
+              "download_all": true,
+              "delete_downloads": true,
+              "shuffle": true,
+              "smart_shuffle": true,
+              "item_selector": true,
+              "play_next": false,
+              "enqueue": true,
+              "add_to_favorite": true,
+              "add_to_playlist": true,
+              "export_dialog": true,
+              "export_cache": true,
+              "update": true,
+              "smart_trash": false
+            }
+          },
+          "dl": {
+            "order": [
+              "sort",
+              "position-lock",
+              "match",
+              "download-all",
+              "delete-downloads",
+              "shuffle",
+              "search",
+              "add-to-favorite",
+              "item-selector",
+              "enqueue",
+              "add-to-playlist",
+              "export-dialog",
+              "export-cache",
+              "smart-shuffle"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "match": true,
+              "search": true,
+              "locator": false,
+              "download_all": true,
+              "delete_downloads": true,
+              "shuffle": true,
+              "smart_shuffle": true,
+              "item_selector": true,
+              "play_next": false,
+              "enqueue": true,
+              "add_to_favorite": true,
+              "add_to_playlist": true,
+              "export_dialog": true,
+              "export_cache": true,
+              "update": true,
+              "smart_trash": false
+            }
+          },
+          "top": {
+            "order": [
+              "sort",
+              "match",
+              "download-all",
+              "delete-downloads",
+              "shuffle",
+              "search",
+              "add-to-favorite",
+              "item-selector",
+              "play-next",
+              "enqueue",
+              "add-to-playlist",
+              "export-dialog",
+              "smart-shuffle"
+            ],
+            "visibility": {
+              "sort": true,
+              "match": true,
+              "search": true,
+              "locator": false,
+              "download_all": true,
+              "delete_downloads": true,
+              "shuffle": true,
+              "smart_shuffle": true,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_favorite": true,
+              "add_to_playlist": true,
+              "export_dialog": true,
+              "update": true,
+              "smart_trash": false
+            }
+          },
+          "dev": {
+            "order": [
+              "sort",
+              "position-lock",
+              "search",
+              "shuffle",
+              "add-to-favorite",
+              "item-selector",
+              "enqueue",
+              "add-to-playlist",
+              "smart-shuffle"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "locator": false,
+              "shuffle": true,
+              "smart_shuffle": true,
+              "item_selector": true,
+              "play_next": false,
+              "enqueue": true,
+              "add_to_favorite": true,
+              "add_to_playlist": true
+            }
+          }
+        },
+        "artists": {
+          "all": {
+            "order": [
+              "sort",
+              "position-lock",
+              "sync",
+              "search",
+              "randomizer",
+              "item-size"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "sync": true,
+              "randomizer": true,
+              "shuffle": true,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "export_dialog": true,
+              "item_size": true
+            }
+          },
+          "favs": {
+            "order": [
+              "sort",
+              "position-lock",
+              "sync",
+              "search",
+              "randomizer",
+              "item-size"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "sync": true,
+              "randomizer": true,
+              "shuffle": false,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "export_dialog": true,
+              "item_size": true
+            }
+          },
+          "disliked": {
+            "order": [],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "sync": true,
+              "randomizer": true,
+              "shuffle": true,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "export_dialog": true,
+              "item_size": true
+            }
+          },
+          "dev": {
+            "order": [],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "randomizer": true,
+              "shuffle": true,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "item_size": true
+            }
+          }
+        },
+        "albums": {
+          "all": {
+            "order": [
+              "sort",
+              "position-lock",
+              "sync",
+              "search",
+              "randomizer",
+              "item-size"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "sync": true,
+              "randomizer": true,
+              "shuffle": true,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "export_dialog": true,
+              "item_size": true
+            }
+          },
+          "favs": {
+            "order": [
+              "sort",
+              "position-lock",
+              "sync",
+              "search",
+              "randomizer",
+              "item-size"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "sync": true,
+              "randomizer": true,
+              "shuffle": false,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "export_dialog": true,
+              "item_size": true
+            }
+          },
+          "disliked": {
+            "order": [],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "sync": true,
+              "randomizer": true,
+              "shuffle": true,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "export_dialog": true,
+              "item_size": true
+            }
+          },
+          "dev": {
+            "order": [],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "randomizer": true,
+              "shuffle": true,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "item_size": true
+            }
+          }
+        },
+        "library": {
+          "all": {
+            "order": [
+              "sort",
+              "position-lock",
+              "sync",
+              "search",
+              "import-menu",
+              "item-size"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "sync": true,
+              "shuffle": false,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "import_menu": true,
+              "export_dialog": true,
+              "delete_playlists": true,
+              "item_size": true
+            }
+          },
+          "pin": {
+            "order": [
+              "sort",
+              "position-lock",
+              "sync",
+              "search",
+              "import-menu",
+              "item-size"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "sync": true,
+              "shuffle": false,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "import_menu": true,
+              "export_dialog": true,
+              "delete_playlists": true,
+              "item_size": true
+            }
+          },
+          "rw": {
+            "order": [
+              "sort",
+              "position-lock",
+              "sync",
+              "search",
+              "shuffle",
+              "import-menu",
+              "item-size"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "sync": true,
+              "shuffle": true,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "import_menu": true,
+              "export_dialog": true,
+              "delete_playlists": true,
+              "item_size": true
+            }
+          },
+          "yt": {
+            "order": [
+              "sort",
+              "position-lock",
+              "sync",
+              "search",
+              "shuffle",
+              "import-menu",
+              "item-size"
+            ],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "sync": true,
+              "shuffle": true,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "import_menu": true,
+              "export_dialog": true,
+              "delete_playlists": true,
+              "item_size": true
+            }
+          },
+          "dev": {
+            "order": [],
+            "visibility": {
+              "sort": true,
+              "position_lock": true,
+              "search": true,
+              "shuffle": true,
+              "item_selector": true,
+              "play_next": true,
+              "enqueue": true,
+              "add_to_playlist": true,
+              "delete_playlists": true,
+              "item_size": true
+            }
+          }
+        },
+        "localPlaylist": {
+          "order": [],
+          "visibility": {
+            "insertion_position": true,
+            "pin": true,
+            "search": true,
+            "position_lock": true,
+            "match": true,
+            "renumber": true,
+            "download_all": true,
+            "delete_downloads": true,
+            "item_selector": true,
+            "play_next": true,
+            "enqueue": true,
+            "add_to_favorite": true,
+            "add_to_playlist": true,
+            "sync": true,
+            "refresh_on_open": true,
+            "listen_on_yt": true,
+            "import_menu": true,
+            "rename": true,
+            "delete": true,
+            "export": true,
+            "thumbnail_picker": true,
+            "reset_thumbnail": true,
+            "update": true
+          }
+        },
+        "dockOrder": []
+      },
+      "sortMenus": {
+        "songs": {
+          "all": {
+            "order": [
+              "Title",
+              "Artist",
+              "AlbumName",
+              "Duration",
+              "PlayCount",
+              "PlayTime",
+              "DateAdded",
+              "DateLiked",
+              "Downloaded"
+            ],
+            "visibility": {
+              "Title": true,
+              "Artist": true,
+              "AlbumName": true,
+              "Duration": true,
+              "PlayCount": true,
+              "PlayTime": true,
+              "RelativePlayTime": false,
+              "DateAdded": true,
+              "DatePlayed": false,
+              "DateLiked": true,
+              "Downloaded": true,
+              "Custom": false
+            }
+          },
+          "favs": {
+            "order": [
+              "Title",
+              "Artist",
+              "AlbumName",
+              "Duration",
+              "PlayCount",
+              "PlayTime",
+              "DateAdded",
+              "DateLiked",
+              "Downloaded"
+            ],
+            "visibility": {
+              "Title": true,
+              "Artist": true,
+              "AlbumName": true,
+              "Duration": true,
+              "PlayCount": true,
+              "PlayTime": true,
+              "RelativePlayTime": false,
+              "DateAdded": true,
+              "DatePlayed": false,
+              "DateLiked": true,
+              "Downloaded": true,
+              "Custom": true
+            }
+          },
+          "off": {
+            "order": [
+              "Title",
+              "Artist",
+              "AlbumName",
+              "Duration",
+              "PlayCount",
+              "PlayTime",
+              "DateAdded",
+              "DateLiked"
+            ],
+            "visibility": {
+              "Title": true,
+              "Artist": true,
+              "AlbumName": true,
+              "Duration": true,
+              "PlayCount": true,
+              "PlayTime": true,
+              "RelativePlayTime": false,
+              "DateAdded": true,
+              "DatePlayed": false,
+              "DateLiked": true,
+              "Custom": true
+            }
+          },
+          "dl": {
+            "order": [
+              "Title",
+              "Artist",
+              "AlbumName",
+              "Duration",
+              "PlayCount",
+              "PlayTime",
+              "DateAdded",
+              "DateLiked"
+            ],
+            "visibility": {
+              "Title": true,
+              "Artist": true,
+              "AlbumName": true,
+              "Duration": true,
+              "PlayCount": true,
+              "PlayTime": true,
+              "RelativePlayTime": false,
+              "DateAdded": true,
+              "DatePlayed": false,
+              "DateLiked": true,
+              "Custom": true
+            }
+          },
+          "top": {
+            "order": [
+              "Today",
+              "OneWeek",
+              "OneMonth",
+              "ThreeMonths",
+              "SixMonths",
+              "OneYear",
+              "All"
+            ],
+            "visibility": {
+              "Today": true,
+              "OneWeek": true,
+              "OneMonth": true,
+              "ThreeMonths": true,
+              "SixMonths": true,
+              "OneYear": true,
+              "All": true
+            }
+          },
+          "dev": {
+            "order": [
+              "Title",
+              "Artist",
+              "Album",
+              "Duration",
+              "DateAdded"
+            ],
+            "visibility": {
+              "Title": true,
+              "DateAdded": true,
+              "Artist": true,
+              "Duration": true,
+              "Album": true
+            }
+          },
+          "disliked": {
+            "order": [],
+            "visibility": {
+              "Title": true,
+              "Artist": true,
+              "AlbumName": true,
+              "Duration": true,
+              "PlayCount": true,
+              "PlayTime": true,
+              "RelativePlayTime": true,
+              "DateAdded": true,
+              "DatePlayed": true,
+              "DateLiked": true,
+              "Downloaded": true,
+              "Custom": true
+            }
+          }
+        },
+        "artists": {
+          "art_lib": {
+            "order": [
+              "Name",
+              "PlayCount",
+              "ListeningTime",
+              "DateAdded"
+            ],
+            "visibility": {
+              "Name": true,
+              "PlayCount": true,
+              "ListeningTime": true,
+              "DateAdded": true,
+              "Custom": false
+            }
+          },
+          "art_fav": {
+            "order": [
+              "Name",
+              "PlayCount",
+              "ListeningTime",
+              "DateAdded"
+            ],
+            "visibility": {
+              "Name": true,
+              "PlayCount": true,
+              "ListeningTime": true,
+              "DateAdded": true
+            }
+          },
+          "art_dis": {
+            "order": [],
+            "visibility": {
+              "Name": true,
+              "PlayCount": true,
+              "ListeningTime": true,
+              "DateAdded": true
+            }
+          },
+          "art_dev": {
+            "order": [],
+            "visibility": {
+              "Name": true,
+              "PlayCount": true,
+              "ListeningTime": true,
+              "DateAdded": true,
+              "Custom": true
+            }
+          }
+        },
+        "albums": {
+          "alb_lib": {
+            "order": [
+              "AlbumName",
+              "Artist",
+              "Year",
+              "DateAdded",
+              "PlayCount"
+            ],
+            "visibility": {
+              "AlbumName": true,
+              "Artist": true,
+              "Year": true,
+              "DateAdded": true,
+              "PlayCount": true,
+              "Duration": false,
+              "Custom": false
+            }
+          },
+          "alb_fav": {
+            "order": [
+              "AlbumName",
+              "Artist",
+              "Year",
+              "DateAdded",
+              "PlayCount"
+            ],
+            "visibility": {
+              "AlbumName": true,
+              "Artist": true,
+              "Year": true,
+              "DateAdded": true,
+              "PlayCount": true,
+              "Duration": false
+            }
+          },
+          "alb_dis": {
+            "order": [],
+            "visibility": {
+              "AlbumName": true,
+              "Artist": true,
+              "Year": true,
+              "DateAdded": true,
+              "PlayCount": true,
+              "Duration": true
+            }
+          },
+          "alb_dev": {
+            "order": [],
+            "visibility": {
+              "Title": true,
+              "Artist": true,
+              "Songs": true,
+              "Duration": true,
+              "PlayCount": true,
+              "ListeningTime": true,
+              "DateAdded": true,
+              "Year": true,
+              "Custom": true
+            }
+          }
+        },
+        "library": {
+          "lib_pl": {
+            "order": [
+              "Name",
+              "SongCount",
+              "ListeningTime",
+              "PlayCount",
+              "DateAdded"
+            ],
+            "visibility": {
+              "Name": true,
+              "SongCount": true,
+              "ListeningTime": true,
+              "PlayCount": true,
+              "DateAdded": true,
+              "Custom": false
+            }
+          },
+          "lib_yt": {
+            "order": [
+              "Name",
+              "SongCount",
+              "DateAdded"
+            ],
+            "visibility": {
+              "Name": true,
+              "SongCount": true,
+              "DateAdded": true
+            }
+          },
+          "lib_pin": {
+            "order": [
+              "Name",
+              "SongCount",
+              "ListeningTime",
+              "PlayCount",
+              "DateAdded"
+            ],
+            "visibility": {
+              "Name": true,
+              "SongCount": true,
+              "ListeningTime": true,
+              "PlayCount": true,
+              "DateAdded": true
+            }
+          },
+          "lib_rw": {
+            "order": [
+              "Name",
+              "SongCount",
+              "DateAdded"
+            ],
+            "visibility": {
+              "Name": true,
+              "SongCount": true,
+              "DateAdded": true
+            }
+          },
+          "lib_dev": {
+            "order": [],
+            "visibility": {
+              "Name": true,
+              "SongCount": true,
+              "ListeningTime": true,
+              "PlayCount": true,
+              "DateAdded": true,
+              "Custom": true
+            }
+          }
+        },
+        "localPlaylist": {
+          "order": [],
+          "visibility": {
+            "Title": true,
+            "Artist": true,
+            "Album": true,
+            "ArtistAndAlbum": true,
+            "Duration": true,
+            "PlayCount": true,
+            "PlayTime": true,
+            "RelativePlayTime": true,
+            "DateAdded": true,
+            "DatePlayed": true,
+            "DateLiked": true,
+            "AlbumYear": true,
+            "Downloaded": true,
+            "Custom": true
+          }
+        },
+        "history": {
+          "order": [
+            "ALPHABETICAL",
+            "ARTIST",
+            "DATE"
+          ],
+          "visibility": {
+            "DATE": true,
+            "ALPHABETICAL": true,
+            "ARTIST": true
+          }
+        }
+      },
+      "burgerMenu": {
+        "order": [],
+        "history": true,
+        "statistics": true,
+        "rewind": true,
+        "offline-mode": true,
+        "listen-together": true,
+        "bridge-server": true,
+        "profiles": true,
+        "pip": true,
+        "separator": true,
+        "extensions": true,
+        "debug-logs": true,
+        "maintenance": true,
+        "rescue-center": true
+      },
+      "homeTabs": {
+        "order": [
+          "songs",
+          "artists",
+          "albums",
+          "playlists",
+          "quickpicks"
+        ],
+        "songs": true,
+        "artists": true,
+        "albums": true,
+        "playlists": true
+      },
+      "showSearchTab": false,
+      "showStatsTab": false,
+      "homeArtistItemSize": "big",
+      "homeAlbumItemSize": "big",
+      "homeLibraryItemSize": "big",
+      "searchGridLayouts": "1111111",
+      "showOnDeviceFolders": true,
+      "showListeningTimeInStatistics": true,
+      "floatingActionX": 12.3388671875,
+      "floatingActionY": 24.609375,
+      "multiFloatingActionX": 0.0,
+      "multiFloatingActionY": 0.0,
+      "enableQuickPicks": true,
+      "rightToLeft": false,
+      "playerPosition": "bottom",
+      "menuStyle": "list",
+      "transitionEffect": "slide-horizontal",
+      "searchDisplayOrder": "saved-searches-first",
+      "uiRoundnessDp": 26.0,
+      "artistRoundnessDp": 48.0,
+      "font": "rubik",
+      "useSystemFont": true,
+      "applyFontPadding": false,
+      "hideStatusBar": false,
+      "showFloatingSearch": false
+    },
+    "glass": {
+      "enabled": false,
+      "tintSource": "none",
+      "navigation": "glass-and-contour",
+      "miniPlayer": "glass-and-contour",
+      "nowPlaying": "glass-and-contour",
+      "quality": "balanced",
+      "customColor": -7643914,
+      "tintStrength": 0.6000000238418579,
+      "vibrancy": 1.2000000476837158,
+      "blur": 2.0,
+      "film": 0.5,
+      "indicatorOpacity": 0.25999999046325684,
+      "dialogDimming": 0.75,
+      "menuDimming": 0.75,
+      "rim": 0.550000011920929,
+      "refractionHeight": 0.4000000059604645,
+      "refractionAmount": 0.6000000238418579,
+      "rippleIntensity": 1.0,
+      "rippleSize": 1.0,
+      "jellyIntensity": 1.0,
+      "dispersion": false,
+      "depthEffect": false,
+      "rippleEnabled": true,
+      "jellyEnabled": true,
+      "optimizationEnabled": true,
+      "areas": {
+        "header": "glass-and-contour",
+        "menus": "glass-and-contour",
+        "dropdowns": "glass-and-contour",
+        "dialogs": "glass-and-contour",
+        "dialog-buttons": "glass-and-contour",
+        "images": "contour-only",
+        "settings-cards": "glass-and-contour",
+        "search-bars": "glass-and-contour",
+        "action-buttons": "glass-and-contour",
+        "switches": "glass-and-contour",
+        "mood-cards": "glass-and-contour",
+        "loading-indicators": "glass-and-contour",
+        "pull-to-refresh": "glass-and-contour"
+      },
+      "contextModes": {
+        "home": {
+          "action-buttons": "inherit",
+          "mood-cards": "inherit"
+        },
+        "library": {
+          "action-buttons": "inherit"
+        },
+        "search": {
+          "action-buttons": "inherit"
+        },
+        "details": {
+          "action-buttons": "inherit",
+          "settings-cards": "inherit"
+        },
+        "settings-profiles": {
+          "action-buttons": "inherit",
+          "settings-cards": "inherit"
+        },
+        "rewind": {
+          "action-buttons": "inherit",
+          "mood-cards": "inherit"
+        },
+        "onboarding": {
+          "action-buttons": "inherit",
+          "settings-cards": "inherit"
+        },
+        "player-header": {
+          "action-buttons": "inherit"
+        },
+        "player-information": {
+          "action-buttons": "inherit"
+        },
+        "player-favorite": {
+          "action-buttons": "inherit"
+        },
+        "player-time": {
+          "action-buttons": "inherit"
+        },
+        "player-seek": {
+          "action-buttons": "inherit"
+        },
+        "player-transport": {
+          "action-buttons": "inherit"
+        },
+        "player-actions": {
+          "action-buttons": "inherit"
+        },
+        "lyrics": {
+          "action-buttons": "inherit"
+        },
+        "visualizer": {
+          "action-buttons": "inherit"
+        },
+        "queue": {
+          "menus": "inherit",
+          "action-buttons": "inherit"
+        },
+        "toast": {
+          "menus": "inherit"
+        }
+      }
+    }
+  }
+}

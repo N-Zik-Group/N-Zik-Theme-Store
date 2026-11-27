@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 3,
+  "themeId": "383583d4-f96e-4464-bb0f-131415a46cd5",
+  "revision": 3,
+  "title": "Pure Black, Animated Gradient & Glass Theme",
+  "description": "I've crafted a amazing theme featuring pure black, animated gradient and glass elements. I hope you like it :)",
+  "author": {
+    "githubId": 253926674,
+    "login": "LeonDayi"
+  },
+  "tags": [
+    "dark",
+    "animated-gradient",
+    "glass"
+  ],
+  "compatibility": {
+    "minVersionCode": 101
+  },
+  "appearance": {
+    "path": "appearance.json",
+    "sha256": "0be36acd57819c3cf5a5497c5617008a2833205f61ce29301cac2843932ef40e"
+  },
+  "previews": [
+    {
+      "path": "previews/player-normal.webp",
+      "role": "player",
+      "sha256": "07919a1ccce4e4456986761b94e9eecf8e860799b3d30bb542cf328e8ba957ba"
+    },
+    {
+      "path": "previews/player-glass.webp",
+      "role": "player",
+      "sha256": "12206cba7df2f0d146df4404352027597986023693976633270cad135918dd26"
+    },
+    {
+      "path": "previews/queue-normal.webp",
+      "role": "queue",
+      "sha256": "3f2efd9b2d4d90b47bc13988c66052a308ff3348513a6ce80bcbc2cb4d41eca0"
+    },
+    {
+      "path": "previews/queue-glass.webp",
+      "role": "queue",
+      "sha256": "0040faa90f08223b8607c6f2471a220ed02b7caba1c589fdba4e1cde4ee580fb"
+    },
+    {
+      "path": "previews/lyrics-normal.webp",
+      "role": "other",
+      "sha256": "04af4f227d1dd78e234a52e94c0c3271539819b8623bc4bf0f56c3f2e1fafc1a"
+    },
+    {
+      "path": "previews/lyrics-glass.webp",
+      "role": "other",
+      "sha256": "d59cc80101df97ceb496d96415fe415d598028e592693d3f45d07b237fc8b1a7"
+    },
+    {
+      "path": "previews/home-normal.webp",
+      "role": "other",
+      "sha256": "49e49373362747ad585dd18d27101d10035780698beb17506097cb7b688a51b5"
+    },
+    {
+      "path": "previews/home-glass.webp",
+      "role": "other",
+      "sha256": "8b65edf15d724c7943ccfa76b15d90a7b3cacba0a2dad9f2b46671f02d43b734"
+    },
+    {
+      "path": "previews/navigation-normal.webp",
+      "role": "navigation",
+      "sha256": "72a6847b3b1030745f68e866bb9928cd815bb02fc5c2d91026f55dbfbf8c80d0"
+    },
+    {
+      "path": "previews/navigation-glass.webp",
+      "role": "navigation",
+      "sha256": "5943a790acca0d7927ac5da33268b2b3316308056164d0010d405fa03bec135f"
+    },
+    {
+      "path": "previews/album-normal.webp",
+      "role": "other",
+      "sha256": "6536fd707d88e7430a5114b779e61b7410c7d0a41bdbfc3731624d59d7fd8af6"
+    },
+    {
+      "path": "previews/album-glass.webp",
+      "role": "other",
+      "sha256": "ea3819ae77845c1724e8ca5c83a6cfbebe2ddadc132d911bf2c997dad4b0f8d5"
+    },
+    {
+      "path": "previews/artist-normal.webp",
+      "role": "other",
+      "sha256": "f6459cf20eebf404537a9d21803803562ac64d3b3cdb999bcf1081d24893b572"
+    },
+    {
+      "path": "previews/artist-glass.webp",
+      "role": "other",
+      "sha256": "9ed6a54c93196144c2dacaea958bbc465027169af7d9c594220cf0eeccbb867b"
+    },
+    {
+      "path": "previews/playlist-normal.webp",
+      "role": "other",
+      "sha256": "5513748b33bba8a8203de3f49ffae1574219c0310cac85a70fb3edcd34637411"
+    },
+    {
+      "path": "previews/playlist-glass.webp",
+      "role": "other",
+      "sha256": "2180c09c8e8013d674a5a004c001c7726f35cdcb57a31206e1c9968972d157be"
+    },
+    {
+      "path": "previews/local-playlist-normal.webp",
+      "role": "other",
+      "sha256": "691165cb0a703e6acfc394fed337ee7b591fd0d5d299ce86bdb402251b31db9c"
+    },
+    {
+      "path": "previews/local-playlist-glass.webp",
+      "role": "other",
+      "sha256": "703e8b142d109205999e397970f26e7be51b99ed8568a4f98fb66b93b1943f51"
+    },
+    {
+      "path": "previews/search-normal.webp",
+      "role": "other",
+      "sha256": "a1fe021a7218954b1fb8e7dc7f082f891e6ae116cf5f4def12fd8f69b893c7a6"
+    },
+    {
+      "path": "previews/search-glass.webp",
+      "role": "other",
+      "sha256": "b94317bb12bd930bcdee34de5c12d4d159f50410afa752f03eb08dda493841a7"
+    },
+    {
+      "path": "previews/search-albums-normal.webp",
+      "role": "other",
+      "sha256": "bfc887304b0f014a4ec557a8e7ffc5f8be1081879aac6f305298e863e97edadf"
+    },
+    {
+      "path": "previews/search-albums-glass.webp",
+      "role": "other",
+      "sha256": "c0e4503b3b53d2bf0595a46c41e568d538516ae63dc44404b2e6b339833e54d1"
+    },
+    {
+      "path": "previews/search-artists-normal.webp",
+      "role": "other",
+      "sha256": "ed1ea1a24fe947e158b9e5e65ce30230c21f77df9ca13a11ebfb2c1f607b26a4"
+    },
+    {
+      "path": "previews/search-artists-glass.webp",
+      "role": "other",
+      "sha256": "bbfe0853fcc48f9160acd25eae2a8ad4b52eaa0b1d275d206e0e8bdf426e8ee6"
+    },
+    {
+      "path": "previews/player-playing-normal.webp",
+      "role": "other",
+      "sha256": "a40eb5bf81435d828c53301b86b4d83e6c61cd11f3a7a80c53ee68e3209d13bb"
+    },
+    {
+      "path": "previews/player-playing-glass.webp",
+      "role": "other",
+      "sha256": "fa734a25ae8441b499df630607dc1c3c6258054d0ce13223fb2240053c4fcb96"
+    },
+    {
+      "path": "previews/miniplayer-playing-normal.webp",
+      "role": "other",
+      "sha256": "5178502dd817cbc230015a77815550b931bded6aa3244347e2b1a4cc82f10aa3"
+    },
+    {
+      "path": "previews/miniplayer-playing-glass.webp",
+      "role": "other",
+      "sha256": "8c5709e3c1ece984fff81b80ba90b246d00e69748340d7cfe4b2f40a7f4fc788"
+    },
+    {
+      "path": "previews/menu-normal.webp",
+      "role": "other",
+      "sha256": "34250ba308cf087b8198ec70ac0414c8117adc08ac0280fa774df61e7b937c0c"
+    },
+    {
+      "path": "previews/menu-glass.webp",
+      "role": "other",
+      "sha256": "a6b4b7f02cbb1b069427dbc628935f843066b16ba3eb62f823297bddaa4d707d"
+    },
+    {
+      "path": "previews/dialog-normal.webp",
+      "role": "other",
+      "sha256": "e1136ba48abae8761e8dbba281b7d11c6c2154b9dac6316bd20638ff375ddef3"
+    },
+    {
+      "path": "previews/dialog-glass.webp",
+      "role": "other",
+      "sha256": "29dfb5e6c73cdff550183a1f64c2039d4eab1ad9a9e8e20c1b1eefb0faad0f5f"
+    }
+  ],
+  "publishedOn": "2026-11-18"
+}

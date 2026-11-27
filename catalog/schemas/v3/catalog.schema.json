@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/N-Zik-Group/N-Zik-Theme-Store/main/catalog/schemas/v3/catalog.schema.json",
+  "title": "N-Zik published theme index v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "previewLimit",
+    "legacyMaxVersionCode",
+    "themes"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "previewLimit": {
+      "type": "integer",
+      "minimum": 64,
+      "maximum": 128
+    },
+    "legacyMaxVersionCode": {
+      "const": 98
+    },
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "themeId",
+          "revision",
+          "manifestSha256"
+        ],
+        "properties": {
+          "themeId": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "manifestSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+          }
+        }
+      }
+    }
+  }
+}

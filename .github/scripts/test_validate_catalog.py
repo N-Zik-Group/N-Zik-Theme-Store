@@ -12,6 +12,8 @@ from PIL import Image
 
 import validate_catalog as catalog
 
+MINIMAL_THEME_ID = "791a6aa9-72e1-43eb-997a-7d3ce3130d1f"
+
 
 class CatalogValidationTest(unittest.TestCase):
     @staticmethod
@@ -33,7 +35,7 @@ class CatalogValidationTest(unittest.TestCase):
         return path
 
     def validate_theme(self, *, published=False):
-        appearances = {version: catalog.load_schema("appearance", version) for version in (1, 2)}
+        appearances = {version: catalog.load_schema("appearance", version) for version in (1, 2, 3)}
         return catalog.validate_theme(
             self.folder, catalog.load_schema("theme", self.manifest["schemaVersion"]), appearances, published=published
         )
@@ -88,6 +90,80 @@ class CatalogValidationTest(unittest.TestCase):
                     with self.assertRaisesRegex(ValueError, "version code 99"):
                         self.validate_theme(published=True)
 
+    def test_v3_action_slots_are_required_distinct_and_gated(self):
+        path = catalog.CATALOG / "themes" / MINIMAL_THEME_ID / "2" / "appearance.json"
+        appearance = catalog.load_json(path, catalog.THEME_DOCUMENT_LIMIT)
+        player = appearance["categories"]["playerAndQueue"]
+        validator = catalog.load_schema("appearance", 3)
+        self.assertTrue(validator.is_valid(appearance))
+        for slots in (["none", "audioVideo", "none"], ["menu", "discover", "start-radio"]):
+            player["topActionSlots"] = slots
+            self.assertTrue(validator.is_valid(appearance))
+        for slots in ([], ["none", "none"], ["none"] * 4, ["none", "none", "invalid"], ["menu", "none", "menu"]):
+            player["topActionSlots"] = slots
+            self.assertFalse(validator.is_valid(appearance))
+        player["topActionSlots"] = ["none"] * 3
+        for old_key, old_value in (("showTopActionsBar", True), ("actionBarOrder", ["menu"])):
+            player[old_key] = old_value
+            self.assertFalse(validator.is_valid(appearance))
+            del player[old_key]
+        del player["topActionSlots"]
+        self.assertFalse(validator.is_valid(appearance))
+        with self.assertRaisesRegex(ValueError, "version code 101"):
+            catalog.validate_publication_compatibility({"compatibility": {"minVersionCode": 100}}, 3, appearance)
+        catalog.validate_publication_compatibility({"compatibility": {"minVersionCode": 101}}, 3, appearance)
+
+    def test_v3_minimal_has_a_complete_system_gallery(self):
+        path = catalog.CATALOG / "themes" / MINIMAL_THEME_ID
+        manifest = catalog.load_json(path / "2" / "manifest.json")
+        colors = catalog.load_json(path / "2" / "appearance.json")["categories"]["colors"]
+        catalog.validate_gallery(manifest, colors=colors)
+        with self.assertRaisesRegex(ValueError, "missing preview"):
+            catalog.validate_gallery({**manifest, "previews": manifest["previews"][:-1]}, colors=colors)
+        legacy = catalog.load_json(path / "1" / "manifest.json")
+        catalog.validate_gallery(legacy, colors=colors)
+
+    def test_v3_bottom_toolbar_can_include_audio_video_with_an_optional_switch(self):
+        path = catalog.CATALOG / "themes" / MINIMAL_THEME_ID / "2" / "appearance.json"
+        appearance = catalog.load_json(path, catalog.THEME_DOCUMENT_LIMIT)
+        player = appearance["categories"]["playerAndQueue"]
+        validator = catalog.load_schema("appearance", 3)
+        self.assertEqual(14, len(player["bottomActionOrder"]))
+        self.assertIn("audioVideo", player["bottomActionOrder"])
+        self.assertTrue(player["actionButtons"].pop("audioVideo"))
+        self.assertTrue(validator.is_valid(appearance))
+        for value in (True, False):
+            player["actionButtons"]["audioVideo"] = value
+            self.assertTrue(validator.is_valid(appearance))
+        player["actionButtons"]["audioVideo"] = "false"
+        self.assertFalse(validator.is_valid(appearance))
+        player["actionButtons"]["audioVideo"] = True
+        player["bottomActionOrder"].append("audioVideo")
+        self.assertFalse(validator.is_valid(appearance))
+
+    def test_v3_cover_dimming_fields_are_optional_and_bounded(self):
+        path = catalog.CATALOG / "themes" / MINIMAL_THEME_ID / "2" / "appearance.json"
+        appearance = catalog.load_json(path, catalog.THEME_DOCUMENT_LIMIT)
+        player = appearance["categories"]["playerAndQueue"]
+        lyrics = player["lyrics"]
+        validator = catalog.load_schema("appearance", 3)
+        self.assertTrue(validator.is_valid(appearance))
+
+        lyrics["coverDimmingEnabled"] = False
+        for target, field in ((player, "visualizerCoverDimmingOpacity"), (lyrics, "coverDimmingOpacity")):
+            for value in (0, 0.45, 1, -0.01, 1.01, "0.45"):
+                with self.subTest(field=field, value=value):
+                    target[field] = value
+                    self.assertEqual(isinstance(value, (int, float)) and 0 <= value <= 1,
+                                     validator.is_valid(appearance))
+            target[field] = 0.45
+        lyrics["coverDimmingEnabled"] = "false"
+        self.assertFalse(validator.is_valid(appearance))
+        lyrics["coverDimmingEnabled"] = True
+        with self.assertRaisesRegex(ValueError, "version code 101"):
+            catalog.validate_publication_compatibility({"compatibility": {"minVersionCode": 100}}, 3, appearance)
+        catalog.validate_publication_compatibility({"compatibility": {"minVersionCode": 101}}, 3, appearance)
+
     def test_pure_black_mode_requires_v2_and_publication_code_101(self):
         appearance = {"schemaVersion": 1, "categories": {"colors": {
             "palette": "dynamic", "mode": "pure-black"}}}
@@ -109,6 +185,57 @@ class CatalogValidationTest(unittest.TestCase):
         self.manifest["compatibility"]["minVersionCode"] = 99
         self.write_theme(json.dumps(appearance).encode())
         self.validate_theme(published=True)
+
+    def test_optional_v2_custom_toolbars_require_supporting_android_version(self):
+        toolbars = {"custom": {"albumOnline": {
+            "order": ["enqueue", "bookmark"],
+            "visibility": {"bookmark": False},
+        }}}
+        appearance = {"schemaVersion": 2, "categories": {"navigation": {
+            "position": "bottom-floating", "labels": "icon-only", "toolbars": toolbars,
+        }}}
+        validator = catalog.load_schema("appearance", 2)
+        self.assertTrue(validator.is_valid(appearance))
+        with self.assertRaisesRegex(ValueError, "version code 101"):
+            catalog.validate_publication_compatibility({"compatibility": {"minVersionCode": 100}}, 2, appearance)
+        catalog.validate_publication_compatibility({"compatibility": {"minVersionCode": 101}}, 2, appearance)
+        toolbars["custom"]["albumOnline"]["order"].append("notifications")
+        self.assertFalse(validator.is_valid(appearance))
+        toolbars["custom"]["albumOnline"]["order"].pop()
+        toolbars["custom"]["albumOnline"]["visibility"]["notifications"] = True
+        self.assertFalse(validator.is_valid(appearance))
+
+    def test_v2_toolbars_accept_new_artist_library_and_on_device_actions(self):
+        appearance = {"schemaVersion": 2, "categories": {"navigation": {
+            "position": "bottom-floating", "labels": "icon-only", "toolbars": {"custom": {
+                "artistLibrary": {
+                    "order": ["playNext", "select", "addToPlaylist"],
+                    "visibility": {"playNext": True, "select": True, "addToPlaylist": False},
+                },
+                "artistDevice": {
+                    "order": ["follow", "addToPlaylist"],
+                    "visibility": {"addToPlaylist": True},
+                },
+                "albumDevice": {
+                    "order": ["bookmark", "search", "addToPlaylist"],
+                    "visibility": {"search": True, "addToPlaylist": True},
+                },
+            }},
+        }}}
+        self.assertTrue(catalog.load_schema("appearance", 2).is_valid(appearance))
+
+    def test_v2_burger_shortcuts_require_supporting_android_version(self):
+        burger_menu = {"order": ["search", "history", "notifications"], "search": True, "notifications": False}
+        appearance = {"schemaVersion": 2, "categories": {"navigation": {
+            "position": "bottom-floating", "labels": "icon-only", "burgerMenu": burger_menu,
+        }}}
+        validator = catalog.load_schema("appearance", 2)
+        self.assertTrue(validator.is_valid(appearance))
+        with self.assertRaisesRegex(ValueError, "version code 101"):
+            catalog.validate_publication_compatibility({"compatibility": {"minVersionCode": 100}}, 2, appearance)
+        catalog.validate_publication_compatibility({"compatibility": {"minVersionCode": 101}}, 2, appearance)
+        burger_menu["order"].append("search")
+        self.assertFalse(validator.is_valid(appearance))
 
     def test_v2_player_preferences_and_retired_video_fields(self):
         appearance = json.loads(self.appearance)
@@ -249,6 +376,9 @@ class CatalogValidationTest(unittest.TestCase):
             "manifestSha256": hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
         }]})
         self.write_json(theme_root / "index-v2.json", {
+            "schemaVersion": 1, "previewLimit": 80, "legacyMaxVersionCode": 98, "themes": [],
+        })
+        self.write_json(theme_root / "index-v3.json", {
             "schemaVersion": 1, "previewLimit": 80, "legacyMaxVersionCode": 98, "themes": [],
         })
         with patch.object(catalog, "CATALOG", catalog_root):

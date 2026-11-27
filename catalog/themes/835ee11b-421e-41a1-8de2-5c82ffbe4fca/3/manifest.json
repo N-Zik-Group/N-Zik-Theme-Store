@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 3,
+  "themeId": "835ee11b-421e-41a1-8de2-5c82ffbe4fca",
+  "revision": 3,
+  "title": "My player",
+  "description": "Cool and beautiful player I use every day",
+  "author": {
+    "githubId": 104271365,
+    "login": "OrangeZXZ"
+  },
+  "tags": [
+    "animated-gradient",
+    "audio-waves",
+    "dark"
+  ],
+  "compatibility": {
+    "minVersionCode": 101
+  },
+  "appearance": {
+    "path": "appearance.json",
+    "sha256": "e192f26a5d48aade9bdf473aee00f993b9c53d2e32530e020f9f45f484d10545"
+  },
+  "previews": [
+    {
+      "path": "previews/player-normal.webp",
+      "role": "player",
+      "sha256": "dded2ba3c03cd4e792178dfa410bc9090d3171a5a01e080043570b207d583d9d"
+    },
+    {
+      "path": "previews/player-glass.webp",
+      "role": "player",
+      "sha256": "3dcb5faa2d2ac0f9beb957be04464fe272a776f40ee4761b947c38cb524882b6"
+    },
+    {
+      "path": "previews/queue-normal.webp",
+      "role": "queue",
+      "sha256": "5b31ed79e9b3b0c5b12d45158143cd88c847d893ed72e38b9ce342b483274212"
+    },
+    {
+      "path": "previews/queue-glass.webp",
+      "role": "queue",
+      "sha256": "92fa49e12f7a73ba18f25f5cce14222e49967bac285828b7555a722979072e6c"
+    },
+    {
+      "path": "previews/lyrics-normal.webp",
+      "role": "other",
+      "sha256": "e75f6d03e9093903997676b88ac876348673ca8ab2780919205fb7f3252c360d"
+    },
+    {
+      "path": "previews/lyrics-glass.webp",
+      "role": "other",
+      "sha256": "14e58d6f70e05a4cdef3fd0ee5309b748c9be04fe85b582e5ab9431dbaa4f7b3"
+    },
+    {
+      "path": "previews/home-normal.webp",
+      "role": "other",
+      "sha256": "fb558f867a94db05997bf8a9438b6184ccb40ddc29b64fc14acf76c038440de8"
+    },
+    {
+      "path": "previews/home-glass.webp",
+      "role": "other",
+      "sha256": "48180228d7ddcd73a2df48fed7a33a017d86e0caff0497049b485b0c1512f97f"
+    },
+    {
+      "path": "previews/navigation-normal.webp",
+      "role": "navigation",
+      "sha256": "94862c81d15e44fa989b102b0e50e35a218a6b8ae8073fd1b0bc496ca7d0463c"
+    },
+    {
+      "path": "previews/navigation-glass.webp",
+      "role": "navigation",
+      "sha256": "9baed4a858479d1c7df91ad5cdc17d345b70044ae1b7fbce83a4459ad8b38af0"
+    },
+    {
+      "path": "previews/album-normal.webp",
+      "role": "other",
+      "sha256": "13ab21a3d74916059f7499557c77a8f99f6c0f14f42e07331c3ffff25e4aeec9"
+    },
+    {
+      "path": "previews/album-glass.webp",
+      "role": "other",
+      "sha256": "0c19e09dd9265e2faee461ee4ab5f634a7bfef2d7abc700b4865577424f90981"
+    },
+    {
+      "path": "previews/artist-normal.webp",
+      "role": "other",
+      "sha256": "3891467fcf91531b3734bac43907858aa66de5a6562bd366e5580a6cda24a169"
+    },
+    {
+      "path": "previews/artist-glass.webp",
+      "role": "other",
+      "sha256": "a39eadb907720f08f5fbbfb4ea4b83f4cbbabcd4c931f175d865cfcb49458cf5"
+    },
+    {
+      "path": "previews/playlist-normal.webp",
+      "role": "other",
+      "sha256": "e13f34f652b765e6e09f174515835b798d04d89b3160ab86eae1582687e64cba"
+    },
+    {
+      "path": "previews/playlist-glass.webp",
+      "role": "other",
+      "sha256": "3b5edec2993a99bd6bd2679ecfa5e029acd0985a2368cd205b73ad852f481886"
+    },
+    {
+      "path": "previews/local-playlist-normal.webp",
+      "role": "other",
+      "sha256": "18509038bf00bc876e09e37638f90e56559285b4127f829d049ea576ab2fd4f0"
+    },
+    {
+      "path": "previews/local-playlist-glass.webp",
+      "role": "other",
+      "sha256": "32d454c01052b4344154d71277eae69236cf23183edd796ebeb1d17023f73ca1"
+    },
+    {
+      "path": "previews/search-normal.webp",
+      "role": "other",
+      "sha256": "bbecea31e7def77862417b3f28460c9bf17b7516c61e337816296ed99fdcbe89"
+    },
+    {
+      "path": "previews/search-glass.webp",
+      "role": "other",
+      "sha256": "a61f6d5ac23fe31292a3431d6fe86e4af700ecd5768f6bf1fff6131cc34de2f2"
+    },
+    {
+      "path": "previews/search-albums-normal.webp",
+      "role": "other",
+      "sha256": "bf51dde759a95d882d7a2b03a1ae301cd6b6feff757c8c983db6654263dc569d"
+    },
+    {
+      "path": "previews/search-albums-glass.webp",
+      "role": "other",
+      "sha256": "ab188038668d8be557994dce02b6815f390f43e26235d6f86c6e59eb5efa534c"
+    },
+    {
+      "path": "previews/search-artists-normal.webp",
+      "role": "other",
+      "sha256": "fa5e8c85fb7872f5d8a071ae02bf742678a5d065a9ab4ca5f99b1700f0b4d766"
+    },
+    {
+      "path": "previews/search-artists-glass.webp",
+      "role": "other",
+      "sha256": "31551941320adf6c761811878a58b9b96c9881a77439c7afe3950a745e5706fe"
+    },
+    {
+      "path": "previews/player-playing-normal.webp",
+      "role": "other",
+      "sha256": "bbe503672f0993714b8e3e89b78e4f53322df4c3d43943450922b2e168a08d4f"
+    },
+    {
+      "path": "previews/player-playing-glass.webp",
+      "role": "other",
+      "sha256": "73a7b8fc6b99e46960cc2e07b3d943f901259a0b0f96ee904bd1a3a7472ee669"
+    },
+    {
+      "path": "previews/miniplayer-playing-normal.webp",
+      "role": "other",
+      "sha256": "4590cd7129a62ce22a7c35d432470cb35410a4839ca1d8b0f36443fead84fce0"
+    },
+    {
+      "path": "previews/miniplayer-playing-glass.webp",
+      "role": "other",
+      "sha256": "30fd954ec2e5cd2a89dd5b65cb17eeb638a21cdd82d3c0d9ae3a4ad15f9a5588"
+    },
+    {
+      "path": "previews/menu-normal.webp",
+      "role": "other",
+      "sha256": "f20a438329895f33c4f29de3b7287c3a1a16da1d88b76509161f97c8c59231cf",
+      "caption": "Menu · Normal"
+    },
+    {
+      "path": "previews/menu-glass.webp",
+      "role": "other",
+      "sha256": "9eedd07d08db6f3e359536361896240ff21ded81f598ef82d7c12bb6d93d73f2",
+      "caption": "Menu · Glass"
+    },
+    {
+      "path": "previews/dialog-normal.webp",
+      "role": "other",
+      "sha256": "c929163b4027c04cadb88a550d42933d6700651e6abcd1e82ec694abaf3fba84",
+      "caption": "Dialog · Normal"
+    },
+    {
+      "path": "previews/dialog-glass.webp",
+      "role": "other",
+      "sha256": "12ef24e09ea7d7737b56aa240efd71987a038c94ed8de2bd5567beca95755bdc",
+      "caption": "Dialog · Glass"
+    }
+  ],
+  "publishedOn": "2026-11-15"
+}

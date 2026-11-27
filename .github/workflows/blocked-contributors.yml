@@ -384,9 +384,9 @@ jobs:
               return;
             }
             if (event.action === 'unlabeled') return;
-            const legacyIndexPath = 'catalog/themes/index.json';
-            const currentIndexPath = 'catalog/themes/index-v2.json';
-            const themeIndexPaths = [legacyIndexPath, currentIndexPath];
+            const themeIndexPaths = [
+              'catalog/themes/index.json', 'catalog/themes/index-v2.json', 'catalog/themes/index-v3.json'
+            ];
             const { isDeepStrictEqual } = require('node:util');
             async function readFile(path, sha, repository = context.repo) {
               const { data } = await github.rest.repos.getContent({ ...repository, path, ref: sha });
@@ -523,7 +523,8 @@ jobs:
                   return JSON.parse(Buffer.from(data.content, 'base64').toString('utf8'));
                 }
                 const manifest = await readJson(file.filename);
-                const indexPath = manifest.schemaVersion === 2 ? currentIndexPath : legacyIndexPath;
+                const indexPath = themeIndexPaths[manifest.schemaVersion - 1];
+                if (!indexPath) throw new Error('Unexpected theme schema while recording publication date');
                 const index = await readJson(indexPath);
                 if (manifest.themeId !== themeId || file.filename !== `${prefix}${manifest.revision}/manifest.json`) {
                   throw new Error('Unexpected theme revision while recording publication date');
