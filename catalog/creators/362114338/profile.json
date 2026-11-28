@@ -1,0 +1,21 @@
+{
+    "schemaVersion": 1,
+    "githubId": 362114338,
+    "login": "B3onis",
+    "displayName": "Sukuna_B3",
+    "bio": "",
+    "avatar": {
+        "source": "custom",
+        "asset": {
+            "path": "profile.webp",
+            "sha256": "ecc17ab68c65d9639fd7260e84f92bccc7eb5878b34f71925b82d57428fcb4fa"
+        }
+    },
+    "banner": {
+        "source": "custom",
+        "asset": {
+            "path": "banner.webp",
+            "sha256": "1038975b92b37d1c96e3b3eda5e4e7b026f8f5b88f8a9b446aecea6cb62f3c3e"
+        }
+    }
+}
